@@ -1,2 +1,2 @@
 add_subdirectory("llama")
-llama_docs("./docs/Doxyfile.in")
+llama_docs()

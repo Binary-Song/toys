@@ -1,3 +1,14 @@
+# To future devs:	
+# 在随意添加自定义命令/目标前，
+# 请务必阅读并理解
+# https://cmake.org/cmake/help/latest/command/add_custom_command.html#example-generating-files-for-multiple-targets
+# 理解command和target的区别后，再进行添加。
+# command: 是“类”，可以产生多个实例，他们直接毫不相干
+# target: 是“对象”。所以依赖同一个command的两个不同实例的结果仍然允许并发编译。
+#
+# 关于 add_dependency: https://stackoverflow.com/questions/75641864/cmake-target-does-not-build-when-its-dependency-target-builds
+# 另： https://samthursfield.wordpress.com/2015/11/21/cmake-dependencies-between-targets-and-files-and-custom-commands/
+
 function(llama_stack_push stack elem)
 	message(DEBUG "llama_stack_push: before: llama_stack_${stack} = $CACHE{llama_stack_${stack}}")
 	
@@ -94,33 +105,116 @@ function(llama_add_link_libraries)
 	endif()
 endfunction()
 
+function(llama_add_custom_deps)
+	llama_stack_top(target target)
+	llama_stack_top(target_type target_type)
+	foreach(ARG ${ARGN})
+		target_sources("${target}_obj" PRIVATE "${CMAKE_CURRENT_LIST_DIR}/${ARG}")
+		message(DEBUG "added include for ${target}_obj : ${CMAKE_CURRENT_LIST_DIR}/${ARG}")
+	endforeach()
+endfunction()
+
 function(llama_target_end)
 	llama_stack_pop(target       _discard)
 	llama_stack_pop(target_type  _discard)
 endfunction()
 
-function(llama_docs DOXYFILE_PATH)
+
+# 语法：
+#llama_custom_target(
+#	OUTPUT path1...
+#	INPUT 
+#	COMMAND command1 [args1...] )
+#	[COMMAND command2 [args1...]]
+#	[WORKING_DIRECTORY dir]
+#)
+#llama_custom_target(
+#	STAMP
+#	INPUT 
+#	COMMAND command1 [args1...] )
+#	[COMMAND command2 [args1...]]
+#	[WORKING_DIRECTORY dir]
+#)
+function(llama_custom_target)
+	set(prefix           "ARG")
+	set(options          "STAMP")
+	set(one_value_args   "NAME" "WORKING_DIRECTORY")
+	set(multi_value_args "OUTPUT")
+
+	list(APPEND keywords "COMMAND;${options};${multi_value_args};${one_value_args}")
+	foreach(ARG ${ARGN})
+		if(ARG IN_LIST keywords)
+			set(current_keyword "${ARG}")
+		endif()
+
+		if (current_keyword STREQUAL "COMMAND")
+			list(APPEND command_args "${ARG}")
+		else()
+			list(APPEND other_args "${ARG}")
+		endif()
+	endforeach()
+
+	if(NOT ARG_WORKING_DIRECTORY)
+		set(ARG_WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+	endif()
+
+	message(DEBUG "command_args = ${command_args}")
+	message(DEBUG "other_args = ${other_args}")
+
+	cmake_parse_arguments(${prefix} "${options}" "${one_value_args}" "${multi_value_args}" ${other_args})
+	
+	if(ARG_STAMP)
+		set(stamp_output_path "${CMAKE_CURRENT_BINARY_DIR}/${ARG_NAME}.stamp" )
+		set(stamp_command     echo "edit me to trigger a rebuild of ${ARG_NAME}" > "${stamp_output_path}")
+		list(APPEND ARG_OUTPUT "${stamp_output_path}")
+	endif()
+
+	add_custom_command(
+		OUTPUT "${ARG_OUTPUT}"
+		${command_args}
+		${stamp_command}
+		WORKING_DIRECTORY "${ARG_WORKING_DIRECTORY}"
+		DEPENDS ALL
+		COMMENT "Generating API documentation with Doxygen"
+		VERBATIM)
+	
+	add_custom_target(
+		docs
+		DEPENDS docs/docs.stamp 
+	)
+endfunction()
+
+
+function(llama_docs)
+	# Doxyfile.in的路径
+	set(DOXYFILE_PATH "${PROJECT_SOURCE_DIR}/src/llama/docs/Doxyfile.in")
+	
+	# 源码目录，作为Doxygen的输入目录
+	set(INPUT_DIR "${PROJECT_SOURCE_DIR}/src/llama" )
+	
+	# 输出目录
+	set(OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/docs" )
+	
 	option(LLAMA_BUILD_DOCS "Build documentation" OFF)
 	if(LLAMA_BUILD_DOCS)
-		
-		find_package(Doxygen)
-		if (DOXYGEN_FOUND)
-			set(DOXYGEN_IN "${DOXYFILE_PATH}")
-			set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
-
-			# request to configure the file
-			configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-			message("Doxygen build started")
-
-			# note the option ALL which allows to build the docs together with the application
-			add_custom_target( doc_doxygen ALL
-				COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-				WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-				COMMENT "Generating API documentation with Doxygen"
-				VERBATIM )
-		else (DOXYGEN_FOUND)
-		message("Doxygen need to be installed to generate the doxygen documentation")
-		endif (DOXYGEN_FOUND)
-
+		# 无法找到Doxygen。如果不希望生成文档，请在cmake命令行增加 -DLLAMA_BUILD_DOCS=OFF
+		find_package(Doxygen REQUIRED)
+		# DOXYFILE_PATH 文件中的 @INPUT_DIR@ @OUTPUT_DIR@ 会被替换成实际值
+		# todo: 不要用这个鬼东西，，他会导致每次cmake都更新 Doxyfile，导致regen。
+		configure_file("${DOXYFILE_PATH}" "${OUTPUT_DIR}/Doxyfile" @ONLY)
+		add_custom_command(
+			OUTPUT  "${OUTPUT_DIR}/docs.stamp"
+			COMMAND "${DOXYGEN_EXECUTABLE}" "${OUTPUT_DIR}"
+			COMMAND echo "edit me to trigger rebuild of the docs" > "${OUTPUT_DIR}/docs.stamp"
+			WORKING_DIRECTORY "${OUTPUT_DIR}"
+			DEPENDS ALL
+			COMMENT "Generating API documentation with Doxygen"
+			VERBATIM)
+		add_custom_target(
+			docs
+			DEPENDS docs/docs.stamp 
+		)
+		set_property(CACHE CRYPTOBACKEND PROPERTY STRINGS
+             "OpenSSL" "LibTomCrypt" "LibDES")
 	endif()
 endfunction()
