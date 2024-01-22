@@ -1,0 +1,5 @@
+minisheet_begin_target(multitasking HEADER_ONLY)
+	minisheet_add_test_sources("test/scheduler_test.cpp")
+	minisheet_add_test_sources("src/time_slice_strategy.cpp")
+	minisheet_add_link_libraries(foundation spdlog::spdlog)
+minisheet_end_target()

@@ -1,0 +1,5 @@
+minisheet_begin_target(entry SHARED)
+	minisheet_add_sources(src/entry.cpp)
+	minisheet_add_test_sources(test/entry_test.cpp)
+	minisheet_add_link_libraries(Qt5::Widgets)
+minisheet_end_target()
