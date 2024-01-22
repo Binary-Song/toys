@@ -5,6 +5,9 @@
 namespace llama
 {
 
+class ByPassNullCheck
+{};
+
 /// 非空指针 T*。用它来表示已经判过空的指针。它没有空的状态，如果试图用空初始化它，会
 /// 在运行时抛出 NullPointerException 异常。除此之外不会检查空，因此有更好的性能。
 /// 没有默认构造函数。如果由于种种原因需要默认构造，请用np代替。
@@ -12,9 +15,12 @@ template <typename T>
 class p
 {
 public:
+
+	/// 禁止用空指针构造。
 	p(std::nullptr_t) = delete;
 
 	/// 如果 U* 可以转为 T*，则 U* 也可以转为 p<T>
+	/// 要求 ptr 非空。否则抛出异常。
 	p(T *ptr)
 		: ptr(ptr)
 	{
@@ -23,6 +29,7 @@ public:
 	}
 
 	/// 如果 U* 可以转为 T*，则 p<U> 也可以转为 p<T>
+	/// 要求 ptr 非空。否则抛出异常。
 	template <typename U>
 	p(p<U> ptr)
 		: ptr(ptr.data())
@@ -30,6 +37,15 @@ public:
 		if (!ptr)
 			throw NullPointerException();
 	}
+
+	p(T *ptr, ByPassNullCheck)
+		: ptr(ptr)
+	{}
+
+	template <typename U>
+	p(p<U> ptr, ByPassNullCheck)
+		: ptr(ptr.data())
+	{}
 
 	operator T *() const { return ptr; }
 
@@ -235,13 +251,6 @@ template <typename T, typename U> bool operator>=(np<T> p1, np<U> p2) { return s
 template <typename T, typename U> bool operator<=(np<T> p1, np<U> p2) { return static_cast<T *>(p1) <= static_cast<U *>(p2); }
 template <typename T, typename U> bool operator >(np<T> p1, np<U> p2) { return static_cast<T *>(p1)  > static_cast<U *>(p2); }
 template <typename T, typename U> bool operator <(np<T> p1, np<U> p2) { return static_cast<T *>(p1)  < static_cast<U *>(p2); }
-// clang-format on
-
-template <typename T>
-class sp
-{
-public:
-	sp() {}
-};
+// clang-format on 
 
 }//namespace llama
