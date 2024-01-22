@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE FILEPATH "Path to vcpkg.cmake toolchain, see vcpkg's doc")
-project("toys")
+project(toys)
 set(CMAKE_CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 find_package(fmt CONFIG REQUIRED)
