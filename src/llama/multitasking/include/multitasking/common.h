@@ -3,7 +3,7 @@
 #include <chrono>
 #include <coroutine>
 
-namespace minisheet
+namespace llama
 {
 namespace mt
 {
@@ -38,4 +38,4 @@ using Scheduler = mt::DeadlineScheduler;
 template <typename Result>
 using Task = mt::DeadlineTask<Result>;
 
-}//namespace minisheet
+}//namespace llama

@@ -10,7 +10,7 @@
 #include <spdlog/spdlog.h>
 #include <memory>
 
-namespace minisheet
+namespace llama
 {
 namespace mt
 {
@@ -36,16 +36,16 @@ private:
 };
 
 }//namespace mt
-}//namespace minisheet
+}//namespace llama
 
 // 告诉编译器：返回 Task<DeadlineStrategy> 对应 DeadlinePromise
 template <typename Result>
-struct ::std::coroutine_traits<minisheet::mt::DeadlineTask<Result>, minisheet::mt::DeadlineTaskContext>
+struct ::std::coroutine_traits<llama::mt::DeadlineTask<Result>, llama::mt::DeadlineTaskContext>
 {
-	using promise_type = minisheet::mt::DeadlinePromise<Result>;
+	using promise_type = llama::mt::DeadlinePromise<Result>;
 };
 
-namespace minisheet
+namespace llama
 {
 namespace mt
 {
@@ -169,7 +169,7 @@ private:
 };
 
 }//namespace mt
-}//namespace minisheet
+}//namespace llama
 
 //
 //
@@ -177,7 +177,7 @@ private:
 //
 //
 //
-namespace minisheet
+namespace llama
 {
 namespace mt
 {
@@ -195,4 +195,4 @@ DeadlineTaskAwaitable DeadlinePromise<Result>::await_transform(DeadlineTask<Resu
 }
 
 }//namespace mt
-}//namespace minisheet
+}//namespace llama

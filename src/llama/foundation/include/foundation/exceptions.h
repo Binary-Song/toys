@@ -1,5 +1,5 @@
 ﻿#pragma once
-namespace minisheet
+namespace llama
 {
 class Exception
 {
@@ -10,4 +10,4 @@ public:
 class NullPointerException : public Exception
 {};
 
-}//namespace minisheet
+}//namespace llama

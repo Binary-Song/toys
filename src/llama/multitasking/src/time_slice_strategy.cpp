@@ -1,6 +1,6 @@
 ﻿#include "multitasking/time_slice_strategy.h"
 
-namespace minisheet
+namespace llama
 {
 namespace mt
 {
@@ -46,4 +46,4 @@ void DeadlinePromise::unhandled_exception()
 }
 
 }//namespace mt
-}//namespace minisheet
+}//namespace llama

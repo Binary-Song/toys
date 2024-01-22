@@ -2,7 +2,7 @@
 #include "exceptions.h"
 #include <cstddef>
 #include <compare>
-namespace minisheet
+namespace llama
 {
 
 /// 非空指针 T*。用它来表示已经判过空的指针。它没有空的状态，如果试图用空初始化它，会
@@ -244,4 +244,4 @@ public:
 	sp() {}
 };
 
-}//namespace minisheet
+}//namespace llama

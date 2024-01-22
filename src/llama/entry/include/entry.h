@@ -1,5 +1,5 @@
 ﻿#pragma once
-namespace minisheet
+namespace llama
 {
 	void init();
 }

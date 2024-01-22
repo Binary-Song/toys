@@ -2,8 +2,8 @@
 #include <gtest/gtest.h>
 #include <string>
 
-using minisheet::np;
-using minisheet::p;
+using llama::np;
+using llama::p;
 
 class PointerTest : public testing::Test
 {};
@@ -22,14 +22,14 @@ TEST_F(PointerTest, NP1)
 TEST_F(PointerTest, NP2)
 {
 	np<int> p = nullptr;
-	EXPECT_THROW({ p.unwrap(); }, minisheet::NullPointerException);
+	EXPECT_THROW({ p.unwrap(); }, llama::NullPointerException);
 }
 
 TEST_F(PointerTest, NP3)
 {
 	int *a = nullptr;
 	np<int> p = a;
-	EXPECT_THROW({ p.unwrap(); }, minisheet::NullPointerException);
+	EXPECT_THROW({ p.unwrap(); }, llama::NullPointerException);
 }
 
 TEST_F(PointerTest, P1)
@@ -51,7 +51,7 @@ TEST_F(PointerTest, P2)
 			p<std::string> ptr = &s;
 			ptr = (std::string *)nullptr;
 		},
-		minisheet::NullPointerException);
+		llama::NullPointerException);
 }
      
 TEST_F(PointerTest, P3)
@@ -61,10 +61,10 @@ TEST_F(PointerTest, P3)
 			std::string *sp = nullptr;
 			p<std::string> p = sp;
 		},
-		minisheet::NullPointerException);
-	EXPECT_THROW({ np<int>(nullptr).deref(); }, minisheet::NullPointerException);
-	EXPECT_THROW({ auto p = np<std::string>(nullptr)->data(); }, minisheet::NullPointerException);
-	EXPECT_THROW({ np<std::string>(nullptr)[0]; }, minisheet::NullPointerException);
+		llama::NullPointerException);
+	EXPECT_THROW({ np<int>(nullptr).deref(); }, llama::NullPointerException);
+	EXPECT_THROW({ auto p = np<std::string>(nullptr)->data(); }, llama::NullPointerException);
+	EXPECT_THROW({ np<std::string>(nullptr)[0]; }, llama::NullPointerException);
 }
 
 struct A
