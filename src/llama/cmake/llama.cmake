@@ -35,7 +35,7 @@ function(llama_stack_top stack out_var)
 
 endfunction()
 
-function(llama_begin_target name type)
+function(llama_target name type)
 	llama_stack_push(target "${name}")
 	llama_stack_push(target_type "${type}")
 
@@ -94,7 +94,7 @@ function(llama_add_link_libraries)
 	endif()
 endfunction()
 
-function(llama_end_target)
+function(llama_target_end)
 	llama_stack_pop(target       _discard)
 	llama_stack_pop(target_type  _discard)
 endfunction()
