@@ -1,0 +1,1 @@
+configure_file("${DOXYFILE_INPUT_PATH}" "${DOXYFILE_OUTPUT_PATH}")
