@@ -9,6 +9,12 @@
 # 关于 add_dependency: https://stackoverflow.com/questions/75641864/cmake-target-does-not-build-when-its-dependency-target-builds
 # 另： https://samthursfield.wordpress.com/2015/11/21/cmake-dependencies-between-targets-and-files-and-custom-commands/
 
+# source file 分为 generated 和 non-generated。
+# generated: 添加的时候要求同时指定dependent target。然后还会检查这些target会不会真的生成这个generated source。
+#           然后还要确保支持传递性搜索。问题来了，传递性搜索如何实现？因为每个target都是我创建的？，所以说传递性搜索
+#           对于custom target，
+# non-gen: 
+
 function(llama_stack_push stack elem)
 	message(DEBUG "llama_stack_push: before: llama_stack_${stack} = $CACHE{llama_stack_${stack}}")
 	
@@ -46,6 +52,13 @@ function(llama_stack_top stack out_var)
 
 endfunction()
 
+function(llama_stack_append_top stack suffix)
+	llama_stack_top("${stack}" out_var)
+	list(APPEND out_var "${suffix}")
+	llama_stack_pop("${stack}")
+	llama_stack_push("${stack}" "${out_var}")
+endfunction()
+
 function(llama_target name type)
 	llama_stack_push(target "${name}")
 	llama_stack_push(target_type "${type}")
@@ -80,6 +93,10 @@ function(llama_add_sources)
 	endforeach()
 endfunction()
 
+function(llama_add_generated_sources)
+
+endfunction()
+
 function(llama_add_test_sources)
 	llama_stack_top(target target)
 	llama_stack_top(target_type target_type)
@@ -105,13 +122,13 @@ function(llama_add_link_libraries)
 	endif()
 endfunction()
 
-function(llama_add_custom_deps)
+function(llama_add_generated_sources)
 	llama_stack_top(target target)
-	llama_stack_top(target_type target_type)
-	foreach(ARG ${ARGN})
-		target_sources("${target}_obj" PRIVATE "${CMAKE_CURRENT_LIST_DIR}/${ARG}")
-		message(DEBUG "added include for ${target}_obj : ${CMAKE_CURRENT_LIST_DIR}/${ARG}")
-	endforeach()
+	set(prefix           "ARG")
+	set(one_value_args   "")
+	set(multi_value_args "TARGETS;SOURCES")
+	cmake_parse_arguments(${prefix} "${options}" "${one_value_args}" "${multi_value_args}" ${ARGN})
+
 endfunction()
 
 function(llama_target_end)
@@ -122,23 +139,17 @@ endfunction()
 
 # 语法：
 #llama_custom_target(
+#	[STAMP]
 #	OUTPUT path1...
-#	INPUT 
+#	INPUT path1...
 #	COMMAND command1 [args1...] )
 #	[COMMAND command2 [args1...]]
-#	[WORKING_DIRECTORY dir]
-#)
-#llama_custom_target(
-#	STAMP
-#	INPUT 
-#	COMMAND command1 [args1...] )
-#	[COMMAND command2 [args1...]]
-#	[WORKING_DIRECTORY dir]
+#	WORKING_DIRECTORY dir
 #)
 function(llama_custom_target)
 	set(prefix           "ARG")
 	set(options          "STAMP")
-	set(one_value_args   "NAME" "WORKING_DIRECTORY")
+	set(one_value_args   "NAME" "WORKING_DIRECTORY" "COMMENT")
 	set(multi_value_args "OUTPUT")
 
 	list(APPEND keywords "COMMAND;${options};${multi_value_args};${one_value_args}")
@@ -163,24 +174,42 @@ function(llama_custom_target)
 
 	cmake_parse_arguments(${prefix} "${options}" "${one_value_args}" "${multi_value_args}" ${other_args})
 	
+	if(NOT ARG_WORKING_DIRECTORY)
+		message(FATAL_ERROR "WORKING_DIRECTORY is missing!")
+	endif()
+
+	if(NOT ARG_STAMP AND NOT ARG_OUTPUT)
+		message(FATAL_ERROR "No output file specified. Try to specify a complete list of output files if possible."
+			"If not, use the option STAMP to let the build system generate a stamp file as an output. "
+			"An accurate output file spec is critical to the consistency of a build system, so please take it seriously."
+		)
+	endif()
+
 	if(ARG_STAMP)
 		set(stamp_output_path "${CMAKE_CURRENT_BINARY_DIR}/${ARG_NAME}.stamp" )
-		set(stamp_command     echo "edit me to trigger a rebuild of ${ARG_NAME}" > "${stamp_output_path}")
-		list(APPEND ARG_OUTPUT "${stamp_output_path}")
+		set(stamp_command     echo "remove or edit this file to trigger a rebuild of ${ARG_NAME}" > "${stamp_output_path}")
+		set(ARG_OUTPUT "${stamp_output_path}")
+	endif()
+
+	if(ARG_COMMENT)
+		set(extra_args COMMENT "${ARG_COMMENT}")
 	endif()
 
 	add_custom_command(
+		INPUT "${ARG_INPUT}"
 		OUTPUT "${ARG_OUTPUT}"
 		${command_args}
 		${stamp_command}
 		WORKING_DIRECTORY "${ARG_WORKING_DIRECTORY}"
 		DEPENDS ALL
-		COMMENT "Generating API documentation with Doxygen"
+		${extra_args}
 		VERBATIM)
-	
+
+	set(LLAMA_${ARG_NAME}_OUTPUT "${ARG_OUTPUT}" CACHE INTERNAL "output list for ${ARG_NAME}"))
+
 	add_custom_target(
-		docs
-		DEPENDS docs/docs.stamp 
+		${ARG_NAME}
+		DEPENDS "${ARG_OUTPUT}"
 	)
 endfunction()
 
@@ -214,7 +243,5 @@ function(llama_docs)
 			docs
 			DEPENDS docs/docs.stamp 
 		)
-		set_property(CACHE CRYPTOBACKEND PROPERTY STRINGS
-             "OpenSSL" "LibTomCrypt" "LibDES")
 	endif()
 endfunction()
