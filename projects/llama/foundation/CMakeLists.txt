@@ -1,0 +1,1 @@
+llama_target(foundation HEADER_ONLY)

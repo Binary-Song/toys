@@ -1,5 +1,0 @@
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
-include(llama)
-add_subdirectory(entry)
-add_subdirectory(foundation)
-add_subdirectory(multitasking)

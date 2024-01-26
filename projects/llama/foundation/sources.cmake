@@ -1,0 +1,5 @@
+list(APPEND SOURCE_LIST "include/foundation/exceptions.h")
+list(APPEND SOURCE_LIST "include/foundation/foundation.h")
+list(APPEND SOURCE_LIST "include/foundation/pointers.h")
+list(APPEND SOURCE_LIST "include/foundation/smart_pointers.h")
+list(APPEND TEST_SOURCE_LIST "test/foundation_test.cpp")
