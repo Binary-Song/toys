@@ -1,0 +1,46 @@
+// 本文件是一个例子，可以作为 CMakeUserPresets.json 的模板。
+// 注意不要将自己本地的路径提交上来。
+{
+	"version": 6,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 23,
+		"patch": 0
+	},
+	// 推荐环境：
+	//  1. 从官网下载了LLVM安装包并安装在默认路径
+	//  2. 下载了Ninja并且已经加入到PATH
+	//  3. 从官网下载了Doxygen并安装在默认路径，如果没有，将LLAMA_BUILD_DOCS设置为OFF
+	// 拥有以上环境后，在VSCode + CMake Tools拓展的环境下，应该可以一键编译。
+	"configurePresets": [
+		{
+			"name": "win-clang-default",
+			"displayName": "Windows Clang Default Setup",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/build2/",
+			"cacheVariables": {
+				"DCMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+				"DLLAMA_BUILD_DOCS": "ON"
+			},
+			"environment": {
+				"CC": "C:\\Program Files\\LLVM\\bin\\clang.exe",
+				"CXX": "C:\\Program Files\\LLVM\\bin\\clang++.exe"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "win-clang-default-build",
+			"displayName": "Windows Clang Default Build",
+			"configurePreset": "win-clang-default"
+		}
+	],
+	"testPresets": [
+		{
+			"name": "win-clang-default-test",
+			"displayName": "Windows Clang Default Test",
+			"configurePreset": "win-clang-default",
+			"execution": {}
+		}
+	]
+}
