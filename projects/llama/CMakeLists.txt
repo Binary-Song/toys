@@ -14,9 +14,7 @@ find_package(GTest CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(Protobuf CONFIG REQUIRED)
 
-enable_testing()
 include(GoogleTest)
-
 include(llama)
 
 add_subdirectory("./foundation")
