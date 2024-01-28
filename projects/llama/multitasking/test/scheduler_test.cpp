@@ -1,7 +1,7 @@
-﻿#include "multitasking.h"
+#include "multitasking/multitasking.h"
 #include <gtest/gtest.h>
 #include <iostream>
-#include "foundation.h"
+#include "foundation/foundation.h"
 
 class SchedTest : public testing::Test
 {};
@@ -9,7 +9,7 @@ class SchedTest : public testing::Test
 TEST_F(SchedTest, T1)
 {
 	using namespace std::chrono_literals;
-	llama::Scheduler scheduler{1ms};
+	llama::mt::Scheduler scheduler{1ms};
 	scheduler.Submit(
 		[]() -> llama::Task
 		{

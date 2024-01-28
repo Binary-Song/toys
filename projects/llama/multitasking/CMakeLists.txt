@@ -1,5 +1,2 @@
 llama_target(multitasking HEADER_ONLY)
-	llama_add_test_sources("test/scheduler_test.cpp")
-	llama_add_test_sources("src/time_slice_strategy.cpp")
-	llama_add_link_libraries(foundation spdlog::spdlog)
-llama_target_end()
+target_link_libraries(multitasking INTERFACE foundation)
