@@ -1,1 +1,1 @@
-llama_target(foundation HEADER_ONLY)
+llama_target(foundation SHARED AKA fnd)
