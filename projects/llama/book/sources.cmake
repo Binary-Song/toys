@@ -1,0 +1,5 @@
+list(APPEND SOURCE_LIST "src/book.cpp")
+list(APPEND SOURCE_LIST "include/book/book.h")
+list(APPEND SOURCE_LIST "include/book/workbook.h")
+list(APPEND PROTO_LIST "include/book/workbook.proto")
+list(APPEND TEST_SOURCE_LIST "test/book_test.cpp")

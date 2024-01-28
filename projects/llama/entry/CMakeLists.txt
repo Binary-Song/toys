@@ -1,5 +1,0 @@
-llama_target(entry SHARED)
-	llama_add_sources(src/entry.cpp)
-	llama_add_test_sources(test/entry_test.cpp)
-	llama_add_link_libraries(Qt5::Widgets)
-llama_target_end()

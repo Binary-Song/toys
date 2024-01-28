@@ -1,4 +1,3 @@
-﻿#include "entry.h"
 
 namespace llama
 {
