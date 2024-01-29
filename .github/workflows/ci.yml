@@ -9,7 +9,7 @@ jobs:
       - name: get cmake and ninja
         uses: lukka/get-cmake@latest
       - name: checkout
-        run: cd ${{github.workspace}} && git clone https://github.com/Binary-Song/toys.git --recursive .
+        run: cd ${{github.workspace}} && git clone https://${{ secrets.KEY }}@github.com/Binary-Song/toys.git --recursive .
       - name: run vcpkg
         uses: lukka/run-vcpkg@v11
       - name: run cmake workflow
@@ -23,7 +23,7 @@ jobs:
       - name: get cmake and ninja
         uses: lukka/get-cmake@latest
       - name: checkout
-        run: cd ${{github.workspace}} && git clone https://github.com/Binary-Song/toys.git --recursive .
+        run: cd ${{github.workspace}} && git clone https://${{ secrets.KEY }}@github.com/Binary-Song/toys.git --recursive .
       - name: run vcpkg
         uses: lukka/run-vcpkg@v11
       - name: run cmake workflow
