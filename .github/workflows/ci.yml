@@ -1,0 +1,32 @@
+name: CI
+
+on: push
+
+jobs:
+  CI-Linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get cmake and ninja
+        uses: lukka/get-cmake@latest
+      - name: checkout
+        run: cd ${{github.workspace}} && git clone https://github.com/Binary-Song/toys.git --recursive .
+      - name: run vcpkg
+        uses: lukka/run-vcpkg@v11
+      - name: run cmake workflow
+        uses: lukka/run-cmake@v10
+        with:
+          workflowPreset: "linux-clang-ci"
+
+  CI-Windows:
+    runs-on: windows-latest
+    steps:
+      - name: get cmake and ninja
+        uses: lukka/get-cmake@latest
+      - name: checkout
+        run: cd ${{github.workspace}} && git clone https://github.com/Binary-Song/toys.git --recursive .
+      - name: run vcpkg
+        uses: lukka/run-vcpkg@v11
+      - name: run cmake workflow
+        uses: lukka/run-cmake@v10
+        with:
+          workflowPreset: "win-clang-ci"
