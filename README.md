@@ -18,26 +18,23 @@ Ninja: https://github.com/ninja-build/ninja/releases
 
 CMake: https://cmake.org/download/
 
-确保 ninja.exe 和 cmake.exe 在 PATH 里。
+如果是Windows，请将 ninja.exe 和 cmake.exe 的目录添加进 PATH 环境变量里。
 
-在cmd里执行下面指令生成toys。
+## 生成 
+
+用 CMakePresets.json 一键生成+测试。（需要CMake >= 3.25）
 
 Windows:
 
-Windows上可能要开启“开发者模式”来允许创建符号链接。开启方法：
-
-设置 -> 更新和安全 -> 开发者选项 -> 开发人员模式
-
-```cmd
-set "CC=C:\Program Files\LLVM\bin\clang.exe"
-set "CXX=C:\Program Files\LLVM\bin\clang++.exe"
-cmake -GNinja -B build -S . -DCMAKE_EXPORT_COMPILE_COMMANDS=ON 
-cmake --build build
+```
+cmake --workflow --preset win-clang-ci
 ```
 
 Linux:
 
-Linux 也只需要 cmake、ninja和llvm。用你最爱的包管理器装，或者从官网下。cmake指令一样。
+```
+cmake --workflow --preset linux-clang-ci
+```
 
 ## 可选项
 
@@ -45,5 +42,8 @@ Linux 也只需要 cmake、ninja和llvm。用你最爱的包管理器装，或�
 
 下载 Doxygen : https://www.doxygen.nl/download.html
 
-cmake -GNinja -B build -S . -DLLAMA_BUILD_DOCS=ON 
+```
+cmake -GNinja -B build -S . -DLLAMA_BUILD_DOCS=ON
+cmake --build --target docs
+```
 

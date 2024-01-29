@@ -1,5 +1,7 @@
 {
 	"dependencies": [
-	  "qt5","gtest","fmt", "spdlog", "protobuf"
+		"gtest",
+		"fmt",
+		"spdlog" 
 	]
 }

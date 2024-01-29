@@ -9,10 +9,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 
 find_package(fmt CONFIG REQUIRED)
-find_package(Qt5 COMPONENTS Widgets CONFIG REQUIRED)
+# find_package(Qt5 COMPONENTS Widgets CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
-find_package(Protobuf CONFIG REQUIRED)
+# find_package(Protobuf CONFIG REQUIRED)
 
 include(GoogleTest)
 include(llama)

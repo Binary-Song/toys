@@ -42,7 +42,7 @@ inline std::u16string ToUtf16(std::wstring_view str)
 #ifdef LLAMA_WIN
     return std::u16string((const char16_t *)str.data(), str.size());
 #else
-    return EncodeUtf16((const uint32_t *)str.data(), codes.size());
+    return EncodeUtf16((const uint32_t *)str.data(), str.size());
 #endif
 }
 
@@ -58,7 +58,7 @@ inline std::string ToUtf8(std::wstring_view str)
     std::u16string_view v((const char16_t *)str.data(), str.size());
     return ToUtf8(v);
 #else
-    return EncodeUtf8((const uint32_t *)str.data(), codes.size());
+    return EncodeUtf8((const uint32_t *)str.data(), str.size());
 #endif
 }
 
