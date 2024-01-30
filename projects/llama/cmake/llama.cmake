@@ -156,7 +156,7 @@ function(llama_docs)
 			COMMENT "Generating docs"
 			VERBATIM)
 		add_custom_target(
-			docs
+			docs ALL
 			DEPENDS "${OUTPUT_DIR}/docs.stamp" # add_custom_target 的 depend 仅限文件且必须是同一个 CMakeLists.txt
 		)
 
