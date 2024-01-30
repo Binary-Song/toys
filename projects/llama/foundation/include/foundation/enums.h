@@ -14,13 +14,22 @@
 namespace llama
 {
 
-enum class PathOptions : uint32_t
+enum class ReadPathOptions : uint32_t
 {
-    None = 0x00000000,
-    AllowDotDot = 0x00000001,
+    None = 0x0000'0000,
+    AllowDotDot = 0x0000'0001,
 };
 
-LLAMA_ENABLE_BITWISE_OPS(PathOptions);
+LLAMA_ENABLE_BITWISE_OPS(ReadPathOptions);
+
+/// 决定将路径转为字符串的行为。
+enum class WritePathOptions : uint32_t
+{
+    None = 0x0000'0000,
+    /// 路径分隔符 `\` (Windows 分隔符)
+    WindowsSep = 0x0000'0001,
+};
+LLAMA_ENABLE_BITWISE_OPS(WritePathOptions);
 
 enum class ExceptionKind : uint32_t
 {
@@ -50,5 +59,4 @@ enum class PromiseStatus : uint32_t
     // 协程结束,并成功给出了返回值
     HasResult,
 };
-
 } // namespace llama
