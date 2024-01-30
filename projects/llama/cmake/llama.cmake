@@ -110,7 +110,7 @@ function(llama_docs)
 	set(OUTPUT_DIR "${CMAKE_BINARY_DIR}/docs") # Doxygen 输出目录，文档输出在这里
 	set(DOXYFILE_INPUT_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/llama.doxyfile") # 输入的 doxyfile 模板
 	set(DOXYFILE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/docs/Doxyfile") # 输出的 Doxyfile 文件，文件里的路径被替换了
-	set(DOXYGEN_STYLE_SHEET_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../../../doxygen-awesome-css/doxygen-awesome.css")
+	set(DOXYGEN_STYLE_SHEET_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/doc-css/doxygen-awesome.css")
 
 	file(TO_CMAKE_PATH "${DOXYGEN_STYLE_SHEET_PATH}" DOXYGEN_STYLE_SHEET_PATH)
 	string(REPLACE ";" " " "INPUT_FILE_PATTERNS" "${LLAMA_SOURCE_EXTENSIONS};${LLAMA_HEADER_EXTENSIONS}")
@@ -156,7 +156,7 @@ function(llama_docs)
 			COMMENT "Generating docs"
 			VERBATIM)
 		add_custom_target(
-			docs
+			docs ALL
 			DEPENDS "${OUTPUT_DIR}/docs.stamp" # add_custom_target 的 depend 仅限文件且必须是同一个 CMakeLists.txt
 		)
 
