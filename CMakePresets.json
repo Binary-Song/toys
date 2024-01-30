@@ -20,8 +20,7 @@
 			"hidden": true,
 			"cacheVariables": {
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-				"LLAMA_BUILD_DOCS": "OFF",
-				"DOXYGEN_EXECUTABLE": "E:\\toys\\doxygen.user\\doxygen.exe"
+				"LLAMA_BUILD_DOCS": "OFF"
 			}
 		},
 		{
