@@ -5,6 +5,20 @@
 /// ```
 /// LLAMA_ENABLE_BITWISE_OPS( 枚举类型 );
 /// ```
+/// 
+/// 这使枚举支持以下位运算符：
+/// `~` `&` `|` `^` `&=` `|=` `^=`
+/// 以及额外两个运算符用来将枚举转为bool类型。
+/// `+`（一元） `!`
+/// 
+/// enum class 不能隐式转换为 bool ，用 `+` 让它显式转为bool。例如：
+/// ```
+/// if(+(flag & MyOption::MyFlag))
+/// ```
+/// 等价于
+/// ```
+/// if(static_cast<bool>(flag & MyOption::MyFlag))
+/// ```
 
 #pragma once
 #include "enum_bitwise_ops.h"
@@ -14,22 +28,33 @@
 namespace llama
 {
 
-enum class ReadPathOptions : uint32_t
+/// 决定如何将字符串转为路径
+enum class ReadPathOption : uint32_t
 {
     None = 0x0000'0000,
+    /// 开：允许路径中包含 `..`;
+    /// 关：不允许路径中包含 `..`
     AllowDotDot = 0x0000'0001,
 };
+LLAMA_ENABLE_BITWISE_OPS(ReadPathOption);
 
-LLAMA_ENABLE_BITWISE_OPS(ReadPathOptions);
-
-/// 决定将路径转为字符串的行为。
-enum class WritePathOptions : uint32_t
+/// 决定如何将路径转为字符串
+enum class WritePathOption : uint32_t
 {
     None = 0x0000'0000,
-    /// 路径分隔符 `\` (Windows 分隔符)
+    /// 开：分隔符为 `\` (Windows 分隔符);
+    /// 关：分隔符为 `/` (Linux 分隔符).
     WindowsSep = 0x0000'0001,
 };
-LLAMA_ENABLE_BITWISE_OPS(WritePathOptions);
+
+constexpr WritePathOption WritePathOption_NativeSep =
+#ifdef LLAMA_WIN
+    WritePathOption::WindowsSep
+#else
+    WritePWritePathOption::None
+#endif
+    ;
+LLAMA_ENABLE_BITWISE_OPS(WritePathOption);
 
 enum class ExceptionKind : uint32_t
 {

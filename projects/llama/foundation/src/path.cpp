@@ -52,7 +52,7 @@ static bool IsValidAbsolutePath(std::string_view path)
     return false;
 }
 
-RelativePath::RelativePath(std::string_view path, ReadPathOptions opt)
+RelativePath::RelativePath(std::string_view path, ReadPathOption opt)
 {
     if (!IsValidRelativePath(path))
         throw Exception(ExceptionKind::InvalidRelativePath);
@@ -70,7 +70,7 @@ RelativePath::RelativePath(std::string_view path, ReadPathOptions opt)
             if (!component.empty())
             {
                 // 检查是否允许 ".." 路径
-                if (component == ".." && !(opt & ReadPathOptions::AllowDotDot))
+                if (component == ".." && !(opt & ReadPathOption::AllowDotDot))
                 {
                     throw Exception(ExceptionKind::InvalidRelativePath);
                 }
@@ -84,7 +84,7 @@ RelativePath::RelativePath(std::string_view path, ReadPathOptions opt)
     }
 }
 
-Path::Path(std::string_view path, ReadPathOptions opt)
+Path::Path(std::string_view path, ReadPathOption opt)
 {
     if (!IsValidAbsolutePath(path))
         throw Exception(ExceptionKind::InvalidRelativePath);
