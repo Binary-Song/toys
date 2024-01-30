@@ -62,7 +62,7 @@ function(llama_target name type)
 
 	# p.s. CMAKE_CURRENT_LIST_DIR 是调用者的位置，不是本文件的位置
 	llama_internal_verify_target("${name}" "${type}")
-	llama_internal_include_source_list(SOURCE_LIST TEST_SOURCE_LIST)
+	llama_internal_include_source_list()
 
 	foreach(src ${SOURCE_LIST})
 		set(llama_doc_sources_sp "${CMAKE_CURRENT_LIST_DIR}/${src} $CACHE{llama_doc_sources_sp}"
@@ -93,17 +93,34 @@ function(llama_target name type)
 	add_executable("${name}-test" "${TEST_SOURCE_LIST}")
 	target_link_libraries("${name}-test" PUBLIC "${name}" GTest::gtest GTest::gtest_main)
 	add_test(NAME "${name}-test" COMMAND "${name}-test")
+	unset(proto_output_list)
+	foreach(src ${TEST_PROTO_LIST} ${PROTO_LIST}) 
+		set(proto_input_path "${CMAKE_CURRENT_LIST_DIR}/${src}")
+		get_filename_component(proto_input_dir "${proto_input_path}" DIRECTORY )
 
-	# Protobuf
-	# foreach(proto_src ${TEST_PROTO_LIST} ${PROTO_LIST})
-	# 	set(PROTO_OUTPUT_PATH )
-	# 	add_custom_command(
-	# 		OUTPUT
-	# 	)
-	# 	target_link_libraries("${name}-obj" PUBLIC protobuf::libprotobuf protobuf::libprotoc)
-	# endforeach()
-	
+		set(proto_output_dir "${CMAKE_CURRENT_BINARY_DIR}/proto/${src}/..")
+		file(MAKE_DIRECTORY "${proto_output_dir}")
 
+		get_filename_component(proto_input_fname_no_ext "${CMAKE_CURRENT_LIST_DIR}/${src}" NAME_WLE)
+		set(proto_header_output_path "${proto_output_dir}/${proto_input_fname_no_ext}.pb.h")
+		set(proto_source_output_path "${proto_output_dir}/${proto_input_fname_no_ext}.pb.cc")
+		list(APPEND proto_output_list "${proto_header_output_path}" "${proto_source_output_path}")
+		add_custom_command(
+			OUTPUT "${proto_source_output_path}" "${proto_header_output_path}"
+			COMMAND "${Protobuf_PROTOC_EXECUTABLE}" "-I=${proto_input_dir}" "--cpp_out=${proto_output_dir}" "${proto_input_path}"
+			DEPENDS "${proto_input_path}"
+			COMMENT "Running protoc"
+			VERBATIM)
+	endforeach()
+	add_custom_target(
+		"${name}-proto" ALL
+		DEPENDS "${proto_output_list}"
+	)
+	add_dependencies("${name}" "${name}-proto")
+	add_dependencies("${name}-test" "${name}-proto")
+	target_include_directories("${name}" PUBLIC "${proto_output_dir}")
+	target_sources("${name}" PRIVATE "${proto_source_output_path}" "${proto_header_output_path}")
+	target_link_libraries("${name}" PUBLIC protobuf::libprotobuf protobuf::libprotoc)
 endfunction()
 
 function(llama_docs)
@@ -163,16 +180,10 @@ function(llama_docs)
 	endif() 
 endfunction()
 
-function(llama_internal_include_source_list src_out test_src_out)
-
+macro(llama_internal_include_source_list)
 	set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
-	unset(SOURCE_LIST)
-	unset(TEST_SOURCE_LIST)
 	include("sources.cmake")
-	set(${src_out} "${SOURCE_LIST}" PARENT_SCOPE)
-	set(${test_src_out} "${TEST_SOURCE_LIST}" PARENT_SCOPE)
-
-endfunction()
+endmacro()
 
 function(llama_internal_verify_dir)
 	cmake_parse_arguments(
@@ -220,8 +231,8 @@ function(llama_internal_verify_target name type)
 		endif()
 
 		# 要求 file list 必须同步
-		llama_internal_include_source_list(src test_src)
-		set(src "${src};${test_src}")
+		llama_internal_include_source_list()
+		set(src "${SOURCE_LIST};${TEST_SOURCE_LIST}")
 		foreach(ext ${LLAMA_SOURCE_EXTENSIONS} ${LLAMA_HEADER_EXTENSIONS})
 			file(GLOB_RECURSE g FOLLOW_SYMLINKS RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "src/${ext}" )
 			list(APPEND actual_src "${g}")

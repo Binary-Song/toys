@@ -80,7 +80,6 @@ class Object
     virtual ~Object() = default;
     virtual Hash HashAsObject() const = 0;
     virtual void SerializeAsObject(std::ostream &) const = 0;
-    virtual void DeserializeAsObject(std::istream &) = 0;
 };
 
 /// 对象仓库。

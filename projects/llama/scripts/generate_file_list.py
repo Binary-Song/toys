@@ -10,7 +10,7 @@ def ends_with(path, suffixes):
 def get_file_type(path):
 	if ends_with(path, ['.cpp', '.h', '.hpp', '.c']):
 		return 'SOURCE'
-	elif ends_with(path, ['proto']):
+	elif ends_with(path, ['.proto']):
 		return 'PROTO'
 	return None
 
