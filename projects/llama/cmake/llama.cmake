@@ -120,7 +120,7 @@ function(llama_target name type)
 	add_dependencies("${name}-test" "${name}-proto")
 	target_include_directories("${name}" PUBLIC "${proto_output_dir}")
 	target_sources("${name}" PRIVATE "${proto_source_output_path}" "${proto_header_output_path}")
-	target_link_libraries("${name}" PUBLIC protobuf::libprotobuf protobuf::libprotoc)
+	target_link_libraries("${name}" PUBLIC protobuf::libprotobuf protobuf::libprotoc fmt::fmt)
 endfunction()
 
 function(llama_docs)
