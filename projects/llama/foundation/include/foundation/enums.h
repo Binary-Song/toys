@@ -85,7 +85,10 @@ enum class ExceptionKind : uint32_t
     InvalidRelativePath,
 
     // 字符串
-    InvalidByteSequence
+    InvalidByteSequence,
+
+    // ObjectStore
+    ObjectStoreFailedToParse,
 };
 
 // 表示协程的三种状态
