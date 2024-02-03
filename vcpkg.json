@@ -3,6 +3,8 @@
 		"gtest",
 		"fmt",
 		"spdlog",
-		"protobuf"
+		"protobuf",
+		"opengl",
+		"glfw3"
 	]
 }
