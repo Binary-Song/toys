@@ -13,10 +13,13 @@ find_package(fmt CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(Protobuf CONFIG REQUIRED)
+find_package(OpenGL REQUIRED )
+find_package(glfw3 CONFIG REQUIRED)
 
 include(GoogleTest)
 include(llama)
 
 add_subdirectory("./foundation")
+add_subdirectory("./glad")
 
 llama_docs()
