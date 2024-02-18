@@ -2,6 +2,7 @@
 #include "foundation/enums.h"
 #include "foundation/exceptions.h"
 #include "foundation/pointers.h"
+#include "rtti.h"
 #include <cassert>
 #include <cstddef>
 #include <cstdint>
@@ -16,185 +17,176 @@
 #include <ostream>
 #include <string>
 #include <string_view>
+#define LLAMA_OBJ
 namespace llama
 {
 
-class Hash
+class IMetaInfo
 {
   public:
-    /// 构造哈希。
-    /// @param data1 高64位
-    /// @param data2 低64位
-    constexpr Hash(uint64_t data1, uint64_t data2) : m_data1{data1}, m_data2(data2)
+    virtual ~IMetaInfo() = default;
+
+  private:
+    virtual ObjectKind GetObjectKind_IMetaInfo() const = 0;
+    virtual void *GetTopLevelObject_IMetaInfo() const = 0;
+
+  public:
+    ObjectKind GetObjectKind() const
+    {
+        return GetObjectKind_IMetaInfo();
+    }
+
+    const void *GetTopLevelObject() const
+    {
+        return GetTopLevelObject_IMetaInfo();
+    }
+
+    void *GetTopLevelObject()
+    {
+        return GetTopLevelObject_IMetaInfo();
+    }
+
+    void *Cast(RttiContext &context, ObjectKind dst)
+    {
+        return context.Cast(GetTopLevelObject(), GetObjectKind(), dst);
+    }
+
+    const void *Cast(RttiContext &context, ObjectKind dst) const
+    {
+        return context.Cast(GetTopLevelObject(), GetObjectKind(), dst);
+    }
+
+    template <typename Dst> Dst *Cast(RttiContext &context)
+    {
+        return static_cast<Dst *>(context.Cast(GetTopLevelObject(), GetObjectKind(), type_to_object_kind<Dst>::value));
+    }
+
+    template <typename Dst> const Dst *Cast(RttiContext &context) const
+    {
+        return static_cast<const Dst *>(
+            context.Cast(GetTopLevelObject(), GetObjectKind(), type_to_object_kind<Dst>::value));
+    }
+};
+
+class BasicMetaInfo : public IMetaInfo
+{
+    LLAMA_OBJ
+  public:
+    BasicMetaInfo(RttiContext *context, ObjectKind kind, void *topLvlObj)
+        : m_context(context), m_kind(kind), m_topLvlObj(topLvlObj)
     {
     }
 
-    /// 构造哈希。
-    /// @param str 代表哈希值的16进制字符串。必须包含恰好32个字符，只能包含 0-9 A-Z a-z。
-    /// 这个串的解释方法和数学的顺序一样：index小的、写在前面的数位更大，index大的、写在后面的数位更小。
-    constexpr Hash(std::string_view str)
+    void *Cast(ObjectKind dst)
     {
-        if (str.size() != 32)
-        {
-            throw Exception{ExceptionKind::InvalidByteSequence};
-        }
-        auto fill_data = [](const char *str, uint64_t &data, size_t begin) {
-            data = 0;
-            for (size_t c = begin; c < begin + 16; c++)
-            {
-                data *= 16;
-                const char ch = str[c];
-                if (ch >= '0' && ch <= '9')
-                    data += (ch - '0');
-                else if (ch >= 'a' && ch <= 'f')
-                    data += (ch - 'a' + 10);
-                else if (ch >= 'A' && ch <= 'F')
-                    data += (ch - 'A' + 10);
-                else
-                    throw Exception{ExceptionKind::InvalidByteSequence};
-            }
-        };
-        fill_data(str.data(), m_data1, 0);
-        fill_data(str.data(), m_data2, 16);
+        return IMetaInfo::Cast(*m_context, dst);
     }
 
-    /// 转为小写字符串。
-    std::string ToString() const
+    const void *Cast(ObjectKind dst) const
     {
-        return fmt::format("{0:016x}{1:016x}", m_data1, m_data2);
+        return IMetaInfo::Cast(*m_context, dst);
     }
 
-    constexpr bool operator==(Hash const &other) const
+    template <typename Dst> Dst *Cast()
     {
-        return m_data1 == other.m_data1 && m_data2 == other.m_data2;
+        return IMetaInfo::Cast<Dst>(*m_context);
     }
 
-    constexpr bool operator!=(Hash const &other) const
+    template <typename Dst> const Dst *Cast() const
     {
-        return m_data1 != other.m_data1 || m_data2 != other.m_data2;
-    }
-
-    constexpr bool operator<(Hash const &other) const
-    {
-        if (m_data1 < other.m_data1)
-            return true;
-        else if (m_data1 > other.m_data1)
-            return false;
-        else
-            return (m_data2 < other.m_data2);
-    }
-
-    constexpr bool operator>(Hash const &other) const
-    {
-        if (m_data1 > other.m_data1)
-            return true;
-        else if (m_data1 < other.m_data1)
-            return false;
-        else
-            return (m_data2 > other.m_data2);
-    }
-
-    constexpr bool operator<=(Hash const &other) const
-    {
-        if (m_data1 < other.m_data1)
-            return true;
-        else if (m_data1 > other.m_data1)
-            return false;
-        else
-            return (m_data2 <= other.m_data2);
-    }
-
-    constexpr bool operator>=(Hash const &other) const
-    {
-        if (m_data1 > other.m_data1)
-            return true;
-        else if (m_data1 < other.m_data1)
-            return false;
-        else
-            return (m_data2 >= other.m_data2);
+        return IMetaInfo::Cast<Dst>(*m_context);
     }
 
   private:
-    uint64_t m_data1;
-    uint64_t m_data2;
+    ObjectKind GetObjectKind_IMetaInfo() const override
+    {
+        return m_kind;
+    }
+
+    void *GetTopLevelObject_IMetaInfo() const override
+    {
+        return m_topLvlObj;
+    }
+
+  private:
+    void *m_topLvlObj;
+    RttiContext *m_context;
+    ObjectKind m_kind;
 };
 
-/// 对象。特点是能被对象仓库管理。
-class Object
+class Object : public BasicMetaInfo
 {
   public:
     virtual ~Object() = default;
-    virtual Hash HashAsObject() const = 0;
-    virtual void SerializeAsObject(std::ostream &) const = 0;
 };
 
-/// 对象缓存。可能会将对象放在缓存或内存里。
-class ObjectStore
-{
-  public:
-    /// TODO: 改成 Path
-    explicit ObjectStore(std::string tmp_dir) : m_tmp_dir(std::move(tmp_dir))
-    {
-    }
+// /// 对象缓存。可能会将对象放在缓存或内存里。
+// class ObjectStore
+// {
+//   public:
+//     /// TODO: 改成 Path
+//     explicit ObjectStore(std::string tmp_dir) : m_tmp_dir(std::move(tmp_dir))
+//     {
+//     }
 
-    /// 存放 `object` 。
-    /// @return 对象的哈希
-    /// @exception 如果对象 `object` 已经存在，将抛出 `ExceptionKind::ElementAlreadyExists`
-    Hash Store(sp<Object> object)
-    {
-        Hash key = object->HashAsObject();
-        auto lower_bound = m_cache.lower_bound(key);
-        if (lower_bound != m_cache.end())
-        {
-            auto less = m_cache.key_comp();
-            // 即 key >= lower bound
-            // 而根据定义 lower bound <= key
-            // 故 key == lower bound
-            if (!less(key, lower_bound->first))
-            {
-                throw Exception{ExceptionKind::ElementAlreadyExists};
-            }
-        }
-        else
-        {
-            m_cache.insert(lower_bound, {key, object});
-        }
-        return key;
-    }
+//     /// 存放 `object` 。
+//     /// @return 对象的哈希
+//     /// @exception 如果对象 `object` 已经存在，将抛出 `ExceptionKind::ElementAlreadyExists`
+//     Hash Store(sp<Object> object)
+//     {
+//         Hash key = object->HashAsObject();
+//         auto lower_bound = m_cache.lower_bound(key);
+//         if (lower_bound != m_cache.end())
+//         {
+//             auto less = m_cache.key_comp();
+//             // 即 key >= lower bound
+//             // 而根据定义 lower bound <= key
+//             // 故 key == lower bound
+//             if (!less(key, lower_bound->first))
+//             {
+//                 throw Exception{ExceptionKind::ElementAlreadyExists};
+//             }
+//         }
+//         else
+//         {
+//             m_cache.insert(lower_bound, {key, object});
+//         }
+//         return key;
+//     }
 
-    /// 获取哈希值为 `hash` 的对象 `T` 。
-    /// @tparam `T` 必须为 `Object` 的子类
-    /// @exception 如果 哈希值为 `hash` 的对象 不存在，将抛出 `ExceptionKind::ElementDoesNotExist`
-    template <typename T> sp<T> Retrieve(Hash const &hash, std::function<T(std::istream &)> const &consumer)
-    {
-        auto iter = m_cache.find(hash);
-        if (iter != m_cache.end())
-        {
-            sp<Object> object = iter->second;
-            sp<T> t = std::static_pointer_cast<T>(object);
-            return t;
-        }
-        // look for it in the cache files
-        // TODO: use my apis
-        const std::string path = m_tmp_dir + "/" + hash.ToString();
+//     /// 获取哈希值为 `hash` 的对象 `T` 。
+//     /// @tparam `T` 必须为 `Object` 的子类
+//     /// @exception 如果 哈希值为 `hash` 的对象 不存在，将抛出 `ExceptionKind::ElementDoesNotExist`
+//     template <typename T> sp<T> Retrieve(Hash const &hash, std::function<T(std::istream &)> const &consumer)
+//     {
+//         auto iter = m_cache.find(hash);
+//         if (iter != m_cache.end())
+//         {
+//             sp<Object> object = iter->second;
+//             sp<T> t = std::static_pointer_cast<T>(object);
+//             return t;
+//         }
+//         // look for it in the cache files
+//         // TODO: use my apis
+//         const std::string path = m_tmp_dir + "/" + hash.ToString();
 
-        if (!std::filesystem::exists(path))
-            throw Exception{ExceptionKind::ElementDoesNotExist};
+//         if (!std::filesystem::exists(path))
+//             throw Exception{ExceptionKind::ElementDoesNotExist};
 
-        std::ifstream file(path);
-        if (!file)
-            throw Exception{ExceptionKind::ElementDoesNotExist};
+//         std::ifstream file(path);
+//         if (!file)
+//             throw Exception{ExceptionKind::ElementDoesNotExist};
 
-        T obj = consumer(file);
-        sp<T> shared_obj = std::make_shared(std::move(obj));
-        m_cache[hash] = obj;
+//         T obj = consumer(file);
+//         sp<T> shared_obj = std::make_shared(std::move(obj));
+//         m_cache[hash] = obj;
 
-        return obj;
-    }
+//         return obj;
+//     }
 
-  private:
-    std::string m_tmp_dir;
-    std::map<Hash, sp<Object>> m_cache;
-};
+//   private:
+//     std::string m_tmp_dir;
+//     std::map<Hash, sp<Object>> m_cache;
+// };
 
 } // namespace llama
