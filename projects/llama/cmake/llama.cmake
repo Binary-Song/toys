@@ -1,20 +1,17 @@
-# To future devs:	
-# 在随意添加自定义命令/目标前，
-# 请务必阅读并理解
+#  =============== 添加custom target必读 ===============
 # https://cmake.org/cmake/help/latest/command/add_custom_command.html#example-generating-files-for-multiple-targets
-# 理解command和target的区别后，再进行添加。
-# command: 是“类”，可以产生多个实例，他们直接毫不相干
-# target: 是“对象”。所以依赖同一个command的两个不同实例的结果仍然允许并发编译。
+# https://samthursfield.wordpress.com/2015/11/21/cmake-dependencies-between-targets-and-files-and-custom-commands/ (这篇文章的图示中，虚线表示command、实线椭圆表示文件、方框表示target )
 #
 # 关于 add_dependency: https://stackoverflow.com/questions/75641864/cmake-target-does-not-build-when-its-dependency-target-builds
-# 另： https://samthursfield.wordpress.com/2015/11/21/cmake-dependencies-between-targets-and-files-and-custom-commands/
-
-# source file 分为 generated 和 non-generated。
-# generated: 添加的时候要求同时指定dependent target。然后还会检查这些target会不会真的生成这个generated source。
-#           然后还要确保支持传递性搜索。问题来了，传递性搜索如何实现？因为每个target都是我创建的？，所以说传递性搜索
-#           对于custom target，
-# non-gen: 
-
+#
+# Q: 为啥既要添加target-level dependency也要添加file-level dependency？
+# A: 
+#  target-level 仅能确保 target 生成的先后顺序。不会自动认为一个target的输出文件就是另一个target的输入。所以
+#  添加target-level依赖（把command包起来）是为了防止同时执行一个command导致竞争和浪费资源。
+# 
+#  file-level 依赖是为了确保所依赖的文件更新时，另一个target能自动执行。如果一个target没有任何文件依赖，则它仅会在自己的输出文件不存在时执行。
+#  这样等于说这个文件只会生成一次，之后永远被认为最新而不再生成。
+#  
 # 允许的源文件和头文件扩展名
 set(LLAMA_SOURCE_EXTENSIONS "*.cpp" "*.c" CACHE INTERNAL "source file extensions that are allowed within the llama project")
 set(LLAMA_HEADER_EXTENSIONS "*.hpp" "*.h" CACHE INTERNAL "header file extensions that are allowed within the llama project")
@@ -81,6 +78,8 @@ function(llama_target name type)
 			target_compile_definitions("${name}" PRIVATE "LLAMA_${AKA_UPPER}_EXPORT")
 		elseif(type STREQUAL EXECUTABLE)  
 			add_executable("${name}" "${SOURCE_LIST}")
+		elseif(type STREQUAL STATIC)
+			add_library("${name}" STATIC "${SOURCE_LIST}")
 		else()
 			message(FATAL_ERROR "unknown type: ${type}")
 		endif()
