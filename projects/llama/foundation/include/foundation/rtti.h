@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
+#include <list>
 #include <map>
 #include <set>
 #include <string>
@@ -8,14 +10,7 @@
 namespace llama
 {
 
-enum class ObjectKind : uint32_t
-{
-    None = 0,
-    Object = 1,
-
-    /// 大于等于该数值，表示该值为动态分配而来，见 RttiContext::GetObjectKind 。
-    Dynamic = 0x80000000,
-};
+using ObjectKind = uint32_t;
 
 class RttiContext
 {
@@ -136,8 +131,23 @@ class RttiContext
         return nullptr;
     }
 
+  public:
+    template <typename F> static void RegisterRttiInitializer(F &&func)
+    {
+        s_rtti_initializers.emplace_back(std::forward<F>(func));
+    }
+
+    void RttiInit()
+    {
+        for (auto &&rtti_initializer : s_rtti_initializers)
+        {
+            rtti_initializer(*this);
+        }
+    }
+
   private:
-    uint32_t m_nextObjectKind = (uint32_t)ObjectKind::Dynamic;
+    static std::list<std::function<void(RttiContext &)>> s_rtti_initializers;
+    uint32_t m_nextObjectKind = 1;
     std::map<std::string, ObjectKind> m_strToObjectKind;
     std::map<const void *, ObjectKind> m_ptrToObjectKind;
     /// m_casts[src][dst] -> cast_fn

@@ -17,12 +17,23 @@
 #include <ostream>
 #include <string>
 #include <string_view>
-#define LLAMA_OBJ
+
+#define LLAMA_RTTI                                                                                                     \
+    static int s_rtti_initializer = []() {                                                                             \
+        ;                                                                                                              \
+        return 0;                                                                                                      \
+    }();
+
 namespace llama
 {
 
 class IMetaInfo
 {
+    inline static int s_register_rtti_initializer = []() {
+
+        return 0;
+    }();
+
   public:
     virtual ~IMetaInfo() = default;
 
