@@ -1,1 +1,1 @@
-llama_target(foundation SHARED AKA fnd)
+llama_module(foundation SHARED AKA fnd)

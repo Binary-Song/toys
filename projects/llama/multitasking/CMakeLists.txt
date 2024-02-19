@@ -1,2 +1,2 @@
-llama_target(multitasking HEADER_ONLY)
+llama_module(multitasking HEADER_ONLY)
 target_link_libraries(multitasking INTERFACE foundation)
