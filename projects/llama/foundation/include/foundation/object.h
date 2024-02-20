@@ -1,6 +1,8 @@
 #pragma once
 #include "foundation/enums.h"
 #include "foundation/exceptions.h"
+#include "foundation/macros.h"
+#include "foundation/object.h"
 #include "foundation/pointers.h"
 #include "rtti.h"
 #include <cassert>
@@ -17,118 +19,105 @@
 #include <ostream>
 #include <string>
 #include <string_view>
+#include <type_traits>
 
-#define LLAMA_RTTI                                                                                                     \
-    static int s_rtti_initializer = []() {                                                                             \
-        ;                                                                                                              \
-        return 0;                                                                                                      \
-    }();
+#define LLAMA_RTTI_UPCAST_BEGIN(T)                                                                                     \
+  private:                                                                                                             \
+    friend class rtti_trait<T>;                                                                                        \
+                                                                                                                       \
+  private:                                                                                                             \
+    inline static char s_typeId[] = #T;                                                                                \
+                                                                                                                       \
+  private:                                                                                                             \
+    inline static unsigned char s_add_default_cast = []() {
+
+#define LLAMA_RTTI_UPCAST_ENTRY(From, To) ::llama::AddDefaultCast<From, To>();
+
+#define LLAMA_RTTI_UPCAST_END                                                                                          \
+    return (unsigned char)0;                                                                                           \
+    }                                                                                                                  \
+    ();
+
+#define LLAMA_RTTI_OVERRIDE_FUNCS(T)                                                                                   \
+  private:                                                                                                             \
+    const void *GetSelf_IRtti() const override                                                                         \
+    {                                                                                                                  \
+        static_assert(std::is_same<std::decay<decltype(*this)>::type, T>::value,                                       \
+                      "first arg to LLAMA_RTTI must be the current type.");                                            \
+        return this;                                                                                                   \
+    }                                                                                                                  \
+                                                                                                                       \
+    ::llama::TypeId GetTypeId_IRtti() const override                                                                   \
+    {                                                                                                                  \
+        return &s_typeId[0];                                                                                           \
+    }
+
+#define LLAMA_RTTI(...) LLAMA_VA_SELECT(LLAMA_RTTI, __VA_ARGS__) LLAMA_RTTI_UPCAST_END
+// clang-format off
+#define LLAMA_RTTI_1(T) LLAMA_RTTI_OVERRIDE_FUNCS(T)  LLAMA_RTTI_UPCAST_BEGIN(T) 
+#define LLAMA_RTTI_2(T, B1)                             LLAMA_RTTI_1(T)                             LLAMA_RTTI_UPCAST_ENTRY(T, B1)
+#define LLAMA_RTTI_3(T, B1, B2)                         LLAMA_RTTI_2(T, B1)                         LLAMA_RTTI_UPCAST_ENTRY(T, B2)
+#define LLAMA_RTTI_4(T, B1, B2, B3)                     LLAMA_RTTI_3(T, B1, B2)                     LLAMA_RTTI_UPCAST_ENTRY(T, B3)
+#define LLAMA_RTTI_5(T, B1, B2, B3, B4)                 LLAMA_RTTI_4(T, B1, B2, B3)                 LLAMA_RTTI_UPCAST_ENTRY(T, B4)
+#define LLAMA_RTTI_6(T, B1, B2, B3, B4, B5)             LLAMA_RTTI_5(T, B1, B2, B3, B4)             LLAMA_RTTI_UPCAST_ENTRY(T, B5)
+#define LLAMA_RTTI_7(T, B1, B2, B3, B4, B5, B6)         LLAMA_RTTI_6(T, B1, B2, B3, B4, B5)         LLAMA_RTTI_UPCAST_ENTRY(T, B6)
+#define LLAMA_RTTI_8(T, B1, B2, B3, B4, B5, B6, B7)     LLAMA_RTTI_7(T, B1, B2, B3, B4, B5, B6)     LLAMA_RTTI_UPCAST_ENTRY(T, B7)
+#define LLAMA_RTTI_9(T, B1, B2, B3, B4, B5, B6, B7, B8) LLAMA_RTTI_8(T, B1, B2, B3, B4, B5, B6, B7) LLAMA_RTTI_UPCAST_ENTRY(T, B8)
+// clang-format on
 
 namespace llama
 {
 
-class IMetaInfo
+template <typename From, typename To> inline void AddDefaultCast()
 {
-    inline static int s_register_rtti_initializer = []() {
+    RttiContext::AddDefaultCast(rtti_trait<From>::id, rtti_trait<To>::id,
+                                [](void *from) noexcept -> void * { return static_cast<To *>((From *)from); });
+}
 
-        return 0;
-    }();
-
+class IRtti
+{
   public:
-    virtual ~IMetaInfo() = default;
+    virtual ~IRtti() = default;
 
   private:
-    virtual ObjectKind GetObjectKind_IMetaInfo() const = 0;
-    virtual void *GetTopLevelObject_IMetaInfo() const = 0;
+    virtual const void *GetSelf_IRtti() const = 0;
+    virtual TypeId GetTypeId_IRtti() const = 0;
 
   public:
-    ObjectKind GetObjectKind() const
+    void *GetSelf()
     {
-        return GetObjectKind_IMetaInfo();
+        return const_cast<void *>(const_cast<const IRtti *>(this)->GetSelf_IRtti());
     }
 
-    const void *GetTopLevelObject() const
+    const void *GetSelf() const
     {
-        return GetTopLevelObject_IMetaInfo();
+        return GetSelf_IRtti();
     }
 
-    void *GetTopLevelObject()
+    TypeId GetTypeId() const
     {
-        return GetTopLevelObject_IMetaInfo();
-    }
-
-    void *Cast(RttiContext &context, ObjectKind dst)
-    {
-        return context.Cast(GetTopLevelObject(), GetObjectKind(), dst);
-    }
-
-    const void *Cast(RttiContext &context, ObjectKind dst) const
-    {
-        return context.Cast(GetTopLevelObject(), GetObjectKind(), dst);
-    }
-
-    template <typename Dst> Dst *Cast(RttiContext &context)
-    {
-        return static_cast<Dst *>(context.Cast(GetTopLevelObject(), GetObjectKind(), type_to_object_kind<Dst>::value));
-    }
-
-    template <typename Dst> const Dst *Cast(RttiContext &context) const
-    {
-        return static_cast<const Dst *>(
-            context.Cast(GetTopLevelObject(), GetObjectKind(), type_to_object_kind<Dst>::value));
+        return GetTypeId_IRtti();
     }
 };
 
-class BasicMetaInfo : public IMetaInfo
+class Object : public virtual IRtti
 {
-    
+    LLAMA_RTTI(Object)
+
   public:
-    BasicMetaInfo(RttiContext *context, ObjectKind kind, void *topLvlObj)
-        : m_context(context), m_kind(kind), m_topLvlObj(topLvlObj)
-    {
-    }
+    virtual ~Object() = default;
 
-    void *Cast(ObjectKind dst)
+    explicit Object(RttiContext *context) : m_context(context)
     {
-        return IMetaInfo::Cast(*m_context, dst);
-    }
-
-    const void *Cast(ObjectKind dst) const
-    {
-        return IMetaInfo::Cast(*m_context, dst);
     }
 
     template <typename Dst> Dst *Cast()
     {
-        return IMetaInfo::Cast<Dst>(*m_context);
-    }
-
-    template <typename Dst> const Dst *Cast() const
-    {
-        return IMetaInfo::Cast<Dst>(*m_context);
+        return (Dst *)m_context->Cast(GetSelf(), GetTypeId(), rtti_trait<Dst>::id);
     }
 
   private:
-    ObjectKind GetObjectKind_IMetaInfo() const override
-    {
-        return m_kind;
-    }
-
-    void *GetTopLevelObject_IMetaInfo() const override
-    {
-        return m_topLvlObj;
-    }
-
-  private:
-    void *m_topLvlObj;
     RttiContext *m_context;
-    ObjectKind m_kind;
-};
-
-class Object : public BasicMetaInfo
-{
-  public:
-    virtual ~Object() = default;
 };
 
 // /// 对象缓存。可能会将对象放在缓存或内存里。

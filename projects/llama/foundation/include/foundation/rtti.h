@@ -6,64 +6,39 @@
 #include <map>
 #include <set>
 #include <string>
+#include <string_view>
 
 namespace llama
 {
-
-using ObjectKind = uint32_t;
-
+using TypeId = std::string_view;
 class RttiContext
 {
   public:
     using CastFunction = void *(*)(void *) noexcept;
 
-    ObjectKind GetObjectKind(const char *name)
+    RttiContext() : m_casts(s_casts)
     {
-        const ObjectKind nextKind = static_cast<ObjectKind>(m_nextObjectKind);
-        const auto insert = m_strToObjectKind.insert({name, nextKind});
-        const bool insert_success = insert.second;
-        const auto iter = insert.first;
-        if (insert_success)
-        {
-            m_nextObjectKind++;
-            return nextKind;
-        }
-        else // already exists
-        {
-            return iter->second;
-        }
     }
 
-    ObjectKind GetObjectKind(const void *key)
+    static bool AddDefaultCast(TypeId src, TypeId dst, CastFunction fn)
     {
-        const ObjectKind nextKind = static_cast<ObjectKind>(m_nextObjectKind);
-        const auto insert = m_ptrToObjectKind.insert({key, nextKind});
-        const bool insert_success = insert.second;
-        const auto iter = insert.first;
-        if (insert_success)
-        {
-            m_nextObjectKind++;
-            return nextKind;
-        }
-        else // already exists
-        {
-            return iter->second;
-        }
+        auto &&dst_map = s_casts[src];
+        return dst_map.insert({dst, fn}).second;
     }
 
-    bool AddCast(ObjectKind src, ObjectKind dst, CastFunction fn)
+    bool AddCast(TypeId src, TypeId dst, CastFunction fn)
     {
         auto &&dst_map = m_casts[src];
         return dst_map.insert({dst, fn}).second;
     }
 
-    void *Cast(void *src_obj, ObjectKind src, ObjectKind dst)
+    void *Cast(void *src_obj, TypeId src, TypeId dst)
     {
         if (void *result = DirectCast(src_obj, src, dst))
         {
             return result;
         }
-        std::set<ObjectKind> blacklist;
+        std::set<TypeId> blacklist;
         if (void *result = RecursiveCast(src_obj, src, dst, blacklist))
         {
             return result;
@@ -71,13 +46,13 @@ class RttiContext
         return nullptr;
     }
 
-    const void *Cast(const void *src_obj, ObjectKind src, ObjectKind dst)
+    const void *Cast(const void *src_obj, TypeId src, TypeId dst)
     {
         return Cast(const_cast<void *>(src_obj), src, dst);
     }
 
   private:
-    void *DirectCast(void *src_obj, ObjectKind src, ObjectKind dst)
+    void *DirectCast(void *src_obj, TypeId src, TypeId dst)
     {
         auto src_iter = m_casts.find(src);
         if (src_iter != m_casts.end())
@@ -93,7 +68,7 @@ class RttiContext
         return nullptr;
     }
 
-    void *RecursiveCast(void *src_obj, ObjectKind src, ObjectKind dst, std::set<ObjectKind> &blacklist)
+    void *RecursiveCast(void *src_obj, TypeId src, TypeId dst, std::set<TypeId> &blacklist)
     {
         auto src_iter = m_casts.find(src);
         if (src_iter != m_casts.end())
@@ -103,7 +78,7 @@ class RttiContext
             //    try cast: src -> bridge -> dst
             for (auto &&pair : dst_to_fn_map)
             {
-                const ObjectKind bridge = pair.first;
+                const TypeId bridge = pair.first;
 
                 if (blacklist.count(bridge))
                     continue;
@@ -131,40 +106,17 @@ class RttiContext
         return nullptr;
     }
 
-  public:
-    template <typename F> static void RegisterRttiInitializer(F &&func)
-    {
-        s_rtti_initializers.emplace_back(std::forward<F>(func));
-    }
-
-    void RttiInit()
-    {
-        for (auto &&rtti_initializer : s_rtti_initializers)
-        {
-            rtti_initializer(*this);
-        }
-    }
-
   private:
-    static std::list<std::function<void(RttiContext &)>> s_rtti_initializers;
     uint32_t m_nextObjectKind = 1;
-    std::map<std::string, ObjectKind> m_strToObjectKind;
-    std::map<const void *, ObjectKind> m_ptrToObjectKind;
     /// m_casts[src][dst] -> cast_fn
-    std::map<ObjectKind, std::map<ObjectKind, CastFunction>> m_casts;
+    std::map<TypeId, std::map<TypeId, CastFunction>> m_casts;
+    inline static std::map<TypeId, std::map<TypeId, CastFunction>> s_casts;
 };
 
-/// 定义类型 T 到 ObjectKind 枚举值的映射关系
-/// 需要自行特化。
-/// 例：
-/// ```
-/// template <>
-/// class type_to_object_kind<MyObject>
-/// {
-///   public:
-///     static constexpr ObjectKind value = ObjectKind::MyObject;
-/// };
-/// ```
-template <typename T> class type_to_object_kind;
+template <typename T> class rtti_trait
+{
+  public:
+    inline static constexpr const char *id = &T::s_typeId[0];
+};
 
 } // namespace llama
