@@ -64,7 +64,7 @@ constexpr WritePathOption WritePathOption_NativeSep =
 #ifdef LLAMA_WIN
     WritePathOption::WindowsSep
 #else
-    WritePWritePathOption::None
+    WritePathOption::None
 #endif
     ;
 

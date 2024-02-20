@@ -1,2 +1,2 @@
-llama_target(glad STATIC)
-target_link_libraries(glad PUBLIC OpenGL::GL glfw)
+llama_module(glad STATIC)
+llama_link(glad PUBLIC OpenGL::GL glfw)

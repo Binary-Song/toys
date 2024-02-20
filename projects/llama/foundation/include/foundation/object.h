@@ -81,7 +81,7 @@ class IMetaInfo
 
 class BasicMetaInfo : public IMetaInfo
 {
-    LLAMA_OBJ
+    
   public:
     BasicMetaInfo(RttiContext *context, ObjectKind kind, void *topLvlObj)
         : m_context(context), m_kind(kind), m_topLvlObj(topLvlObj)

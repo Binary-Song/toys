@@ -1,2 +1,2 @@
-llama_module(multitasking HEADER_ONLY)
-target_link_libraries(multitasking INTERFACE foundation)
+llama_module(multitasking SHARED)
+llama_link(multitasking PUBLIC foundation)

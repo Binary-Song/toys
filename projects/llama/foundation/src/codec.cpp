@@ -5,7 +5,7 @@
 namespace llama
 {
 
-LLAMA_FND_API std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t length)
+LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t length)
 {
     std::vector<uint32_t> result;
 
@@ -45,7 +45,7 @@ LLAMA_FND_API std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t len
     return result;
 }
 
-LLAMA_FND_API std::vector<uint32_t> DecodeUtf8(const char *data, size_t length)
+LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf8(const char *data, size_t length)
 {
     std::vector<uint32_t> codePoints;
     codePoints.reserve(length); // Reserve memory for the maximum possible code points
@@ -94,7 +94,7 @@ LLAMA_FND_API std::vector<uint32_t> DecodeUtf8(const char *data, size_t length)
     return codePoints;
 }
 
-LLAMA_FND_API std::u16string EncodeUtf16(const uint32_t *data, size_t length)
+LLAMA_API(foundation) std::u16string EncodeUtf16(const uint32_t *data, size_t length)
 {
     std::u16string result;
     for (size_t i = 0; i < length; i++)
@@ -116,7 +116,7 @@ LLAMA_FND_API std::u16string EncodeUtf16(const uint32_t *data, size_t length)
     return result;
 }
 
-LLAMA_FND_API std::string EncodeUtf8(const uint32_t *data, size_t length)
+LLAMA_API(foundation) std::string EncodeUtf8(const uint32_t *data, size_t length)
 {
     std::string encodedString;
 

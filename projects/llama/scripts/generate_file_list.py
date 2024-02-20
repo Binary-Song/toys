@@ -44,8 +44,10 @@ if __name__ == "__main__":
 	exclude_list = ('cmake', 'docs', 'scripts')
 	# projects/llama
 	project_root = os.path.abspath(os.path.join(sys.argv[0], '..', '..'))
-	for dir_name in os.listdir(project_root):
-		# e.g. projects/llama/cmake
-		dir_path = os.path.join(project_root, dir_name)
-		if os.path.isdir(dir_path) and dir_name not in exclude_list:
-			traverse_files(dir_path)
+	with open(os.path.join(project_root, "modules.cmake"), 'w', encoding='utf-8') as module_file:
+		for dir_name in os.listdir(project_root):
+			# e.g. projects/llama/cmake
+			dir_path = os.path.join(project_root, dir_name)
+			if os.path.isdir(dir_path) and dir_name not in exclude_list:
+				traverse_files(dir_path)
+				module_file.write(f'list(APPEND MODULE_LIST "{dir_name}")\n')

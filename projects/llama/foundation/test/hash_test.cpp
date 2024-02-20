@@ -9,7 +9,7 @@
 #include <string>
 #include <string_view>
 #include <vector>
-
+#include "foundation/hash.h"
 using namespace llama;
 
 // TEST(ProtoTest, Test1)

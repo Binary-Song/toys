@@ -5,6 +5,7 @@
 		"spdlog",
 		"protobuf",
 		"opengl",
-		"glfw3"
+		"glfw3",
+		"qt5-base"
 	]
 }
