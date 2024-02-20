@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include "config.h"
 #include <cstddef>
 #include <cstdint>
 #include <string>
