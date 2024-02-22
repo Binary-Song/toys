@@ -2,9 +2,11 @@
 #include "foundation/hash.h"
 #include "foundation/interfaces/hashable.h"
 #include "foundation/interfaces/rtti.h"
+#include "foundation/interfaces/serializable.h"
 #include "foundation/misc.h"
 #include "foundation/object_cache.h"
 #include <gtest/gtest.h>
+#include <sstream>
 
 namespace llama
 {
@@ -34,17 +36,31 @@ std::string except_msg(mp<IHashable, IException> obj)
 
 class GrandParent : public virtual IRtti
 {
-    LLAMA_RTTI(GrandParent)
+    LLAMA_RTTI(::llama::GrandParent)
+
+    int data1;
 };
 
 class Parent : public GrandParent
 {
-    LLAMA_RTTI(Parent, GrandParent)
+    LLAMA_RTTI(::llama::Parent, ::llama::GrandParent)
+    int data2;
 };
 
 class Child : public Parent
 {
-    LLAMA_RTTI(Child, Parent)
+    LLAMA_RTTI(::llama::Child, ::llama::Parent)
+    int data3;
+};
+
+class NoDefaultCtor : public virtual IRtti
+{
+    LLAMA_RTTI(::llama::NoDefaultCtor)
+
+    explicit NoDefaultCtor(int data) : data(data)
+    {
+    }
+    int data;
 };
 
 } // namespace llama
@@ -75,6 +91,11 @@ TEST(rtti, case3)
     GrandParent &parent = child;
     Child *child2 = parent.Cast<Child>(ctx);
     EXPECT_EQ(&child, child2);
+    std::stringstream strm;
+    ctx.DebugPrint(strm);
+    EXPECT_EQ("2 cast edge(s) :\n  ::llama::Child -> ::llama::Parent\n  ::llama::Parent -> ::llama::GrandParent\n2 "
+              "instantiator(s) :\n  ::llama::Child \n  ::llama::Parent \n",
+              strm.str());
 }
 
 TEST(rtti, case4)
