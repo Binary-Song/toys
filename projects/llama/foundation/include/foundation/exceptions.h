@@ -1,34 +1,23 @@
 #pragma once
-#include "enums.h"
+#include "interfaces/exception.h"
+#include <string>
 namespace llama
 {
 
-
-class Exception final
+class Exception : public virtual IException
 {
-  public:
-    explicit Exception(ExceptionKind kind) : m_kind(kind), m_message("")
+public:
+    explicit Exception(std::string message = "") : m_message(std::move(message))
     {
     }
 
-    /// 指定消息 `message` 构建异常。
-    /// @note 异常对象不会深拷贝 `message` 。为了确保正常，应指定一个编译期常量。
-    explicit Exception(ExceptionKind kind, const char *message) : m_kind(kind), m_message(message)
+private:
+    virtual const char *GetMessage_IException() const override
     {
+        return m_message.c_str();
     }
 
-    ExceptionKind Kind() const
-    {
-        return m_kind;
-    }
-
-    const char *Message() const
-    {
-        return m_message;
-    }
-
-  private:
-    ExceptionKind m_kind;
-    const char *m_message;
+    std::string m_message;
 };
+
 } // namespace llama
