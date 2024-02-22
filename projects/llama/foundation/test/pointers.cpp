@@ -124,3 +124,18 @@ TEST_F(PointerTest, Arith)
     EXPECT_GT((p1 + 4), p1);
     EXPECT_LT((p1 + 1), p1 + 2);
 }
+
+TEST_F(PointerTest, void_ptr)
+{
+    int a = 111;
+    np<void> p1 = &a;
+    p<void> p2 = p1.unwrap();
+    void *r1 = static_cast<void *>(p1);
+    void *r2 = static_cast<void *>(p1);
+    np<int> t1 = p1.cast_static<int>();
+    EXPECT_EQ(r1, r2);
+    EXPECT_EQ(r1, p1);
+    EXPECT_EQ(p1, p2);
+    EXPECT_EQ(p1, t1);
+    EXPECT_EQ(p1, &a);
+}

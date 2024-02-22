@@ -1,7 +1,6 @@
 #include "dog.pb.h"
 #include "foundation/codec.h"
 #include "foundation/exceptions.h"
-#include "foundation/object.h"
 #include <codecvt>
 #include <cstdint>
 #include <gtest/gtest.h>

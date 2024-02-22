@@ -1,66 +1,78 @@
 #include "foundation/rtti.h"
-#include "foundation/object.h"
+#include "foundation/hash.h"
+#include "foundation/interfaces/hashable.h"
+#include "foundation/interfaces/rtti.h"
+#include "foundation/misc.h"
+#include "foundation/object_cache.h"
 #include <gtest/gtest.h>
 
 namespace llama
 {
-class Animal : public virtual Object
+
+class Fun : public virtual IHashable, public virtual IException
 {
-    LLAMA_RTTI(Animal, Object)
-
-  public:
-    Animal(RttiContext *context) : Object(context)
+private:
+    virtual Hash GetHash_IHashable() const
     {
+        return Hash(111, 222);
     }
-
-    virtual const char *Name()
+    virtual const char *GetMessage_IException() const
     {
-        return name;
+        return "Fun exception";
     }
-
-    const char *name = "animal";
 };
 
-class Cat : public Animal
+Hash hash(multi<IHashable, IException> obj)
 {
-    LLAMA_RTTI(Cat, Animal, Object)
+    return std::get<0>(obj)->GetHash();
+}
 
-  public:
-    explicit Cat(RttiContext *context) : Animal(context), Object(context)
-    {
-    }
+std::string except_msg(multi<IHashable, IException> obj)
+{
+    return std::get<1>(obj)->GetMessage();
+}
 
-    virtual const char *Name() override
-    {
-        return name;
-    }
-
-    const char *name = "cat";
+class GrandParent : public virtual IRtti
+{
+    LLAMA_RTTI(GrandParent)
 };
 
-class Dog : public Animal, virtual Object
+class Parent : public GrandParent
 {
-      LLAMA_RTTI(Dog, Animal, Object)
+    LLAMA_RTTI(Parent, GrandParent)
+};
 
-  public:
-    explicit Dog(RttiContext *context) : Animal(context), Object(context)
-    {
-    }
-
-    virtual const char *Name() override
-    {
-        return name;
-    }
-
-    const char *name = "dog";
+class Child : public Parent
+{
+    LLAMA_RTTI(Child, Parent)
 };
 
 } // namespace llama
 
 TEST(rtti, case1)
 {
-    llama::RttiContext c{};
-    llama::Dog dog{&c};
-    llama::Animal& animal = dog;
-    EXPECT_EQ(animal.Cast<llama::Dog>()->Name(), "dog");
+    llama::Fun fun;
+    auto res = hash(&fun);
+    EXPECT_EQ(res, llama::Hash(111, 222));
+}
+
+TEST(rtti, case2)
+{
+    llama::Fun fun;
+    auto res = except_msg(&fun);
+    EXPECT_EQ(res, "Fun exception");
+}
+
+TEST(rtti, case3)
+{
+    using llama::Child;
+    using llama::GrandParent;
+    using llama::Parent;
+    using llama::RttiContext;
+
+    RttiContext ctx;
+    Child child;
+    GrandParent &parent = child;
+    Child *child2 = parent.Cast<Child>(ctx);
+    EXPECT_EQ(&child, child2);
 }
