@@ -107,10 +107,9 @@ class RttiContext
     }
 
   private:
-    uint32_t m_nextObjectKind = 1;
     /// m_casts[src][dst] -> cast_fn
     std::map<TypeId, std::map<TypeId, CastFunction>> m_casts;
-    inline static std::map<TypeId, std::map<TypeId, CastFunction>> s_casts;
+    LLAMA_API(foundation) inline static std::map<TypeId, std::map<TypeId, CastFunction>> s_casts;
 };
 
 template <typename T> class rtti_trait
