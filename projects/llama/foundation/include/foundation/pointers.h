@@ -51,17 +51,17 @@ public:
 
     template <typename U> p<U> cast_static() const
     {
-        return p<U>(static_cast<U*>(ptr), bypass_null_check{});
+        return p<U>(static_cast<U *>(ptr), bypass_null_check{});
     }
 
     template <typename U> p<U> cast_reinterp() const
     {
-        return p<U>(reinterpret_cast<U*>(ptr), bypass_null_check{});
+        return p<U>(reinterpret_cast<U *>(ptr), bypass_null_check{});
     }
 
     template <typename U> p<U> cast_const() const
     {
-        return p<U>(const_cast<U*>(ptr), bypass_null_check{});
+        return p<U>(const_cast<U *>(ptr), bypass_null_check{});
     }
 
     /// 解引用。
@@ -199,17 +199,17 @@ public:
 
     template <typename U> np<U> cast_static() const
     {
-        return np<U>(static_cast<U*>(ptr));
+        return np<U>(static_cast<U *>(ptr));
     }
 
     template <typename U> np<U> cast_reinterp() const
     {
-        return np<U>(reinterpret_cast<U*>(ptr));
+        return np<U>(reinterpret_cast<U *>(ptr));
     }
 
     template <typename U> np<U> cast_const() const
     {
-        return np<U>(const_cast<U*>(ptr));
+        return np<U>(const_cast<U *>(ptr));
     }
 
     /// 解引用。
@@ -358,5 +358,31 @@ template <typename T, typename U> bool operator <(np<T> p1, np<U> p2) { return s
 
 template<typename T>
 using sp = std::shared_ptr<T>;
+
+/// 多重指针。用来接受同时实现多个接口的对象。
+/// 例：
+/// ```
+/// void func(mp<IHashable, IException> obj);
+/// ...
+/// MyObject obj; // MyObject 实现 IHashable 和 IException
+/// func(&obj);
+/// ```
+template <typename... Interfaces> class mp : public std::tuple<p<Interfaces>...>
+{
+public:
+    template <typename Arg, typename U = std::enable_if<
+                                !std::is_same<typename std::decay<mp>::type, typename std::decay<Arg>::type>::value,
+                                void>::type /* 防止隐藏拷贝和移动构造函数 */>
+    mp(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}
+    {
+    }
+
+    ~mp() = default;
+    mp(const mp &) = default;
+    mp &operator=(const mp &) = default;
+    mp(mp &&) = default;
+    mp &operator=(mp &&) = default;
+};
+
 
 }//namespace llama

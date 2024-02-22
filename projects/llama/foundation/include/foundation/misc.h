@@ -61,21 +61,6 @@ template <typename P, typename T1, typename... Ts> std::tuple<T1, Ts...> FillWit
     return std::tuple_cat(std::tuple<T1>{std::forward<P>(param)}, FillWithSame<P, Ts...>(std::forward<P>(param)));
 }
 
-template <typename... Interfaces> class mp : public std::tuple<p<Interfaces>...>
-{
-public:
-    template <typename Arg, typename U = std::enable_if<
-                                !std::is_same<typename std::decay<mp>::type, typename std::decay<Arg>::type>::value,
-                                void>::type /* 防止隐藏拷贝和移动构造函数 */>
-    mp(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}
-    {
-    }
 
-    ~mp() = default;
-    mp(const mp &) = default;
-    mp &operator=(const mp &) = default;
-    mp(mp &&) = default;
-    mp &operator=(mp &&) = default;
-};
 
 } // namespace llama
