@@ -76,3 +76,14 @@ TEST(rtti, case3)
     Child *child2 = parent.Cast<Child>(ctx);
     EXPECT_EQ(&child, child2);
 }
+
+TEST(rtti, case4)
+{
+    llama::Fun fun;
+    llama::multi<llama::IHashable, llama::IException> p = &fun;
+    llama::multi<llama::IHashable, llama::IException> p1 = p; // 确保我们的构造函数模板不能隐藏拷贝和移动构造。
+    llama::multi<llama::IHashable, llama::IException> p2 = std::move(p);
+
+    EXPECT_EQ(std::get<0>(p1), std::get<0>(p2));
+    EXPECT_EQ(std::get<1>(p1), std::get<1>(p2));
+}

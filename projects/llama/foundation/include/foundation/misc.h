@@ -64,10 +64,18 @@ template <typename P, typename T1, typename... Ts> std::tuple<T1, Ts...> FillWit
 template <typename... Interfaces> class multi : public std::tuple<p<Interfaces>...>
 {
 public:
-    template <typename Arg>
+    template <typename Arg, typename U = std::enable_if<
+                                !std::is_same<typename std::decay<multi>::type, typename std::decay<Arg>::type>::value,
+                                void>::type /* 防止隐藏拷贝和移动构造函数 */>
     multi(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}
     {
     }
+
+    ~multi() = default;
+    multi(const multi &) = default;
+    multi &operator=(const multi &) = default;
+    multi(multi &&) = default;
+    multi &operator=(multi &&) = default;
 };
 
 } // namespace llama
