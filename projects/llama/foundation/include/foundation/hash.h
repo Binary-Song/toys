@@ -1,5 +1,4 @@
 #pragma once
-#include "foundation/enums.h"
 #include "foundation/exceptions.h"
 #include "foundation/pointers.h"
 #include <cassert>
@@ -36,7 +35,7 @@ class Hash
     {
         if (str.size() != 32)
         {
-            throw Exception{ExceptionKind::InvalidByteSequence};
+            throw Exception{"Invalid byte sequence."};
         }
         auto fill_data = [](const char *str, uint64_t &data, size_t begin) {
             data = 0;
@@ -51,7 +50,7 @@ class Hash
                 else if (ch >= 'A' && ch <= 'F')
                     data += (ch - 'A' + 10);
                 else
-                    throw Exception{ExceptionKind::InvalidByteSequence};
+                    throw Exception{"Invalid byte sequence."};
             }
         };
         fill_data(str.data(), m_data1, 0);
