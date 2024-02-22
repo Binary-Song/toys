@@ -22,12 +22,12 @@ private:
     }
 };
 
-Hash hash(multi<IHashable, IException> obj)
+Hash hash(mp<IHashable, IException> obj)
 {
     return std::get<0>(obj)->GetHash();
 }
 
-std::string except_msg(multi<IHashable, IException> obj)
+std::string except_msg(mp<IHashable, IException> obj)
 {
     return std::get<1>(obj)->GetMessage();
 }
@@ -80,9 +80,9 @@ TEST(rtti, case3)
 TEST(rtti, case4)
 {
     llama::Fun fun;
-    llama::multi<llama::IHashable, llama::IException> p = &fun;
-    llama::multi<llama::IHashable, llama::IException> p1 = p; // 确保我们的构造函数模板不能隐藏拷贝和移动构造。
-    llama::multi<llama::IHashable, llama::IException> p2 = std::move(p);
+    llama::mp<llama::IHashable, llama::IException> p = &fun;
+    llama::mp<llama::IHashable, llama::IException> p1 = p; // 确保我们的构造函数模板不能隐藏拷贝和移动构造。
+    llama::mp<llama::IHashable, llama::IException> p2 = std::move(p);
 
     EXPECT_EQ(std::get<0>(p1), std::get<0>(p2));
     EXPECT_EQ(std::get<1>(p1), std::get<1>(p2));

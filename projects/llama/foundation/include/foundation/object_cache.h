@@ -22,18 +22,18 @@ private:
     virtual void Deserialize(std::istream &in) = 0;
 };
 
-class ObjectCache : private lru_cache<Hash, multi<ISerializable, IHashable>>
+class ObjectCache : private lru_cache<Hash, mp<ISerializable, IHashable>>
 {
 public:
 
 
 private:
-    virtual bool overflow(const Hash &key, const multi<ISerializable, IHashable> &value) override
+    virtual bool overflow(const Hash &key, const mp<ISerializable, IHashable> &value) override
     {
         
     }
 
-    virtual multi<ISerializable, IHashable> underflow(const Hash &key) override
+    virtual mp<ISerializable, IHashable> underflow(const Hash &key) override
     {
         
     }
