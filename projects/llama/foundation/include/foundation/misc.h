@@ -1,4 +1,8 @@
 #pragma once
+#include "pointers.h"
+#include <cstddef>
+#include <tuple>
+#include <utility>
 
 #if LLAMA_WIN
 #define LLAMA_EXPORT __declspec(dllexport)
@@ -33,7 +37,7 @@
 /// 如果当前正在编译的模块名称为 mod ，则展开成导出前缀。如果当前在编译的是下游模块，展开成导入前缀。
 /// 在Windows上，导出/导入前缀为 `__declspec(dllexport)` / `__declspec(dllimport)`。
 /// 其他平台皆为 `__attribute__((visibility ("default")))` 。
-/// 
+///
 /// @details 实现原理：
 /// ```
 /// LLAMA_CONCAT(LLAMA_FUNNY, LLAMA_HELPER1(mod))
@@ -41,5 +45,29 @@
 /// 要不展开为 LLAMA_FUNNY1 ， 要不展开为 LLAMA_FUNNYLLAMA_xxx_EXPORT 。
 /// LLAMA_FUNNY1 展开出一个逗号，等于凭空变出一个参数。此时第二个参数是 LLAMA_EXPORT。
 /// LLAMA_FUNNYLLAMA_xxx_EXPORT 没有定义，所以还是 1 个参数（包括前面的 2 ）。此时第二个参数是 LLAMA_IMPORT。
-/// 最后 LLAMA_SECOND 展开成 LLAMA_EXPORT 或者 LLAMA_IMPORT 。 
+/// 最后 LLAMA_SECOND 展开成 LLAMA_EXPORT 或者 LLAMA_IMPORT 。
 #define LLAMA_API(mod) LLAMA_SECOND(2 LLAMA_CONCAT(LLAMA_FUNNY, LLAMA_HELPER1(mod)), LLAMA_IMPORT)
+
+namespace llama
+{
+
+template <typename P> std::tuple<> FillWithSame(P &&param)
+{
+    return std::tuple<>{};
+}
+
+template <typename P, typename T1, typename... Ts> std::tuple<T1, Ts...> FillWithSame(P &&param)
+{
+    return std::tuple_cat(std::tuple<T1>{std::forward<P>(param)}, FillWithSame<P, Ts...>(std::forward<P>(param)));
+}
+
+template <typename... Interfaces> class multi : public std::tuple<p<Interfaces>...>
+{
+public:
+    template <typename Arg>
+    multi(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}
+    {
+    }
+};
+
+} // namespace llama
