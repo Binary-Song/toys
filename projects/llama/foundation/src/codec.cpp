@@ -1,5 +1,4 @@
 #include "foundation/codec.h"
-#include "foundation/enums.h"
 #include "foundation/exceptions.h"
 
 namespace llama
@@ -28,7 +27,7 @@ LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf16(const char16_t *data, si
                 // Invalid surrogate pair, skip the high surrogate alone
                 code_point = 0xFFFD; // Replacement character
                 i += 1;              // Consume one code unit
-                throw Exception(ExceptionKind::InvalidByteSequence);
+                throw Exception("Invalid byte sequence.");
             }
         }
         else
@@ -85,7 +84,7 @@ LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf8(const char *data, size_t 
         {
             // Invalid UTF-8 sequence
             i += 1;
-            throw Exception(ExceptionKind::InvalidByteSequence);
+            throw Exception("Invalid byte sequence.");
         }
 
         codePoints.push_back(codePoint);
