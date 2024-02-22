@@ -2,24 +2,20 @@
 #include "exceptions.h"
 #include <cstddef>
 #include <memory>
+#include <type_traits>
 namespace llama
 {
 
-class ByPassNullCheck
+class bypass_null_check
 {
 };
-
-inline Exception NullPointerException()
-{
-    return Exception{ExceptionKind::NullPointer};
-}
 
 /// 非空指针 `T*` 。用它来表示已经判过空的指针。它没有空的状态，如果试图用空初始化它，会
 /// 在运行时抛出 NullPointerException 异常。除此之外不会检查空，因此有更好的性能。
 /// 没有默认构造函数。如果由于种种原因需要默认构造，请用np代替。
 template <typename T> class p
 {
-  public:
+public:
     /// 禁止用空指针构造。
     p(std::nullptr_t) = delete;
 
@@ -28,7 +24,7 @@ template <typename T> class p
     p(T *ptr) : ptr(ptr)
     {
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
     }
 
     /// 如果 `U*` 可以转为 `T*`，则 `p<U>` 也可以转为 `p<T>`
@@ -36,28 +32,53 @@ template <typename T> class p
     template <typename U> p(p<U> ptr) : ptr(ptr.data())
     {
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
     }
 
-    p(T *ptr, ByPassNullCheck) : ptr(ptr)
+    p(T *ptr, bypass_null_check) : ptr(ptr)
     {
     }
 
-    template <typename U> p(p<U> ptr, ByPassNullCheck) : ptr(ptr.data())
+    template <typename U> p(p<U> ptr, bypass_null_check) : ptr(ptr.data())
     {
     }
 
+    /// 可以隐式转换为普通指针
     operator T *() const
     {
         return ptr;
     }
 
-    T &operator*() const
+    template <typename U> p<U> cast_static() const
     {
+        return p<U>(static_cast<U*>(ptr), bypass_null_check{});
+    }
+
+    template <typename U> p<U> cast_reinterp() const
+    {
+        return p<U>(reinterpret_cast<U*>(ptr), bypass_null_check{});
+    }
+
+    template <typename U> p<U> cast_const() const
+    {
+        return p<U>(const_cast<U*>(ptr), bypass_null_check{});
+    }
+
+    /// 解引用。
+    /// 如果 T=void ，无效。
+    /// @exception 要求 `ptr` 非空。否则抛出异常。
+    template <typename U = T> U &operator*() const
+    {
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         return *ptr;
     }
-    T &deref() const
+
+    /// 解引用。
+    /// 如果 T=void ，无效。
+    /// @exception 要求 `ptr` 非空。否则抛出异常。
+    template <typename U = T> U &deref() const
     {
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         return *ptr;
     }
 
@@ -70,8 +91,12 @@ template <typename T> class p
         return ptr;
     }
 
-    T &operator[](ptrdiff_t offset) const
+    /// 访问偏移量
+    /// 如果 T=void ，无效。
+    /// @exception 要求 `ptr` 非空。否则抛出异常。
+    template <typename U = T> U &operator[](ptrdiff_t offset) const
     {
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         return ptr[offset];
     }
 
@@ -129,14 +154,14 @@ template <typename T> class p
         return *this;
     }
 
-  private:
+private:
     T *ptr;
 };
 
 /// 可空指针 `T*` 。
 template <typename T> class np
 {
-  public:
+public:
     np() : ptr(nullptr)
     {
     }
@@ -160,30 +185,52 @@ template <typename T> class np
     {
     }
 
+    /// 可以在特定语境下转为 bool （用在 if / while 的条件里）
     explicit operator bool() const
     {
         return ptr;
     }
+
+    /// 可以隐式转为普通指针。
     operator T *() const
     {
         return ptr;
     }
 
-    /// 解引用。
-    /// @exception 要求 `ptr` 非空。否则抛出异常。
-    T &operator*() const
+    template <typename U> np<U> cast_static() const
     {
+        return np<U>(static_cast<U*>(ptr));
+    }
+
+    template <typename U> np<U> cast_reinterp() const
+    {
+        return np<U>(reinterpret_cast<U*>(ptr));
+    }
+
+    template <typename U> np<U> cast_const() const
+    {
+        return np<U>(const_cast<U*>(ptr));
+    }
+
+    /// 解引用。
+    /// 如果 T=void ， 无效。
+    /// @exception 要求 `ptr` 非空。否则抛出异常。
+    template <typename U = T> U &operator*() const
+    {
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
         return *ptr;
     }
 
     /// 解引用。
+    /// 如果 T=void ， 无效。
     /// @exception 要求 `ptr` 非空。否则抛出异常。
-    T &deref() const
+    template <typename U = T> U &deref() const
     {
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
         return *ptr;
     }
 
@@ -192,7 +239,7 @@ template <typename T> class np
     T *operator->() const
     {
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
         return ptr;
     }
 
@@ -201,7 +248,7 @@ template <typename T> class np
     p<T> unwrap() const
     {
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
         return ptr;
     }
 
@@ -211,11 +258,13 @@ template <typename T> class np
     }
 
     /// 访问偏移量
+    /// 如果 T=void ，无效。
     /// @exception 要求 `ptr` 非空。否则抛出异常。
-    T &operator[](ptrdiff_t offset) const
+    template <typename U = T> U &operator[](ptrdiff_t offset) const
     {
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
-            throw NullPointerException();
+            throw Exception("Null pointer.");
         return ptr[offset];
     }
 
@@ -273,7 +322,7 @@ template <typename T> class np
         return *this;
     }
 
-  private:
+private:
     T *ptr;
 };
 
