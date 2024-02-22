@@ -84,7 +84,7 @@ public:
         auto it = _cache_items_map.find(key);
         if (it == _cache_items_map.end())
         {
-            value_t val = underflow();
+            value_t val = miss();
             put(key, val);
         }
         else
@@ -109,7 +109,7 @@ private:
     {
     }
 
-    virtual value_t underflow(const key_t &key)
+    virtual value_t miss(const key_t &key)
     {
         throw llama::Exception{"lru_cache: Key not found."};
     }

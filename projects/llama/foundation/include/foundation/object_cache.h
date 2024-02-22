@@ -1,41 +1,28 @@
 #pragma once
 #include "foundation/interfaces/hashable.h"
+#include "foundation/interfaces/serializable.h"
 #include "foundation/lru_cache.h"
-#include "foundation/misc.h"
 #include <fmt/format.h>
-#include <iostream>
-#include <istream>
-#include <ostream>
+ 
 
 namespace llama
 {
 
-/// 可以序列化/反序列化的类型。
-/// 派生类除了要实现虚函数外，一般还要支持默认构造。
-class ISerializable
-{
-public:
-    virtual ~ISerializable() = default;
+using Cacheable = mp<ISerializable, IHashable>;
 
-private:
-    virtual void Serialize(std::ostream &out) const = 0;
-    virtual void Deserialize(std::istream &in) = 0;
-};
-
-class ObjectCache : private lru_cache<Hash, mp<ISerializable, IHashable>>
+class ObjectCache : private lru_cache<Hash, Cacheable>
 {
 public:
 
-
 private:
-    virtual bool overflow(const Hash &key, const mp<ISerializable, IHashable> &value) override
+    virtual bool overflow(const Hash &key, const Cacheable &value) override
     {
-        
+
     }
 
-    virtual mp<ISerializable, IHashable> underflow(const Hash &key) override
+    virtual Cacheable miss(const Hash &key) override
     {
-        
+
     }
 };
 
