@@ -1,3 +1,3 @@
 set(CMAKE_AUTOMOC ON)
 llama_module(foundation SHARED)
-llama_link(foundation PUBLIC Qt5::Widgets)
+llama_link(foundation PUBLIC Qt5::Widgets cryptopp::cryptopp)

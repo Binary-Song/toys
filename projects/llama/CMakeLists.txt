@@ -20,6 +20,7 @@ find_package(
   Qt5
   COMPONENTS Widgets CONFIG
   REQUIRED)
+find_package(cryptopp CONFIG REQUIRED)
 include(GoogleTest)
 include(llama)
 include("${CMAKE_CURRENT_LIST_DIR}/modules.cmake")

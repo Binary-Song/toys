@@ -6,6 +6,7 @@
 		"protobuf",
 		"opengl",
 		"glfw3",
-		"qt5-base"
+		"qt5-base",
+		"cryptopp"
 	]
 }
