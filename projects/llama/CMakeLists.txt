@@ -23,7 +23,7 @@ find_package(
 find_package(cryptopp CONFIG REQUIRED)
 include(GoogleTest)
 include(llama)
-include("${CMAKE_CURRENT_LIST_DIR}/modules.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/src/modules.cmake")
 
 foreach(MODULE ${MODULE_LIST})
   add_subdirectory(${MODULE})
