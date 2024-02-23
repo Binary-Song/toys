@@ -359,6 +359,10 @@ template <typename T, typename U> bool operator <(np<T> p1, np<U> p2) { return s
 template<typename T>
 using sp = std::shared_ptr<T>;
 
+template<typename T>
+using up = std::unique_ptr<T>;
+
+
 /// 多重指针。用来接受同时实现多个接口的对象。
 /// 例：
 /// ```
