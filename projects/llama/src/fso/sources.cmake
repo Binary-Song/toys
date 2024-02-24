@@ -1,0 +1,5 @@
+list(APPEND SOURCE_LIST "include/fso.h")
+list(APPEND SOURCE_LIST "include/fso/fso.h")
+list(APPEND SOURCE_LIST "include/fso/hash.h")
+list(APPEND SOURCE_LIST "src/fso.cpp")
+list(APPEND TEST_SOURCE_LIST "test/fso.cpp")

@@ -4,6 +4,9 @@ project(llama)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake"
      "${CMAKE_CURRENT_LIST_DIR}/../../vcpkg/scripts/buildsystems")
 
+include(llama)
+llama_auto_housekeep()
+
 include(vcpkg)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -22,11 +25,10 @@ find_package(
   REQUIRED)
 find_package(cryptopp CONFIG REQUIRED)
 include(GoogleTest)
-include(llama)
 include("${CMAKE_CURRENT_LIST_DIR}/src/modules.cmake")
 
 foreach(MODULE ${MODULE_LIST})
-  add_subdirectory(${MODULE})
+  add_subdirectory(src/${MODULE})
 endforeach()
 
 llama_docs()

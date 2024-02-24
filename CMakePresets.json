@@ -20,7 +20,8 @@
 			"hidden": true,
 			"cacheVariables": {
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-				"LLAMA_BUILD_DOCS": "ON"
+				"LLAMA_BUILD_DOCS": "ON",
+				"LLAMA_AUTO_HOUSEKEEP": "OFF"
 			}
 		},
 		{

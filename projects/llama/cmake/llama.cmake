@@ -189,9 +189,14 @@ function(llama_docs)
     endif()
 endfunction()
 
+function(llama_auto_housekeep)
+    if(LLAMA_AUTO_HOUSEKEEP)
+        execute_process(COMMAND python "${PROJECT_SOURCE_DIR}/scripts/housekeep.py")
+    endif()
+endfunction()
+
 macro(llama_internal_include_source_list)
-    set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
-    include("sources.cmake")
+    include("${CMAKE_CURRENT_LIST_DIR}/sources.cmake")
 endmacro()
 
 function(llama_internal_verify_dir)
@@ -231,8 +236,7 @@ function(llama_internal_verify_target name type)
     if(NOT CACHE{LLAMA_IGNORE_TARGET_VERIFICATION})
         if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/sources.cmake")
             message(
-                FATAL_ERROR
-                    "${CMAKE_CURRENT_LIST_DIR}/sources.cmake does not exist\nuse scripts/generate_file_list.py to generate one.")
+                FATAL_ERROR "${CMAKE_CURRENT_LIST_DIR}/sources.cmake does not exist\nuse scripts/housekeep.py to generate one.")
         endif()
         llama_internal_verify_dir(PATH "${CMAKE_CURRENT_LIST_DIR}/include")
         llama_internal_verify_dir(PATH "${CMAKE_CURRENT_LIST_DIR}/include/${name}" MUST_CONTAIN ${LLAMA_HEADER_EXTENSIONS})
@@ -271,7 +275,7 @@ function(llama_internal_verify_target name type)
         if(NOT src STREQUAL actual_src)
             message(
                 WARNING
-                    "sources.cmake for target '${name}' may not be up to date because it differs from the source tree.\nthe file: ${src}\nthe source tree: ${actual_src}\nuse scripts/generate_file_list.py to update it."
+                    "sources.cmake for target '${name}' may not be up to date because it differs from the source tree.\nthe file: ${src}\nthe source tree: ${actual_src}\nuse scripts/housekeep.py to update it."
             )
         endif()
 

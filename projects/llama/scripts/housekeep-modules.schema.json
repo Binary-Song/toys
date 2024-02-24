@@ -1,0 +1,25 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"exclude": {
+			"type": "array",
+			"items": [
+				{
+					"type": "string"
+				}
+			],
+			"description": "排除在生成之外的模块相对路径。排除的模块不会执行CMake、不会执行housekeep。支持通配符*（匹配任意数量字符）和**（匹配0个或多个目录)。例：**/*.txt 将递归匹配目录内所有.txt文件。"
+		},
+		"include": {
+			"type": "array",
+			"items": [
+				{
+					"type": "string"
+				}
+			],
+			"description": "生成时需要包含的模块相对路径。排除的模块不会执行CMake、不会执行housekeep。支持通配符*（匹配任意数量字符）和**（匹配0个或多个目录)。例：**/*.txt 将递归匹配目录内所有.txt文件。"
+		}
+	}
+}
