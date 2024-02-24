@@ -1,6 +1,6 @@
 #pragma once
-#include "foundation/exceptions.h"
-#include "foundation/pointers.h"
+#include "base/exceptions.h"
+#include "base/pointers.h"
 #include <cassert>
 #include <cstddef>
 #include <cstdint>

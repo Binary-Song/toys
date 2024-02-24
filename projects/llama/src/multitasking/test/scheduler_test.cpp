@@ -1,7 +1,7 @@
 #include "multitasking/multitasking.h"
 #include <gtest/gtest.h>
 #include <iostream>
-#include "foundation/foundation.h"
+#include "base/base.h"
 
 class SchedTest : public testing::Test
 {};

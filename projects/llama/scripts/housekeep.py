@@ -119,8 +119,8 @@ def include_exclude(includes, excludes, root, recursive=True):
     return files
 
 def generate_umbrella_header(files, module_dir, conf):
-    # module_dir: projects/llama/src/foundation/
-    # umb_header: projects/llama/src/foundation/include/foundation/foundation.h
+    # module_dir: projects/llama/src/base/
+    # umb_header: projects/llama/src/base/include/base/base.h
     module_name = os.path.basename(module_dir) 
     umb_header = os.path.join(module_dir, 'include', module_name, module_name + '.h')
 
@@ -151,7 +151,7 @@ def generate_umbrella_header(files, module_dir, conf):
                 output_file.write(f'#include "{relpath}"\n')
 
 def generate_source_list(module_dir, files):
-    # projects/llama/src/foundation/sources.cmake
+    # projects/llama/src/base/sources.cmake
     output_path = os.path.join(module_dir, "sources.cmake")
     with LazilyModdedFile(output_path) as output_file:    
         for file_path in files:
@@ -195,7 +195,7 @@ def load_config_and_merge_with_default(config_file_path, default_conf):
     return conf
 
 def housekeep_module(module_dir):
-    # projects/llama/src/foundation
+    # projects/llama/src/base
     if not os.path.isdir(module_dir):
         return
     
@@ -205,7 +205,7 @@ def housekeep_module(module_dir):
 
     default_conf = get_default_module_config(src_files + include_files + test_files, module_dir)
 
-    # projects/llama/src/foundation/housekeep.json
+    # projects/llama/src/base/housekeep.json
     config_file_path = os.path.join(module_dir, "housekeep.json")
     conf = load_config_and_merge_with_default(config_file_path, default_conf)
 

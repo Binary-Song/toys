@@ -1,5 +1,5 @@
 #pragma once
-#include "foundation/exceptions.h"
+#include "base/exceptions.h"
 #include "hash.h"
 #include <cstddef>
 #include <cstdint>
