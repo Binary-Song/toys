@@ -1,5 +1,5 @@
-// #include "foundation/path.h"
-// #include "foundation/enums.h"
+// #include "base/path.h"
+// #include "base/enums.h"
 // #include <cctype>
 
 // namespace llama

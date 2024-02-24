@@ -1,6 +1,6 @@
 // #include "dog.pb.h"
-// #include "foundation/codec.h"
-// #include "foundation/exceptions.h"
+// #include "base/codec.h"
+// #include "base/exceptions.h"
 // #include <codecvt>
 // #include <cstdint>
 // #include <gtest/gtest.h>
@@ -8,7 +8,7 @@
 // #include <string>
 // #include <string_view>
 // #include <vector>
-// #include "foundation/hash.h"
+// #include "base/hash.h"
 // using namespace llama;
 
 // // TEST(ProtoTest, Test1)

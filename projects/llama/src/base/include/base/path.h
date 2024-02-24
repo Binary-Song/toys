@@ -1,8 +1,8 @@
 // #pragma once
 // #include "codec.h"
-// #include "foundation/enums.h"
-// #include "foundation/exceptions.h"
-// #include "foundation/path.h"
+// #include "base/enums.h"
+// #include "base/exceptions.h"
+// #include "base/path.h"
 // #include <fstream>
 // #include <string>
 // #include <string_view>

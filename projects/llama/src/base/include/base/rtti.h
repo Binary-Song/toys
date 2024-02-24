@@ -1,7 +1,7 @@
 #pragma once
 
-#include "foundation/interfaces/debug_print.h"
-#include "foundation/rtti.h"
+#include "base/interfaces/debug_print.h"
+#include "base/rtti.h"
 #include "misc.h"
 #include <fmt/format.h>
 #include <map>
@@ -242,7 +242,7 @@ private:
     std::map<TypeId, std::map<TypeId, CastFunction>> m_casts;
     std::map<TypeId, Instantiator> m_instantiators;
 
-    LLAMA_API(foundation) static RttiContext &GetDefaultInstance();
+    LLAMA_API(base) static RttiContext &GetDefaultInstance();
 };
 
 template <typename T> class rtti_trait

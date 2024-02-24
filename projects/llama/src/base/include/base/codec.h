@@ -16,14 +16,14 @@ namespace llama
 
 /// 将 UTF-16 字符串解析成代码点。
 /// @exception 如果解析失败，抛出 ExceptionKind::InvalidByteSequence
-LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t length);
+LLAMA_API(base) std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t length);
 /// 将 UTF-8 字符串解析成代码点
-LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf8(const char *data, size_t length);
+LLAMA_API(base) std::vector<uint32_t> DecodeUtf8(const char *data, size_t length);
 
 /// 将代码点编码为 UTF-16 字符串
-LLAMA_API(foundation) std::u16string EncodeUtf16(const uint32_t *data, size_t length);
+LLAMA_API(base) std::u16string EncodeUtf16(const uint32_t *data, size_t length);
 /// 将代码点编码为 UTF-8 字符串
-LLAMA_API(foundation) std::string EncodeUtf8(const uint32_t *data, size_t length);
+LLAMA_API(base) std::string EncodeUtf8(const uint32_t *data, size_t length);
 
 inline std::u16string ToUtf16(std::string_view str)
 {

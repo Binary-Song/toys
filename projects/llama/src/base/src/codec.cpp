@@ -1,10 +1,10 @@
-#include "foundation/codec.h"
-#include "foundation/exceptions.h"
+#include "base/codec.h"
+#include "base/exceptions.h"
 
 namespace llama
 {
 
-LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t length)
+LLAMA_API(base) std::vector<uint32_t> DecodeUtf16(const char16_t *data, size_t length)
 {
     std::vector<uint32_t> result;
 
@@ -44,7 +44,7 @@ LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf16(const char16_t *data, si
     return result;
 }
 
-LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf8(const char *data, size_t length)
+LLAMA_API(base) std::vector<uint32_t> DecodeUtf8(const char *data, size_t length)
 {
     std::vector<uint32_t> codePoints;
     codePoints.reserve(length); // Reserve memory for the maximum possible code points
@@ -93,7 +93,7 @@ LLAMA_API(foundation) std::vector<uint32_t> DecodeUtf8(const char *data, size_t 
     return codePoints;
 }
 
-LLAMA_API(foundation) std::u16string EncodeUtf16(const uint32_t *data, size_t length)
+LLAMA_API(base) std::u16string EncodeUtf16(const uint32_t *data, size_t length)
 {
     std::u16string result;
     for (size_t i = 0; i < length; i++)
@@ -115,7 +115,7 @@ LLAMA_API(foundation) std::u16string EncodeUtf16(const uint32_t *data, size_t le
     return result;
 }
 
-LLAMA_API(foundation) std::string EncodeUtf8(const uint32_t *data, size_t length)
+LLAMA_API(base) std::string EncodeUtf8(const uint32_t *data, size_t length)
 {
     std::string encodedString;
 

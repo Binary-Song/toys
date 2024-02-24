@@ -1,6 +1,6 @@
-#include "foundation/rtti.h"
-#include "foundation/interfaces/rtti.h"
-#include "foundation/misc.h"
+#include "base/rtti.h"
+#include "base/interfaces/rtti.h"
+#include "base/misc.h"
 #include <gtest/gtest.h>
 #include <sstream>
 

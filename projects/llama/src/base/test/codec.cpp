@@ -1,5 +1,5 @@
-#include "foundation/codec.h"
-#include "foundation/exceptions.h"
+#include "base/codec.h"
+#include "base/exceptions.h"
 #include <codecvt>
 #include <cstdint>
 #include <gtest/gtest.h>
