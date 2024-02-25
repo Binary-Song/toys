@@ -43,7 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "exceptions.h"
 #include <cstddef>
 #include <list>
-#include <unordered_map>
+#include <map>
 
 namespace llama
 {
@@ -79,13 +79,14 @@ public:
         }
     }
 
-    const value_t &get(const key_t &key)
+    value_t get(const key_t &key)
     {
         auto it = _cache_items_map.find(key);
         if (it == _cache_items_map.end())
         {
-            value_t val = miss();
+            value_t val = miss(key);
             put(key, val);
+            return val;
         }
         else
         {
@@ -105,7 +106,7 @@ public:
     }
 
 private:
-    virtual bool overflow(const key_t &key, const value_t &value)
+    virtual void overflow(const key_t &key, const value_t &value)
     {
     }
 
@@ -116,7 +117,7 @@ private:
 
 private:
     std::list<key_value_pair_t> _cache_items_list;
-    std::unordered_map<key_t, list_iterator_t> _cache_items_map;
+    std::map<key_t, list_iterator_t> _cache_items_map;
     size_t _max_size;
 };
 
