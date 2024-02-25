@@ -16,14 +16,14 @@ namespace llama
 /// LLAMA_RTTI 需要在 `class` 声明内调用。当前类型就是 LLAMA_RTTI 所在的类型。
 ///
 /// 基类可以是直接基类或者间接基类。 这些基类必须：
-/// 
+///
 /// 1. 直接或间接派生自IRtti
 /// 2. 用 LLAMA_RTTI 添加了元信息。
 ///
 /// @note 如果直接派生自 IRtti ，不要在 LLAMA_RTTI 内指定 IRtti 。
-/// 
+///
 /// 调用 IRtti::Cast 时，当前对象会沿着 LLAMA_RTTI 指定的继承路径进行搜索，
-/// 直到找到目标基类。 
+/// 直到找到目标基类。
 ///
 /// 例：
 /// ```
