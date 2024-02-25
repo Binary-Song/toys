@@ -61,6 +61,7 @@ template <typename P, typename T1, typename... Ts> std::tuple<T1, Ts...> FillWit
     return std::tuple_cat(std::tuple<T1>{std::forward<P>(param)}, FillWithSame<P, Ts...>(std::forward<P>(param)));
 }
 
-
+using byte = unsigned char;
+using sbyte = signed char;
 
 } // namespace llama
