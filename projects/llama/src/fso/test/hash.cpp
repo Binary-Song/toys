@@ -8,23 +8,8 @@
 // #include <string>
 // #include <string_view>
 // #include <vector>
-// #include "base/hash.h"
+// #include "fso/hash.h"
 // using namespace llama;
-
-// // TEST(ProtoTest, Test1)
-// // {
-// //     Dog dog;
-// //     dog.set_age(2);
-// //     dog.set_name("Cat");
-
-// //     std::string output;
-// //     dog.SerializeToString(&output);
-
-// //     Dog dog2;
-// //     dog2.ParseFromString(output);
-// //     EXPECT_EQ(dog2.name(), "Ca5t");
-// //     EXPECT_EQ(dog2.age(), 2);
-// // }
 
 // TEST(HashTest, ToString1)
 // {
