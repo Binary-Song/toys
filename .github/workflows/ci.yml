@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-          fetch-depth: 0
       - name: run vcpkg
         uses: lukka/run-vcpkg@v11
       - name: run cmake workflow
@@ -35,4 +34,30 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           workflowPreset: "win-clang-ci"
- 
+
+  Deploy-Doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get cmake and ninja
+        uses: lukka/get-cmake@latest
+      - name: get doxygen
+        run: sudo apt-get install -y --no-install-recommends doxygen graphviz
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: run vcpkg
+        uses: lukka/run-vcpkg@v11
+      - name: run cmake workflow
+        uses: lukka/run-cmake@v10
+        with:
+          workflowPreset: "linux-clang-ci-doc"
+      - name: Moving Files
+        run: |
+          mv ${{github.workspace}}/build/docs/html ./docs/api
+        # Deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./

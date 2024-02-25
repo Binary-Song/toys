@@ -20,6 +20,15 @@
 			"hidden": true,
 			"cacheVariables": {
 				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+				"LLAMA_BUILD_DOCS": "OFF",
+				"LLAMA_AUTO_HOUSEKEEP": "ON"
+			}
+		},
+		{
+			"name": "base-doc",
+			"hidden": true,
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
 				"LLAMA_BUILD_DOCS": "ON",
 				"LLAMA_AUTO_HOUSEKEEP": "ON"
 			}
@@ -45,6 +54,17 @@
 				"CC": "/usr/bin/clang",
 				"CXX": "/usr/bin/clang++"
 			}
+		},
+		{
+			"name": "linux-clang-doc",
+			"displayName": "Linux Clang Default Config",
+			"inherits": "base-doc",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/build/",
+			"environment": {
+				"CC": "/usr/bin/clang",
+				"CXX": "/usr/bin/clang++"
+			}
 		}
 	],
 	"buildPresets": [
@@ -57,6 +77,14 @@
 			"name": "linux-clang-build",
 			"displayName": "Linux Clang Default Build",
 			"configurePreset": "linux-clang"
+		},
+		{
+			"name": "linux-clang-build-doc",
+			"displayName": "Linux Clang Default Documentation Build",
+			"configurePreset": "linux-clang-doc",
+			"targets": [
+				"docs"
+			]
 		}
 	],
 	"testPresets": [
@@ -105,6 +133,19 @@
 				{
 					"type": "test",
 					"name": "linux-clang-test"
+				}
+			]
+		},
+		{
+			"name": "linux-docs",
+			"steps": [
+				{
+					"type": "configure",
+					"name": "linux-clang-doc"
+				},
+				{
+					"type": "build",
+					"name": "linux-clang-build-doc"
 				}
 			]
 		}
