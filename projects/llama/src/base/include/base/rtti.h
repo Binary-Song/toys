@@ -1,6 +1,8 @@
 #pragma once
 
+#include "base/exceptions.h"
 #include "base/interfaces/debug_print.h"
+#include "base/pointers.h"
 #include "base/rtti.h"
 #include "misc.h"
 #include <fmt/format.h>
@@ -83,9 +85,10 @@ class IRtti;
 /// RttiContext 在创建时，默认拷贝此全局单例。全局单例修改，其他已有的 RttiContext 对象不会
 /// 收到通知或受到任何影响。
 ///
-/// @note 不要自己创建 Context 对象，需要时应将其参数化或保存其指针。RttiContext 的作者认为将来会有一个更大的 Context 去继承或者包含
-/// 这个类型。要用时就传 Context ，最终目的是除了极少数情况之外，消除全局变量/单例。这样创建新的 Context 程序就能从干净的状态重新执行，有利于单测。
-/// 目前本类型属于这个“极少数情况”，因为不这样的话注册 RTTI 将变的格外复杂，这种做法是 RttiContext 的特例，不可作为惯例。 
+/// @note 不要自己创建 Context 对象，需要时应将其参数化或保存其指针。RttiContext 的作者认为将来会有一个更大的 Context
+/// 去继承或者包含 这个类型。要用时就传 Context ，最终目的是除了极少数情况之外，消除全局变量/单例。这样创建新的 Context
+/// 程序就能从干净的状态重新执行，有利于单测。 目前本类型属于这个“极少数情况”，因为不这样的话注册 RTTI
+/// 将变的格外复杂，这种做法是 RttiContext 的特例，不可作为惯例。
 class RttiContext : public virtual IDebugPrint
 {
 public:
@@ -144,22 +147,7 @@ public:
         return Cast(const_cast<void *>(src_obj), src, dst);
     }
 
-    np<IRtti> Instantiate(TypeId typeId)
-    {
-        try
-        {
-            auto iter = m_instantiators.find(typeId);
-            if (iter != m_instantiators.end())
-            {
-                return iter->second();
-            }
-            return nullptr;
-        }
-        catch (...)
-        {
-            return nullptr;
-        }
-    }
+    LLAMA_API(base) up<IRtti> Instantiate(TypeId typeId);
 
 private:
     void *DirectCast(void *src_obj, TypeId src, TypeId dst)
