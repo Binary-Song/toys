@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: get cmake and ninja
         uses: lukka/get-cmake@latest
+      - name: get stuff
+        run: sudo apt-get install -y --no-install-recommends doxygen graphviz libxrandr-dev
       - name: checkout
         uses: actions/checkout@v4
         with:
@@ -40,8 +42,8 @@ jobs:
     steps:
       - name: get cmake and ninja
         uses: lukka/get-cmake@latest
-      - name: get doxygen
-        run: sudo apt-get install -y --no-install-recommends doxygen graphviz
+      - name: get stuff
+        run: sudo apt-get install -y --no-install-recommends doxygen graphviz libxrandr-dev
       - name: checkout
         uses: actions/checkout@v4
         with:
@@ -51,7 +53,7 @@ jobs:
       - name: run cmake workflow
         uses: lukka/run-cmake@v10
         with:
-          workflowPreset: "linux-clang-ci-doc"
+          workflowPreset: "linux-docs"
       - name: Moving Files
         run: |
           mv ${{github.workspace}}/build/docs/html ./docs/api
