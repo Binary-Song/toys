@@ -45,6 +45,11 @@ function(llama_module name type)
         "" # one-val
         "" # multi-val
         ${ARGN})
+    
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
     # 定义平台宏
     if(WIN32)
         list(APPEND PLAT_DEF "LLAMA_WIN")
@@ -139,7 +144,7 @@ function(llama_docs)
     set(OUTPUT_DIR "${CMAKE_BINARY_DIR}/docs") # Doxygen 输出目录，文档输出在这里
     set(DOXYFILE_INPUT_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/llama.doxyfile") # 输入的 doxyfile 模板
     set(DOXYFILE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/docs/Doxyfile") # 输出的 Doxyfile 文件，文件里的路径被替换了
-    option(LLAMA_DOC_USE_STYLESHEET ON)
+    option(LLAMA_DOC_USE_STYLESHEET "Whether you want to use cool stylesheets for doc" ON)
     if(LLAMA_DOC_USE_STYLESHEET)
         set(DOXYGEN_STYLE_SHEET_PATH1 "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/doc-css/doxygen-awesome.css")
         file(TO_CMAKE_PATH "${DOXYGEN_STYLE_SHEET_PATH1}" DOXYGEN_STYLE_SHEET_PATH1)
