@@ -6,6 +6,11 @@
 namespace llama
 {
 
+inline Exception NullPointerException()
+{
+    return Exception("null error");
+}
+
 class bypass_null_check
 {
 };
@@ -24,7 +29,7 @@ public:
     p(T *ptr) : ptr(ptr)
     {
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
     }
 
     /// 如果 `U*` 可以转为 `T*`，则 `p<U>` 也可以转为 `p<T>`
@@ -32,7 +37,7 @@ public:
     template <typename U> p(p<U> ptr) : ptr(ptr.data())
     {
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
     }
 
     p(T *ptr, bypass_null_check) : ptr(ptr)
@@ -219,7 +224,7 @@ public:
     {
         static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
         return *ptr;
     }
 
@@ -230,7 +235,7 @@ public:
     {
         static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
         return *ptr;
     }
 
@@ -239,7 +244,7 @@ public:
     T *operator->() const
     {
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
         return ptr;
     }
 
@@ -248,7 +253,7 @@ public:
     p<T> unwrap() const
     {
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
         return ptr;
     }
 
@@ -264,7 +269,7 @@ public:
     {
         static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
-            throw Exception("Null pointer.");
+            throw NullPointerException();
         return ptr[offset];
     }
 
