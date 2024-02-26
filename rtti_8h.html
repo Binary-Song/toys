@@ -1,0 +1,790 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>llama: /home/runner/work/toys/toys/projects/llama/src/base/include/base/rtti.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">llama
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A happy llama</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('rtti_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">rtti.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="exceptions_8h_source.html">base/exceptions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="debug__print_8h_source.html">base/interfaces/debug_print.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pointers_8h_source.html">base/pointers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="rtti_8h_source.html">base/rtti.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="misc_8h_source.html">misc.h</a>&quot;</code><br />
+<code>#include &lt;fmt/format.h&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+</div>
+<p><a href="rtti_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html">llama::RttiContext</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1rtti__trait.html">llama::rtti_trait&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacellama"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html">llama</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:aa90a3e4fa7156f3a8b5a69cc9dcc3b62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#aa90a3e4fa7156f3a8b5a69cc9dcc3b62">LLAMA_RTTI_UPCAST_BEGIN</a>(T)</td></tr>
+<tr class="separator:aa90a3e4fa7156f3a8b5a69cc9dcc3b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3025c7e0eb635e74d4522a051fcf9cea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(From,  To)</td></tr>
+<tr class="separator:a3025c7e0eb635e74d4522a051fcf9cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c642cb1407e3289afe9ea8be5695447"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a2c642cb1407e3289afe9ea8be5695447">LLAMA_RTTI_UPCAST_END</a></td></tr>
+<tr class="separator:a2c642cb1407e3289afe9ea8be5695447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70118d4e771963c43f995b65f30b87b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a70118d4e771963c43f995b65f30b87b4">LLAMA_RTTI_OVERRIDE_FUNCS</a>(T)</td></tr>
+<tr class="separator:a70118d4e771963c43f995b65f30b87b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa677fb7e455b60873064c5afb4f0d2c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a>(...)&#160;&#160;&#160;<a class="el" href="misc_8h.html#a48e6a567eb0e645f50a1f69f38246303">LLAMA_VA_SELECT</a>(LLAMA_RTTI, __VA_ARGS__) <a class="el" href="rtti_8h.html#a2c642cb1407e3289afe9ea8be5695447">LLAMA_RTTI_UPCAST_END</a></td></tr>
+<tr class="separator:aa677fb7e455b60873064c5afb4f0d2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae20a2790d368c2560ed99e1dcbed6c18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#ae20a2790d368c2560ed99e1dcbed6c18">LLAMA_RTTI_1</a>(T)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a70118d4e771963c43f995b65f30b87b4">LLAMA_RTTI_OVERRIDE_FUNCS</a>(T)  <a class="el" href="rtti_8h.html#aa90a3e4fa7156f3a8b5a69cc9dcc3b62">LLAMA_RTTI_UPCAST_BEGIN</a>(T)</td></tr>
+<tr class="separator:ae20a2790d368c2560ed99e1dcbed6c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9726da64a805df05757a1866f2b21399"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a9726da64a805df05757a1866f2b21399">LLAMA_RTTI_2</a>(T,  B1)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#ae20a2790d368c2560ed99e1dcbed6c18">LLAMA_RTTI_1</a>(T)                             <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B1)</td></tr>
+<tr class="separator:a9726da64a805df05757a1866f2b21399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab99f1d467912af5ca337b65e24f492d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#ab99f1d467912af5ca337b65e24f492d8">LLAMA_RTTI_3</a>(T,  B1,  B2)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a9726da64a805df05757a1866f2b21399">LLAMA_RTTI_2</a>(T, B1)                         <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B2)</td></tr>
+<tr class="separator:ab99f1d467912af5ca337b65e24f492d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfb16b7d850d486f475353af398b4d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#addfb16b7d850d486f475353af398b4d5">LLAMA_RTTI_4</a>(T,  B1,  B2,  B3)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#ab99f1d467912af5ca337b65e24f492d8">LLAMA_RTTI_3</a>(T, B1, B2)                     <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B3)</td></tr>
+<tr class="separator:addfb16b7d850d486f475353af398b4d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b97fc12649e153c612ffc583e9b7666"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a5b97fc12649e153c612ffc583e9b7666">LLAMA_RTTI_5</a>(T,  B1,  B2,  B3,  B4)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#addfb16b7d850d486f475353af398b4d5">LLAMA_RTTI_4</a>(T, B1, B2, B3)                 <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B4)</td></tr>
+<tr class="separator:a5b97fc12649e153c612ffc583e9b7666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c89a88a8ddcb3ec48254be62d1b21d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a5c89a88a8ddcb3ec48254be62d1b21d3">LLAMA_RTTI_6</a>(T,  B1,  B2,  B3,  B4,  B5)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a5b97fc12649e153c612ffc583e9b7666">LLAMA_RTTI_5</a>(T, B1, B2, B3, B4)             <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B5)</td></tr>
+<tr class="separator:a5c89a88a8ddcb3ec48254be62d1b21d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c7253c0c08dbc03bb7c90afe9e70cd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a7c7253c0c08dbc03bb7c90afe9e70cd9">LLAMA_RTTI_7</a>(T,  B1,  B2,  B3,  B4,  B5,  B6)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a5c89a88a8ddcb3ec48254be62d1b21d3">LLAMA_RTTI_6</a>(T, B1, B2, B3, B4, B5)         <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B6)</td></tr>
+<tr class="separator:a7c7253c0c08dbc03bb7c90afe9e70cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e2723b2ad021f5b8c60a7ec0cba999"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#aa0e2723b2ad021f5b8c60a7ec0cba999">LLAMA_RTTI_8</a>(T,  B1,  B2,  B3,  B4,  B5,  B6,  B7)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a7c7253c0c08dbc03bb7c90afe9e70cd9">LLAMA_RTTI_7</a>(T, B1, B2, B3, B4, B5, B6)     <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B7)</td></tr>
+<tr class="separator:aa0e2723b2ad021f5b8c60a7ec0cba999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a045250dc5991a3f49423481627ba7760"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtti_8h.html#a045250dc5991a3f49423481627ba7760">LLAMA_RTTI_9</a>(T,  B1,  B2,  B3,  B4,  B5,  B6,  B7,  B8)&#160;&#160;&#160;<a class="el" href="rtti_8h.html#aa0e2723b2ad021f5b8c60a7ec0cba999">LLAMA_RTTI_8</a>(T, B1, B2, B3, B4, B5, B6, B7) <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B8)</td></tr>
+<tr class="separator:a045250dc5991a3f49423481627ba7760"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a37fbbf8b527f07494eeb97a720b04e50"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">llama::TypeId</a> = std::string_view</td></tr>
+<tr class="memdesc:a37fbbf8b527f07494eeb97a720b04e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">类型ID，一个静态的字符串。比较时比较其内容而不是地址。  <a href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">更多...</a><br /></td></tr>
+<tr class="separator:a37fbbf8b527f07494eeb97a720b04e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:aa3467bd231899789b348594c31d340d2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa3467bd231899789b348594c31d340d2"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!std::is_default_constructible&lt; T &gt;::value, void &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama.html#aa3467bd231899789b348594c31d340d2">llama::AddDefaultInstantiatorIfDefaultConstructible</a> ()</td></tr>
+<tr class="separator:aa3467bd231899789b348594c31d340d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9df1ae0d190fce5004a6bce8b5b4094"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac9df1ae0d190fce5004a6bce8b5b4094"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; std::is_default_constructible&lt; T &gt;::value, void &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama.html#ac9df1ae0d190fce5004a6bce8b5b4094">llama::AddDefaultInstantiatorIfDefaultConstructible</a> ()</td></tr>
+<tr class="separator:ac9df1ae0d190fce5004a6bce8b5b4094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61cace3eac4fd826d3199a4bb4fc7c13"><td class="memTemplParams" colspan="2">template&lt;typename From , typename To &gt; </td></tr>
+<tr class="memitem:a61cace3eac4fd826d3199a4bb4fc7c13"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacellama.html#a61cace3eac4fd826d3199a4bb4fc7c13">llama::ModifyDefaultRtti</a> ()</td></tr>
+<tr class="separator:a61cace3eac4fd826d3199a4bb4fc7c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5f72957df9cd47c2ffe74c9e21bf4a2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#ac5f72957df9cd47c2ffe74c9e21bf4a2">llama::LLAMA_RTTI_ArgCheck</a> (const char *arg)</td></tr>
+<tr class="separator:ac5f72957df9cd47c2ffe74c9e21bf4a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="aa677fb7e455b60873064c5afb4f0d2c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa677fb7e455b60873064c5afb4f0d2c7">&#9670;&nbsp;</a></span>LLAMA_RTTI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="misc_8h.html#a48e6a567eb0e645f50a1f69f38246303">LLAMA_VA_SELECT</a>(LLAMA_RTTI, __VA_ARGS__) <a class="el" href="rtti_8h.html#a2c642cb1407e3289afe9ea8be5695447">LLAMA_RTTI_UPCAST_END</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+<p>表示该类型的对象具有"运行时类型信息"(rtti)。 实现本接口的作用是让对象支持向下转型（基类转派生类）。</p>
+<p>一般不需要自己实现这个接口。使用 LLAMA_RTTI 来自动实现。 LLAMA_RTTI 的语法是：</p>
+<ol type="1">
+<li>LLAMA_RTTI(当前类型) 或</li>
+<li>LLAMA_RTTI(当前类型, 基类1 , ..., 基类n )</li>
+</ol>
+<p>LLAMA_RTTI 需要在 <code>class</code> 声明内调用。当前类型就是 LLAMA_RTTI 所在的类型。</p>
+<p>基类可以是直接基类或者间接基类。 这些基类必须：</p>
+<ol type="1">
+<li>直接或间接派生自IRtti</li>
+<li>用 LLAMA_RTTI 添加了元信息。</li>
+</ol>
+<dl class="section note"><dt>注解</dt><dd>如果直接派生自 IRtti ，不要在 LLAMA_RTTI 内指定 IRtti 。</dd></dl>
+<p>调用 IRtti::Cast 时，当前对象会沿着 LLAMA_RTTI 指定的继承路径进行搜索， 直到找到目标基类。</p>
+<p>例： </p><div class="fragment"><div class="line"><span class="keyword">class </span>GrandParent : <span class="keyword">public</span> <span class="keyword">virtual</span> IRtti</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a>(GrandParent)</div>
+<div class="line">};</div>
+<div class="line"><span class="keyword">class </span>Parent : <span class="keyword">public</span> GrandParent</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a>(Parent, GrandParent)</div>
+<div class="line">};</div>
+<div class="line"><span class="keyword">class </span>Child : <span class="keyword">public</span> Parent</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a>(Child, Parent)</div>
+<div class="line">};</div>
+<div class="line"><span class="keywordtype">void</span> test()</div>
+<div class="line">{</div>
+<div class="line">    RttiContext ctx;</div>
+<div class="line">    Child child;</div>
+<div class="line">    GrandParent &amp;parent = child;</div>
+<div class="line">    Child *child2 = parent.Cast&lt;Child&gt;(ctx);</div>
+<div class="line">    EXPECT_EQ(child, child2);</div>
+<div class="line">}</div>
+<div class="ttc" id="artti_8h_html_aa677fb7e455b60873064c5afb4f0d2c7"><div class="ttname"><a href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a></div><div class="ttdeci">#define LLAMA_RTTI(...)</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00061">rtti.h:61</a></div></div>
+</div><!-- fragment --><p>由于存在开销，大部分类型不包含 RTTI ，可根据需要添加。 增加 LLAMA_RTTI 不会影响对象的大小和结构、不会增加 dll 的导出符号。 </p>
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00061">61</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae20a2790d368c2560ed99e1dcbed6c18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae20a2790d368c2560ed99e1dcbed6c18">&#9670;&nbsp;</a></span>LLAMA_RTTI_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_1</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a70118d4e771963c43f995b65f30b87b4">LLAMA_RTTI_OVERRIDE_FUNCS</a>(T)  <a class="el" href="rtti_8h.html#aa90a3e4fa7156f3a8b5a69cc9dcc3b62">LLAMA_RTTI_UPCAST_BEGIN</a>(T)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00063">63</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9726da64a805df05757a1866f2b21399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9726da64a805df05757a1866f2b21399">&#9670;&nbsp;</a></span>LLAMA_RTTI_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_2</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#ae20a2790d368c2560ed99e1dcbed6c18">LLAMA_RTTI_1</a>(T)                             <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00064">64</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab99f1d467912af5ca337b65e24f492d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99f1d467912af5ca337b65e24f492d8">&#9670;&nbsp;</a></span>LLAMA_RTTI_3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_3</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a9726da64a805df05757a1866f2b21399">LLAMA_RTTI_2</a>(T, B1)                         <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<a id="addfb16b7d850d486f475353af398b4d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addfb16b7d850d486f475353af398b4d5">&#9670;&nbsp;</a></span>LLAMA_RTTI_4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_4</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B3&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#ab99f1d467912af5ca337b65e24f492d8">LLAMA_RTTI_3</a>(T, B1, B2)                     <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00066">66</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5b97fc12649e153c612ffc583e9b7666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b97fc12649e153c612ffc583e9b7666">&#9670;&nbsp;</a></span>LLAMA_RTTI_5</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_5</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B3, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B4&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#addfb16b7d850d486f475353af398b4d5">LLAMA_RTTI_4</a>(T, B1, B2, B3)                 <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00067">67</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5c89a88a8ddcb3ec48254be62d1b21d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c89a88a8ddcb3ec48254be62d1b21d3">&#9670;&nbsp;</a></span>LLAMA_RTTI_6</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_6</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B3, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B4, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B5&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a5b97fc12649e153c612ffc583e9b7666">LLAMA_RTTI_5</a>(T, B1, B2, B3, B4)             <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00068">68</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c7253c0c08dbc03bb7c90afe9e70cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c7253c0c08dbc03bb7c90afe9e70cd9">&#9670;&nbsp;</a></span>LLAMA_RTTI_7</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_7</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B3, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B4, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B5, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B6&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a5c89a88a8ddcb3ec48254be62d1b21d3">LLAMA_RTTI_6</a>(T, B1, B2, B3, B4, B5)         <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00069">69</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa0e2723b2ad021f5b8c60a7ec0cba999"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e2723b2ad021f5b8c60a7ec0cba999">&#9670;&nbsp;</a></span>LLAMA_RTTI_8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_8</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B3, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B4, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B5, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B6, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B7&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#a7c7253c0c08dbc03bb7c90afe9e70cd9">LLAMA_RTTI_7</a>(T, B1, B2, B3, B4, B5, B6)     <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00070">70</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a045250dc5991a3f49423481627ba7760"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a045250dc5991a3f49423481627ba7760">&#9670;&nbsp;</a></span>LLAMA_RTTI_9</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_9</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B3, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B4, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B5, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B6, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B7, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">B8&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="rtti_8h.html#aa0e2723b2ad021f5b8c60a7ec0cba999">LLAMA_RTTI_8</a>(T, B1, B2, B3, B4, B5, B6, B7) <a class="el" href="rtti_8h.html#a3025c7e0eb635e74d4522a051fcf9cea">LLAMA_RTTI_UPCAST_ENTRY</a>(T, B8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00071">71</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a70118d4e771963c43f995b65f30b87b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70118d4e771963c43f995b65f30b87b4">&#9670;&nbsp;</a></span>LLAMA_RTTI_OVERRIDE_FUNCS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_OVERRIDE_FUNCS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keyword">private</span>:                                                                                                               \</div>
+<div class="line">    const <span class="keywordtype">void</span> *GetSelf_IRtti() const override                                                                         \</div>
+<div class="line">    {                                                                                                                  \</div>
+<div class="line">        static_assert(std::is_same&lt;std::decay&lt;decltype(*<span class="keyword">this</span>)&gt;::type, T&gt;::value,                                       \</div>
+<div class="line">                      <span class="stringliteral">&quot;The 1st arg to LLAMA_RTTI must be the current type.&quot;</span>);                                          \</div>
+<div class="line">        return <span class="keyword">this</span>;                                                                                                   \</div>
+<div class="line">    }                                                                                                                  \</div>
+<div class="line">                                                                                                                       \</div>
+<div class="line">    <a class="code" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">::llama::TypeId</a> GetTypeId_IRtti() const override                                                                   \</div>
+<div class="line">    {                                                                                                                  \</div>
+<div class="line">        return &amp;s_typeId[0];                                                                                           \</div>
+<div class="line">    }</div>
+<div class="ttc" id="anamespacellama_html_a37fbbf8b527f07494eeb97a720b04e50"><div class="ttname"><a href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">llama::TypeId</a></div><div class="ttdeci">std::string_view TypeId</div><div class="ttdoc">类型ID，一个静态的字符串。比较时比较其内容而不是地址。</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00078">rtti.h:78</a></div></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa90a3e4fa7156f3a8b5a69cc9dcc3b62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa90a3e4fa7156f3a8b5a69cc9dcc3b62">&#9670;&nbsp;</a></span>LLAMA_RTTI_UPCAST_BEGIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_UPCAST_BEGIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keyword">private</span>:                                                                                                               \</div>
+<div class="line">    friend class ::llama::rtti_trait&lt;T&gt;;                                                                               \</div>
+<div class="line">                                                                                                                       \</div>
+<div class="line">private:                                                                                                               \</div>
+<div class="line">    inline <span class="keyword">static</span> constexpr <span class="keywordtype">char</span> s_typeId[] = #T;                                                                      \</div>
+<div class="line">    static_assert(                                                                                                     \</div>
+<div class="line">        <a class="code" href="namespacellama.html#ac5f72957df9cd47c2ffe74c9e21bf4a2">LLAMA_RTTI_ArgCheck</a>(#T),                                                                                       \</div>
+<div class="line">        <span class="stringliteral">&quot;All args to LLAMA_RTTI must be fully-qualified and should not contain any spaces (e.g. ::llama::MyClass )&quot;</span>);  \</div>
+<div class="line">                                                                                                                       \</div>
+<div class="line">private:                                                                                                               \</div>
+<div class="line">    inline <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> s_auto_init_rtti = []() {</div>
+<div class="ttc" id="anamespacellama_html_ac5f72957df9cd47c2ffe74c9e21bf4a2"><div class="ttname"><a href="namespacellama.html#ac5f72957df9cd47c2ffe74c9e21bf4a2">llama::LLAMA_RTTI_ArgCheck</a></div><div class="ttdeci">constexpr bool LLAMA_RTTI_ArgCheck(const char *arg)</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00262">rtti.h:262</a></div></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2c642cb1407e3289afe9ea8be5695447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c642cb1407e3289afe9ea8be5695447">&#9670;&nbsp;</a></span>LLAMA_RTTI_UPCAST_END</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_UPCAST_END</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">return</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)0;                                                                                           \</div>
+<div class="line">    }                                                                                                                  \</div>
+<div class="line">    ();</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00041">41</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3025c7e0eb635e74d4522a051fcf9cea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3025c7e0eb635e74d4522a051fcf9cea">&#9670;&nbsp;</a></span>LLAMA_RTTI_UPCAST_ENTRY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLAMA_RTTI_UPCAST_ENTRY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">From, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">To&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    ::llama::ModifyDefaultRtti&lt;From, To&gt;();                                                                            \</div>
+<div class="line">    static_assert(                                                                                                     \</div>
+<div class="line">        <a class="code" href="namespacellama.html#ac5f72957df9cd47c2ffe74c9e21bf4a2">LLAMA_RTTI_ArgCheck</a>(#To),                                                                                      \</div>
+<div class="line">        <span class="stringliteral">&quot;All args to LLAMA_RTTI must be fully-qualified and should not contain any spaces (e.g. ::llama::MyClass &quot;</span>     \</div>
+<div class="line">        <span class="stringliteral">&quot;)&quot;</span>);</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00034">34</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_5b74b20e1858d41934a8e8bc5aa2df6e.html">include</a></li><li class="navelem"><a class="el" href="dir_ff36a88c3985189e92b7f39982288838.html">base</a></li><li class="navelem"><a class="el" href="rtti_8h.html">rtti.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

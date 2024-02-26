@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>llama: /home/runner/work/toys/toys/projects/llama/src/fso/include/fso/interface/fso.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">llama
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A happy llama</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('fso_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">fso.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fso_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;../hash.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>fso</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IReadOnlyProperty.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html">IReadOnlyProperty</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c707d2d149b8b3beafdc8bc5e6579e0">   13</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c707d2d149b8b3beafdc8bc5e6579e0">~IReadOnlyProperty</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a3df68f59d63b8f2a840ee58ca339bf2a">   15</a></span>&#160;    std::string <a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a3df68f59d63b8f2a840ee58ca339bf2a">GetValue</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c9807c8e352d7deb4e58c442fddbf7b">Get_fso_IProperty</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c9807c8e352d7deb4e58c442fddbf7b">   22</a></span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c9807c8e352d7deb4e58c442fddbf7b">Get_fso_IProperty</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IProperty.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html">IReadOnlyProperty</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IProperty.html#a9ec271fbddfd4de8a54bca67e8d5aa99">   28</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IProperty.html#a9ec271fbddfd4de8a54bca67e8d5aa99">SetValue</a>(std::string_view data)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1IProperty.html#ad1e2839c12e49c6ee9e6b5b65da72bd0">Set_fso_IProperty</a>(data);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IProperty.html#ad1e2839c12e49c6ee9e6b5b65da72bd0">   36</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IProperty.html#ad1e2839c12e49c6ee9e6b5b65da72bd0">Set_fso_IProperty</a>(std::string_view data) = 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1IFso.html">IFso</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IVisitor.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1IVisitor.html">IVisitor</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IVisitor.html#a2b7a4c886bd6d6bdb881a269dc20f928">   44</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html#a2b7a4c886bd6d6bdb881a269dc20f928">~IVisitor</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IVisitor.html#a04db0ed01d10a40c02f358066eea6913">   47</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html#a04db0ed01d10a40c02f358066eea6913">Visit</a>(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;buffer)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html#a1e9621797e3bdfeafbad0a954a6395f2">Visit_fso_IVisitor</a>(buffer);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IVisitor.html#a91790f8e2d99496a772b7661313b4caa">   52</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html#a91790f8e2d99496a772b7661313b4caa">Visit</a>(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;&amp;buffer)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html#a1e9621797e3bdfeafbad0a954a6395f2">Visit_fso_IVisitor</a>(buffer);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IVisitor.html#a1e9621797e3bdfeafbad0a954a6395f2">   58</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html#a1e9621797e3bdfeafbad0a954a6395f2">Visit_fso_IVisitor</a>(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;buffer) = 0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IFso.html">   62</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1IFso.html">IFso</a> : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="classllama_1_1IRtti.html">IRtti</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a>(::<a class="code" href="classllama_1_1fso_1_1IFso.html">llama::fso::IFso</a>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IFso.html#afaa1fa807679b61b757dbb086babf550">   67</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1IFso.html#afaa1fa807679b61b757dbb086babf550">~IFso</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IFso.html#ad39399bef48cea3218110bdc7fba5047">   70</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IFso.html#ad39399bef48cea3218110bdc7fba5047">Accept</a>(<a class="code" href="classllama_1_1fso_1_1IVisitor.html">IVisitor</a> &amp;visitor)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1IFso.html#ad79c483791b49f6239083804eeaa7233">Accept_fso_IFso</a>(visitor);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IFso.html#aa47382a10752aa05bdab2653029cc940">   75</a></span>&#160;    <a class="code" href="classllama_1_1fso_1_1IFso.html#aa47382a10752aa05bdab2653029cc940">LLAMA_API</a>(fso) <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> GetHash();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// bool IsDirty() const</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// {</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">//     return IsDirty_fso_IFso();</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// }</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1IFso.html#ad79c483791b49f6239083804eeaa7233">   84</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1IFso.html#ad79c483791b49f6239083804eeaa7233">Accept_fso_IFso</a>(<a class="code" href="classllama_1_1fso_1_1IVisitor.html">IVisitor</a> &amp;visitor) = 0;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// /// 返回当前对象是否为脏。脏表示本对象的哈希值可能变化，需要重新计算。包含子对象的，不必考虑子对象。</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// virtual bool IsDirty_fso_IFso() const = 0;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1ICache.html">   89</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1ICache.html">ICache</a></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1ICache.html#a2849960d4a3a6d357736c432b901191a">   92</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1ICache.html#a2849960d4a3a6d357736c432b901191a">~ICache</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1ICache.html#afa5ad67e4598a01378e1ea5ff510a5f0">   94</a></span>&#160;    <a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;IFso&gt;</a> <a class="code" href="classllama_1_1fso_1_1ICache.html#afa5ad67e4598a01378e1ea5ff510a5f0">Get</a>(<span class="keyword">const</span> <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;hash)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1ICache.html#ac11a743f44e4f5ddda7ee803f8184b0c">Get_fso_ICache</a>(hash);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1ICache.html#ace55ed1c7bc0877032353d6ddea75498">   99</a></span>&#160;    <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> <a class="code" href="classllama_1_1fso_1_1ICache.html#ace55ed1c7bc0877032353d6ddea75498">Put</a>(<a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;IFso&gt;</a> obj)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1ICache.html#a77f71da643c59851f1dda43ebd45e9e8">Put_fso_ICache</a>(std::move(obj));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1ICache.html#ac11a743f44e4f5ddda7ee803f8184b0c">  105</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;IFso&gt;</a> <a class="code" href="classllama_1_1fso_1_1ICache.html#ac11a743f44e4f5ddda7ee803f8184b0c">Get_fso_ICache</a>(<span class="keyword">const</span> <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;hash) = 0;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1ICache.html#a77f71da643c59851f1dda43ebd45e9e8">  106</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> <a class="code" href="classllama_1_1fso_1_1ICache.html#a77f71da643c59851f1dda43ebd45e9e8">Put_fso_ICache</a>(<a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;IFso&gt;</a> obj) = 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace fso</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;} <span class="comment">// namespace llama</span></div>
+<div class="ttc" id="aclassllama_1_1IRtti_html"><div class="ttname"><a href="classllama_1_1IRtti.html">llama::IRtti</a></div><div class="ttdef"><b>Definition:</b> <a href="interfaces_2rtti_8h_source.html#l00055">rtti.h:56</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1ICache_html"><div class="ttname"><a href="classllama_1_1fso_1_1ICache.html">llama::fso::ICache</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00089">fso.h:90</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1ICache_html_a2849960d4a3a6d357736c432b901191a"><div class="ttname"><a href="classllama_1_1fso_1_1ICache.html#a2849960d4a3a6d357736c432b901191a">llama::fso::ICache::~ICache</a></div><div class="ttdeci">virtual ~ICache()=default</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1ICache_html_a77f71da643c59851f1dda43ebd45e9e8"><div class="ttname"><a href="classllama_1_1fso_1_1ICache.html#a77f71da643c59851f1dda43ebd45e9e8">llama::fso::ICache::Put_fso_ICache</a></div><div class="ttdeci">virtual Hash Put_fso_ICache(sp&lt; IFso &gt; obj)=0</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1ICache_html_ac11a743f44e4f5ddda7ee803f8184b0c"><div class="ttname"><a href="classllama_1_1fso_1_1ICache.html#ac11a743f44e4f5ddda7ee803f8184b0c">llama::fso::ICache::Get_fso_ICache</a></div><div class="ttdeci">virtual sp&lt; IFso &gt; Get_fso_ICache(const Hash &amp;hash)=0</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1ICache_html_ace55ed1c7bc0877032353d6ddea75498"><div class="ttname"><a href="classllama_1_1fso_1_1ICache.html#ace55ed1c7bc0877032353d6ddea75498">llama::fso::ICache::Put</a></div><div class="ttdeci">Hash Put(sp&lt; IFso &gt; obj)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00099">fso.h:99</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1ICache_html_afa5ad67e4598a01378e1ea5ff510a5f0"><div class="ttname"><a href="classllama_1_1fso_1_1ICache.html#afa5ad67e4598a01378e1ea5ff510a5f0">llama::fso::ICache::Get</a></div><div class="ttdeci">sp&lt; IFso &gt; Get(const Hash &amp;hash)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00094">fso.h:94</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IFso_html"><div class="ttname"><a href="classllama_1_1fso_1_1IFso.html">llama::fso::IFso</a></div><div class="ttdoc">实现类必须有 RTTI ，否则无法反序列化。</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00062">fso.h:63</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IFso_html_aa47382a10752aa05bdab2653029cc940"><div class="ttname"><a href="classllama_1_1fso_1_1IFso.html#aa47382a10752aa05bdab2653029cc940">llama::fso::IFso::LLAMA_API</a></div><div class="ttdeci">LLAMA_API(fso) Hash GetHash()</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IFso_html_ad39399bef48cea3218110bdc7fba5047"><div class="ttname"><a href="classllama_1_1fso_1_1IFso.html#ad39399bef48cea3218110bdc7fba5047">llama::fso::IFso::Accept</a></div><div class="ttdeci">void Accept(IVisitor &amp;visitor)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00070">fso.h:70</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IFso_html_ad79c483791b49f6239083804eeaa7233"><div class="ttname"><a href="classllama_1_1fso_1_1IFso.html#ad79c483791b49f6239083804eeaa7233">llama::fso::IFso::Accept_fso_IFso</a></div><div class="ttdeci">virtual void Accept_fso_IFso(IVisitor &amp;visitor)=0</div><div class="ttdoc">调用 IFsoVisitor::Visit 来让 Visitor 知道你有什么成员</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IFso_html_afaa1fa807679b61b757dbb086babf550"><div class="ttname"><a href="classllama_1_1fso_1_1IFso.html#afaa1fa807679b61b757dbb086babf550">llama::fso::IFso::~IFso</a></div><div class="ttdeci">virtual ~IFso()=default</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IProperty_html"><div class="ttname"><a href="classllama_1_1fso_1_1IProperty.html">llama::fso::IProperty</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00025">fso.h:26</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IProperty_html_a9ec271fbddfd4de8a54bca67e8d5aa99"><div class="ttname"><a href="classllama_1_1fso_1_1IProperty.html#a9ec271fbddfd4de8a54bca67e8d5aa99">llama::fso::IProperty::SetValue</a></div><div class="ttdeci">void SetValue(std::string_view data)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00028">fso.h:28</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IProperty_html_ad1e2839c12e49c6ee9e6b5b65da72bd0"><div class="ttname"><a href="classllama_1_1fso_1_1IProperty.html#ad1e2839c12e49c6ee9e6b5b65da72bd0">llama::fso::IProperty::Set_fso_IProperty</a></div><div class="ttdeci">virtual void Set_fso_IProperty(std::string_view data)=0</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IReadOnlyProperty_html"><div class="ttname"><a href="classllama_1_1fso_1_1IReadOnlyProperty.html">llama::fso::IReadOnlyProperty</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00010">fso.h:11</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IReadOnlyProperty_html_a3df68f59d63b8f2a840ee58ca339bf2a"><div class="ttname"><a href="classllama_1_1fso_1_1IReadOnlyProperty.html#a3df68f59d63b8f2a840ee58ca339bf2a">llama::fso::IReadOnlyProperty::GetValue</a></div><div class="ttdeci">std::string GetValue() const</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00015">fso.h:15</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IReadOnlyProperty_html_a9c707d2d149b8b3beafdc8bc5e6579e0"><div class="ttname"><a href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c707d2d149b8b3beafdc8bc5e6579e0">llama::fso::IReadOnlyProperty::~IReadOnlyProperty</a></div><div class="ttdeci">virtual ~IReadOnlyProperty()=default</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IReadOnlyProperty_html_a9c9807c8e352d7deb4e58c442fddbf7b"><div class="ttname"><a href="classllama_1_1fso_1_1IReadOnlyProperty.html#a9c9807c8e352d7deb4e58c442fddbf7b">llama::fso::IReadOnlyProperty::Get_fso_IProperty</a></div><div class="ttdeci">virtual std::string Get_fso_IProperty() const =0</div><div class="ttdoc">返回 buffer 的指针和长度。用于读取。</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html">llama::fso::IVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00041">fso.h:42</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html_a04db0ed01d10a40c02f358066eea6913"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html#a04db0ed01d10a40c02f358066eea6913">llama::fso::IVisitor::Visit</a></div><div class="ttdeci">void Visit(IProperty &amp;buffer)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00047">fso.h:47</a></div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html_a1e9621797e3bdfeafbad0a954a6395f2"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html#a1e9621797e3bdfeafbad0a954a6395f2">llama::fso::IVisitor::Visit_fso_IVisitor</a></div><div class="ttdeci">virtual void Visit_fso_IVisitor(IProperty &amp;buffer)=0</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html_a2b7a4c886bd6d6bdb881a269dc20f928"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html#a2b7a4c886bd6d6bdb881a269dc20f928">llama::fso::IVisitor::~IVisitor</a></div><div class="ttdeci">virtual ~IVisitor()=default</div></div>
+<div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html_a91790f8e2d99496a772b7661313b4caa"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html#a91790f8e2d99496a772b7661313b4caa">llama::fso::IVisitor::Visit</a></div><div class="ttdeci">void Visit(IProperty &amp;&amp;buffer)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00052">fso.h:52</a></div></div>
+<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
+<div class="ttc" id="anamespacellama_html_a4a4f341ffdf8fca412c75f1f105fd23c"><div class="ttname"><a href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">llama::Hash</a></div><div class="ttdeci">std::array&lt; byte, 20 &gt; Hash</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00008">hash.h:8</a></div></div>
+<div class="ttc" id="anamespacellama_html_a6835c17d548bf77e8023ddfc4373d606"><div class="ttname"><a href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">llama::sp</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; sp</div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00365">pointers.h:365</a></div></div>
+<div class="ttc" id="artti_8h_html_aa677fb7e455b60873064c5afb4f0d2c7"><div class="ttname"><a href="rtti_8h.html#aa677fb7e455b60873064c5afb4f0d2c7">LLAMA_RTTI</a></div><div class="ttdeci">#define LLAMA_RTTI(...)</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00061">rtti.h:61</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><a class="el" href="dir_d381e952a6d7bc2f9cfbeb6cbae26061.html">interface</a></li><li class="navelem"><a class="el" href="fso_8h.html">fso.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
