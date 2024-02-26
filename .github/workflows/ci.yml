@@ -60,11 +60,8 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           workflowPreset: "linux-docs"
-      - name: Moving Files
-        run: ls -R ${{github.workspace}}/build/ && mkdir -p ./docs/api && mv ${{github.workspace}}/build/docs/html ./docs/api
-        # Deploy to GitHub Pages
-      - name: Deploy
+      - name: depoly
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./build/docs/html
