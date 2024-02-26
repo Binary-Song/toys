@@ -1,12 +1,21 @@
 {
+	"$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+	"name": "llama",
 	"dependencies": [
 		"gtest",
 		"fmt",
 		"spdlog",
 		"protobuf",
-		"opengl",
-		"glfw3",
-		"qt5-base",
 		"cryptopp"
-	]
+	],
+	"features": {
+		"gui": {
+			"description": "The graphical user interface modules.",
+			"dependencies": [
+				"opengl",
+				"glfw3",
+				"qt5-base"
+			]
+		}
+	}
 }

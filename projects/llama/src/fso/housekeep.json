@@ -1,7 +1,4 @@
 {
-	"exclude": [
-		""
-	],
 	"umbrella_header": {
 		"generate": false
 	}

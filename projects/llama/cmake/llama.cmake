@@ -125,19 +125,42 @@ function(llama_module name type)
 
 endfunction()
 
-# llama_link(<module> <PUBLIC|PRIVATE> [dependency1]...) module: 由 llama_module 创建的模块名称 dependency: target 名称，可以是三方库、模块等
+# llama_link(<module> <PUBLIC|PRIVATE> [dependency1]...) 
+# module: 由 llama_module 创建的模块名称
+# dependency: target 名称，可以是三方库、模块等
 function(llama_link module visibility)
+    
     foreach(dependency ${ARGN})
         if(NOT module STREQUAL dependency) # 不许自己连接自己
             if(visibility STREQUAL PUBLIC)
-                target_link_libraries(${module}-if INTERFACE ${dependency})
+                llama_internal_register_linkage(${module}-if INTERFACE ${dependency})
             elseif(visibility STREQUAL PRIVATE)
-                target_link_libraries(${module}-object PUBLIC ${dependency})
+                llama_internal_register_linkage(${module}-object PUBLIC ${dependency})
             else()
                 message(FATAL_ERROR "Unknown visibility")
             endif()
         endif()
     endforeach()
+endfunction()
+
+# 应用由 llama_link 指定的依赖关系。
+function(llama_finalize)
+    foreach(link_name ${LLAMA_LINKS})
+        target_link_libraries(${LLAMA_LINK_MOD1_${link_name}} ${LLAMA_LINK_VIS_${link_name}} ${LLAMA_LINK_MOD2_${link_name}})
+    endforeach()
+endfunction()
+
+function(llama_internal_register_linkage mod1 vis mod2)
+    # e.g. link_name = foo-bar
+    set(link_name "${mod1}-${mod2}")
+    # e.g. LLAMA_LINKS += foo-bar
+    set(LLAMA_LINKS "$CACHE{LLAMA_LINKS};${link_name}" CACHE INTERNAL "")
+    # e.g. LLAMA_LINK_MOD1_foo-bar = foo
+    set(LLAMA_LINK_MOD1_${link_name} "${mod1}" CACHE INTERNAL "")
+    # e.g. LLAMA_LINK_VIS_foo-bar = PUBLIC
+    set(LLAMA_LINK_VIS_${link_name}  "${vis}" CACHE INTERNAL "")
+    # e.g. LLAMA_LINK_MOD2_foo-bar = bar
+    set(LLAMA_LINK_MOD2_${link_name} "${mod2}" CACHE INTERNAL "")
 endfunction()
 
 function(llama_docs)

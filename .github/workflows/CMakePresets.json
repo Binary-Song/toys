@@ -1,6 +1,5 @@
 {
-	// 本文件是一个例子，可以作为 CMakeUserPresets.json 的模板。
-	// 注意不要将自己本地的路径提交上来。
+	// 本文件是CI用的，可以复制到根目录作为 CMakeUserPresets.json 的模板。
 	"version": 6,
 	"cmakeMinimumRequired": {
 		"major": 3,
@@ -28,9 +27,7 @@
 			"name": "base-doc",
 			"hidden": true,
 			"cacheVariables": {
-				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-				"LLAMA_BUILD_DOCS": "ON",
-				"LLAMA_AUTO_HOUSEKEEP": "ON"
+				"LLAMA_BUILD_DOCS": "ON"
 			}
 		},
 		{
@@ -57,7 +54,7 @@
 		},
 		{
 			"name": "linux-clang-doc",
-			"displayName": "Linux Clang Default Config",
+			"displayName": "Linux Clang Doc-Only Config",
 			"inherits": "base-doc",
 			"generator": "Ninja",
 			"binaryDir": "${sourceDir}/build/",

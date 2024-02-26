@@ -10,13 +10,10 @@ git clone xxx --recursive
 
 ## 必选项
 
-下载安装LLVM、Ninja和CMake
-
-LLVM: https://releases.llvm.org/
-
-Ninja: https://github.com/ninja-build/ninja/releases
-
-CMake: https://cmake.org/download/
+下载安装 
+[LLVM]( https://releases.llvm.org/)、
+[Ninja](https://github.com/ninja-build/ninja/releases) 和
+[CMake](https://cmake.org/download/) 
 
 如果是Windows，请将 ninja.exe 和 cmake.exe 的目录添加进 PATH 环境变量里。
 
@@ -27,12 +24,14 @@ CMake: https://cmake.org/download/
 Windows:
 
 ```
+cp .github\workflows\CMakePresets.json .\CMakeUserPresets.json
 cmake --workflow --preset win-clang-ci
 ```
 
 Linux:
 
 ```
+cp .github/workflows/CMakePresets.json ./CMakeUserPresets.json
 cmake --workflow --preset linux-clang-ci
 ```
 
