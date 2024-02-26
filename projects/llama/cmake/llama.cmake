@@ -41,7 +41,7 @@ unset(llama_doc_sources_ls CACHE)
 function(llama_module name type)
     cmake_parse_arguments(
         "ARG" # prefix
-        "" # option
+        "ENABLE_RTTI" # option
         "" # one-val
         "" # multi-val
         ${ARGN})
@@ -106,11 +106,23 @@ function(llama_module name type)
     target_include_directories("${name}-if" INTERFACE "${CMAKE_CURRENT_LIST_DIR}/include")
     target_include_directories("${name}-object" PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src")
     target_compile_definitions("${name}-object" PUBLIC "${PLAT_DEF}")
+
+    # 提高警告等级
     if(MSVC)
         target_compile_options(${name}-object PRIVATE /W4)
     else()
         target_compile_options(${name}-object PRIVATE -Wall -Wextra -Wpedantic)
     endif()
+
+    # 禁用RTTI
+    if(ENABLE_RTTI)
+        if(MSVC)
+            target_compile_options(${name}-object PRIVATE /GR-)
+        else()
+            target_compile_options(${name}-object PRIVATE -fno-rtti)
+        endif()
+    endif()
+
     target_link_libraries("${name}-if" INTERFACE fmt::fmt)
 
     # 设置 test 库各种属性
