@@ -97,24 +97,24 @@ $(document).ready(function(){initNavTree('codec_8h_source.html',''); initResizab
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="misc_8h.html">misc.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;misc.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="namespacellama.html#ae3b02608103db956cf49fa00dce9954a">LLAMA_API</a>(base) std::vector&lt;uint32_t&gt; DecodeUtf16(<span class="keyword">const</span> char16_t *data, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="namespacellama.html#ae3b02608103db956cf49fa00dce9954a">LLAMA_API</a>(base) std::vector&lt;uint32_t&gt; DecodeUtf8(<span class="keyword">const</span> <span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;LLAMA_API(base) std::vector&lt;uint32_t&gt; DecodeUtf16(<span class="keyword">const</span> char16_t *data, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;LLAMA_API(base) std::vector&lt;uint32_t&gt; DecodeUtf8(<span class="keyword">const</span> <span class="keywordtype">char</span> *data, <span class="keywordtype">size_t</span> length);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="namespacellama.html#ae3b02608103db956cf49fa00dce9954a">LLAMA_API</a>(base) std::u16string EncodeUtf16(<span class="keyword">const</span> uint32_t *data, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<a class="code" href="namespacellama.html#ae3b02608103db956cf49fa00dce9954a">LLAMA_API</a>(base) std::string EncodeUtf8(<span class="keyword">const</span> uint32_t *data, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;LLAMA_API(base) std::u16string EncodeUtf16(<span class="keyword">const</span> uint32_t *data, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;LLAMA_API(base) std::string EncodeUtf8(<span class="keyword">const</span> uint32_t *data, <span class="keywordtype">size_t</span> length);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespacellama.html#a3263438e52e758ddb5f10efb4464bc22">   28</a></span>&#160;<span class="keyword">inline</span> std::u16string <a class="code" href="namespacellama.html#a3263438e52e758ddb5f10efb4464bc22">ToUtf16</a>(std::string_view str)</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="codec_8h.html#a3263438e52e758ddb5f10efb4464bc22">   28</a></span>&#160;<span class="keyword">inline</span> std::u16string <a class="code" href="codec_8h.html#a3263438e52e758ddb5f10efb4464bc22">ToUtf16</a>(std::string_view str)</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">auto</span> codes = DecodeUtf8(str.data(), str.size());</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> EncodeUtf16(codes.data(), codes.size());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="namespacellama.html#a8db29f2bbea98ff8abef0a97d2f88a69">   34</a></span>&#160;<span class="keyword">inline</span> std::u16string <a class="code" href="namespacellama.html#a3263438e52e758ddb5f10efb4464bc22">ToUtf16</a>(std::wstring_view str)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">inline</span> std::u16string ToUtf16(std::wstring_view str)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifdef LLAMA_WIN</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> std::u16string((<span class="keyword">const</span> char16_t *)str.data(), str.size());</div>
@@ -123,28 +123,24 @@ $(document).ready(function(){initNavTree('codec_8h_source.html',''); initResizab
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="namespacellama.html#a8e49218a1fbfe60ff7f90fb197e69a6c">   43</a></span>&#160;<span class="keyword">inline</span> std::string <a class="code" href="namespacellama.html#a8e49218a1fbfe60ff7f90fb197e69a6c">ToUtf8</a>(std::u16string_view str)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">inline</span> std::string ToUtf8(std::u16string_view str)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">auto</span> codes = DecodeUtf16(str.data(), str.size());</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> EncodeUtf8(codes.data(), codes.size());</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacellama.html#a508bfddf6871a37e4f5c947bd0398124">   49</a></span>&#160;<span class="keyword">inline</span> std::string <a class="code" href="namespacellama.html#a8e49218a1fbfe60ff7f90fb197e69a6c">ToUtf8</a>(std::wstring_view str)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">inline</span> std::string ToUtf8(std::wstring_view str)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#ifdef LLAMA_WIN</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::u16string_view v((<span class="keyword">const</span> char16_t *)str.data(), str.size());</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacellama.html#a8e49218a1fbfe60ff7f90fb197e69a6c">ToUtf8</a>(v);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> ToUtf8(v);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> EncodeUtf8((<span class="keyword">const</span> uint32_t *)str.data(), str.size());</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="amisc_8h_html"><div class="ttname"><a href="misc_8h.html">misc.h</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
-<div class="ttc" id="anamespacellama_html_a3263438e52e758ddb5f10efb4464bc22"><div class="ttname"><a href="namespacellama.html#a3263438e52e758ddb5f10efb4464bc22">llama::ToUtf16</a></div><div class="ttdeci">LLAMA_API(base) std LLAMA_API(base) std LLAMA_API(base) std LLAMA_API(base) std std::u16string ToUtf16(std::string_view str)</div><div class="ttdoc">将 UTF-8 字符串解析成代码点</div><div class="ttdef"><b>Definition:</b> <a href="codec_8h_source.html#l00028">codec.h:28</a></div></div>
-<div class="ttc" id="anamespacellama_html_a8e49218a1fbfe60ff7f90fb197e69a6c"><div class="ttname"><a href="namespacellama.html#a8e49218a1fbfe60ff7f90fb197e69a6c">llama::ToUtf8</a></div><div class="ttdeci">std::string ToUtf8(std::u16string_view str)</div><div class="ttdef"><b>Definition:</b> <a href="codec_8h_source.html#l00043">codec.h:43</a></div></div>
-<div class="ttc" id="anamespacellama_html_ae3b02608103db956cf49fa00dce9954a"><div class="ttname"><a href="namespacellama.html#ae3b02608103db956cf49fa00dce9954a">llama::LLAMA_API</a></div><div class="ttdeci">LLAMA_API(base) std</div><div class="ttdef"><b>Definition:</b> <a href="codec_8cpp_source.html#l00007">codec.cpp:7</a></div></div>
+<div class="ttc" id="acodec_8h_html_a3263438e52e758ddb5f10efb4464bc22"><div class="ttname"><a href="codec_8h.html#a3263438e52e758ddb5f10efb4464bc22">llama::ToUtf16</a></div><div class="ttdeci">LLAMA_API(base) std LLAMA_API(base) std LLAMA_API(base) std LLAMA_API(base) std std::u16string ToUtf16(std::string_view str)</div><div class="ttdoc">将 UTF-8 字符串解析成代码点</div><div class="ttdef"><b>Definition:</b> <a href="codec_8h_source.html#l00028">codec.h:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

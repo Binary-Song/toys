@@ -5,6 +5,7 @@ var classllama_1_1lru__cache =
     [ "lru_cache", "classllama_1_1lru__cache.html#a2de6712a6666e70c3b02bd389d1e3e9e", null ],
     [ "exists", "classllama_1_1lru__cache.html#a3c3d531583f770aa60211035af6e96ae", null ],
     [ "get", "classllama_1_1lru__cache.html#a57d8ca35315ff1e70f8b5b56071f7d3a", null ],
+    [ "max_size", "classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243", null ],
     [ "miss", "classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652", null ],
     [ "overflow", "classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825", null ],
     [ "put", "classllama_1_1lru__cache.html#a4b64555be28a636f0d70d9a74bc28d1d", null ],

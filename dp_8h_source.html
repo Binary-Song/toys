@@ -89,14 +89,14 @@ $(document).ready(function(){initNavTree('dp_8h_source.html',''); initResizable(
 <div class="title">dp.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="dp_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pointers_8h.html">base/pointers.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rtti_8h.html">base/rtti.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hash_8h.html">fso/hash.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fso_8h.html">fso/interface/fso.h</a>&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;base/pointers.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;base/rtti.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;fso/hash.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;fso/interface/fso.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span>ICache;</div>
@@ -108,62 +108,49 @@ $(document).ready(function(){initNavTree('dp_8h_source.html',''); initResizable(
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1DelayedPointer.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">DelayedPointer</a></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1DelayedPointer.html#a8b55fb08f569359c02de299c17a1cddf">   22</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html#a8b55fb08f569359c02de299c17a1cddf">DelayedPointer</a>() : m_hash()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">DelayedPointer</a>() : m_hash()</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1DelayedPointer.html#a82b67c8043b5c725ec2308950152d1ff">   26</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html#a82b67c8043b5c725ec2308950152d1ff">DelayedPointer</a>(<a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> hash) : m_hash(std::move(hash))</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">DelayedPointer</a>(Hash hash) : m_hash(std::move(hash))</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1DelayedPointer.html#a1677f5e4ea94cb9c05cdf4d0a68d3f9b">   30</a></span>&#160;    <a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;T&gt;</a> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html#a1677f5e4ea94cb9c05cdf4d0a68d3f9b">Lock</a>(<a class="code" href="classllama_1_1mp.html">mp&lt;ICache, RttiContext&gt;</a> ctx)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    sp&lt;T&gt; Lock(<a class="code" href="classllama_1_1mp.html">mp&lt;ICache, RttiContext&gt;</a> ctx)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;IFso&gt;</a> <span class="keywordtype">object</span> = std::get&lt;0&gt;(ctx)-&gt;Get(m_hash);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        sp&lt;IFso&gt; <span class="keywordtype">object</span> = std::get&lt;0&gt;(ctx)-&gt;Get(m_hash);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classllama_1_1p.html">p&lt;T&gt;</a> subobject = <span class="keywordtype">object</span>-&gt;Cast&lt;T&gt;(*std::get&lt;1&gt;(ctx));</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp&lt;T&gt;</a>{object, subobject.<a class="code" href="classllama_1_1p.html#a3d944981de5af048c22d7c430e3604ec">data</a>()}; <span class="comment">// 特殊的构造函数，新的sp共享计数且指向子对象</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> sp&lt;T&gt;{object, subobject.data()}; <span class="comment">// 特殊的构造函数，新的sp共享计数且指向子对象</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1DelayedPointer.html#a86fbc827b7cfd7ef827dfbd9ba4e5cfc">   37</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;<a class="code" href="classllama_1_1fso_1_1DelayedPointer.html#a86fbc827b7cfd7ef827dfbd9ba4e5cfc">GetHashRef</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> Hash &amp;GetHashRef()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">    </span>{</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> m_hash;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1DelayedPointer.html#abce4c2f46c730a24ba3b6f7e28bc6aff">   42</a></span>&#160;    <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;<a class="code" href="classllama_1_1fso_1_1DelayedPointer.html#abce4c2f46c730a24ba3b6f7e28bc6aff">GetHashRef</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Hash &amp;GetHashRef()</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> m_hash;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> m_hash;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Hash m_hash;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace fso</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespacellama.html#a148db98847fe72d2bf0061dfe8ab58f0">   53</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">using</span> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">dp</a> = <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">fso::DelayedPointer&lt;T&gt;</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">using</span> <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">dp</a> = <a class="code" href="classllama_1_1fso_1_1DelayedPointer.html">fso::DelayedPointer&lt;T&gt;</a>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">// namespace llama</span></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1DelayedPointer_html"><div class="ttname"><a href="classllama_1_1fso_1_1DelayedPointer.html">llama::fso::DelayedPointer</a></div><div class="ttdef"><b>Definition:</b> <a href="dp_8h_source.html#l00019">dp.h:20</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1DelayedPointer_html_a1677f5e4ea94cb9c05cdf4d0a68d3f9b"><div class="ttname"><a href="classllama_1_1fso_1_1DelayedPointer.html#a1677f5e4ea94cb9c05cdf4d0a68d3f9b">llama::fso::DelayedPointer::Lock</a></div><div class="ttdeci">sp&lt; T &gt; Lock(mp&lt; ICache, RttiContext &gt; ctx) const</div><div class="ttdef"><b>Definition:</b> <a href="dp_8h_source.html#l00030">dp.h:30</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1DelayedPointer_html_a82b67c8043b5c725ec2308950152d1ff"><div class="ttname"><a href="classllama_1_1fso_1_1DelayedPointer.html#a82b67c8043b5c725ec2308950152d1ff">llama::fso::DelayedPointer::DelayedPointer</a></div><div class="ttdeci">DelayedPointer(Hash hash)</div><div class="ttdef"><b>Definition:</b> <a href="dp_8h_source.html#l00026">dp.h:26</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1DelayedPointer_html_a86fbc827b7cfd7ef827dfbd9ba4e5cfc"><div class="ttname"><a href="classllama_1_1fso_1_1DelayedPointer.html#a86fbc827b7cfd7ef827dfbd9ba4e5cfc">llama::fso::DelayedPointer::GetHashRef</a></div><div class="ttdeci">const Hash &amp; GetHashRef() const</div><div class="ttdef"><b>Definition:</b> <a href="dp_8h_source.html#l00037">dp.h:37</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1DelayedPointer_html_a8b55fb08f569359c02de299c17a1cddf"><div class="ttname"><a href="classllama_1_1fso_1_1DelayedPointer.html#a8b55fb08f569359c02de299c17a1cddf">llama::fso::DelayedPointer::DelayedPointer</a></div><div class="ttdeci">DelayedPointer()</div><div class="ttdef"><b>Definition:</b> <a href="dp_8h_source.html#l00022">dp.h:22</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1DelayedPointer_html_abce4c2f46c730a24ba3b6f7e28bc6aff"><div class="ttname"><a href="classllama_1_1fso_1_1DelayedPointer.html#abce4c2f46c730a24ba3b6f7e28bc6aff">llama::fso::DelayedPointer::GetHashRef</a></div><div class="ttdeci">Hash &amp; GetHashRef()</div><div class="ttdef"><b>Definition:</b> <a href="dp_8h_source.html#l00042">dp.h:42</a></div></div>
-<div class="ttc" id="aclassllama_1_1mp_html"><div class="ttname"><a href="classllama_1_1mp.html">llama::mp</a></div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00379">pointers.h:380</a></div></div>
+<div class="ttc" id="aclassllama_1_1mp_html"><div class="ttname"><a href="classllama_1_1mp.html">llama::mp</a></div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00385">pointers.h:386</a></div></div>
 <div class="ttc" id="aclassllama_1_1p_html"><div class="ttname"><a href="classllama_1_1p.html">llama::p</a></div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00021">pointers.h:22</a></div></div>
-<div class="ttc" id="aclassllama_1_1p_html_a3d944981de5af048c22d7c430e3604ec"><div class="ttname"><a href="classllama_1_1p.html#a3d944981de5af048c22d7c430e3604ec">llama::p::data</a></div><div class="ttdeci">T * data() const</div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00094">pointers.h:94</a></div></div>
-<div class="ttc" id="afso_8h_html"><div class="ttname"><a href="fso_8h.html">fso.h</a></div></div>
-<div class="ttc" id="ahash_8h_html"><div class="ttname"><a href="hash_8h.html">hash.h</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
-<div class="ttc" id="anamespacellama_html_a4a4f341ffdf8fca412c75f1f105fd23c"><div class="ttname"><a href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">llama::Hash</a></div><div class="ttdeci">std::array&lt; byte, 20 &gt; Hash</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00008">hash.h:8</a></div></div>
-<div class="ttc" id="anamespacellama_html_a6835c17d548bf77e8023ddfc4373d606"><div class="ttname"><a href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">llama::sp</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; sp</div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00365">pointers.h:365</a></div></div>
-<div class="ttc" id="apointers_8h_html"><div class="ttname"><a href="pointers_8h.html">pointers.h</a></div></div>
-<div class="ttc" id="artti_8h_html"><div class="ttname"><a href="rtti_8h.html">rtti.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><a class="el" href="dp_8h.html">dp.h</a></li>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><b>dp.h</b></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

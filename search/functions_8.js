@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['llama_5fapi_289',['LLAMA_API',['../classllama_1_1fso_1_1Serializer.html#a9d3c80eb4ef8461a6ae36152fc151949',1,'llama::fso::Serializer::LLAMA_API()'],['../classllama_1_1fso_1_1IFso.html#aa47382a10752aa05bdab2653029cc940',1,'llama::fso::IFso::LLAMA_API()'],['../classllama_1_1fso_1_1Deserializer.html#a14d11ad0d11b277f3c7765780bbfc3b3',1,'llama::fso::Deserializer::LLAMA_API()'],['../classllama_1_1RttiContext.html#a8fc1942d28854335ede369732b988632',1,'llama::RttiContext::LLAMA_API()'],['../namespacellama_1_1fso.html#aa64c2775ea4921f6941d9381b1b0c671',1,'llama::fso::LLAMA_API()'],['../namespacellama.html#ae3b02608103db956cf49fa00dce9954a',1,'llama::LLAMA_API(base) std']]],
-  ['llama_5frtti_5fargcheck_290',['LLAMA_RTTI_ArgCheck',['../namespacellama.html#ac5f72957df9cd47c2ffe74c9e21bf4a2',1,'llama']]],
-  ['lock_291',['Lock',['../classllama_1_1fso_1_1DelayedPointer.html#a1677f5e4ea94cb9c05cdf4d0a68d3f9b',1,'llama::fso::DelayedPointer']]],
-  ['lru_5fcache_292',['lru_cache',['../classllama_1_1lru__cache.html#a2de6712a6666e70c3b02bd389d1e3e9e',1,'llama::lru_cache']]]
+  ['operator_20bool_113',['operator bool',['../classllama_1_1np.html#a06464669622dc4c64da42fd54ab5b13f',1,'llama::np']]],
+  ['operator_20t_2a_114',['operator T*',['../classllama_1_1p.html#a6a7e9a047fcb28380f107e9de494d93a',1,'llama::p::operator T*()'],['../classllama_1_1np.html#acf8248af0b9c78d070d20d4b23df5348',1,'llama::np::operator T*()']]],
+  ['operator_2a_115',['operator*',['../classllama_1_1p.html#aca63d5fa186d0cbb7b2dde7384b26359',1,'llama::p::operator*()'],['../classllama_1_1np.html#a001c8cf3b9095b4e5a07c11b5c008aec',1,'llama::np::operator*() const']]],
+  ['operator_2d_3e_116',['operator-&gt;',['../classllama_1_1np.html#a3986b233edd9375b6d38ba01700983df',1,'llama::np']]],
+  ['operator_5b_5d_117',['operator[]',['../classllama_1_1p.html#a4097e309aa25f998901ee49859f023ca',1,'llama::p::operator[]()'],['../classllama_1_1np.html#af7c75d36ea437b195f113ac76e5fdd21',1,'llama::np::operator[]()']]],
+  ['overflow_118',['overflow',['../classllama_1_1fso_1_1Cache.html#ae0a3070ceeb341ef88b1f608e71ac66f',1,'llama::fso::Cache::overflow()'],['../classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825',1,'llama::lru_cache::overflow()']]]
 ];

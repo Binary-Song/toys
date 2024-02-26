@@ -95,31 +95,50 @@ $(document).ready(function(){initNavTree('classllama_1_1lru__cache.html',''); in
 </div><!--header-->
 <div class="contents">
 
+<p>一个简单的 LRU 缓存。  
+ <a href="classllama_1_1lru__cache.html#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="lru__cache_8h_source.html">lru_cache.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:aea1741992aace5a7f7a72307d4d80616"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; key_t, value_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#aea1741992aace5a7f7a72307d4d80616">key_value_pair_t</a></td></tr>
+<tr class="memitem:aea1741992aace5a7f7a72307d4d80616"><td class="memItemLeft" align="right" valign="top"><a id="aea1741992aace5a7f7a72307d4d80616"></a>
+typedef std::pair&lt; key_t, value_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>key_value_pair_t</b></td></tr>
 <tr class="separator:aea1741992aace5a7f7a72307d4d80616"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc64fdf8d5aa41183b7979731332e7fe"><td class="memItemLeft" align="right" valign="top">typedef std::list&lt; <a class="el" href="classllama_1_1lru__cache.html#aea1741992aace5a7f7a72307d4d80616">key_value_pair_t</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#abc64fdf8d5aa41183b7979731332e7fe">list_iterator_t</a></td></tr>
+<tr class="memitem:abc64fdf8d5aa41183b7979731332e7fe"><td class="memItemLeft" align="right" valign="top"><a id="abc64fdf8d5aa41183b7979731332e7fe"></a>
+typedef std::list&lt; key_value_pair_t &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><b>list_iterator_t</b></td></tr>
 <tr class="separator:abc64fdf8d5aa41183b7979731332e7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a2de6712a6666e70c3b02bd389d1e3e9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a2de6712a6666e70c3b02bd389d1e3e9e">lru_cache</a> (size_t max_size)</td></tr>
+<tr class="memitem:a2de6712a6666e70c3b02bd389d1e3e9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a2de6712a6666e70c3b02bd389d1e3e9e">lru_cache</a> (size_t <a class="el" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a>)</td></tr>
 <tr class="separator:a2de6712a6666e70c3b02bd389d1e3e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b64555be28a636f0d70d9a74bc28d1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a4b64555be28a636f0d70d9a74bc28d1d">put</a> (const key_t &amp;key, const value_t &amp;value)</td></tr>
+<tr class="memitem:a4b64555be28a636f0d70d9a74bc28d1d"><td class="memItemLeft" align="right" valign="top"><a id="a4b64555be28a636f0d70d9a74bc28d1d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a4b64555be28a636f0d70d9a74bc28d1d">put</a> (const key_t &amp;key, const value_t &amp;value)</td></tr>
+<tr class="memdesc:a4b64555be28a636f0d70d9a74bc28d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">向缓存中插入键值对。 <br /></td></tr>
 <tr class="separator:a4b64555be28a636f0d70d9a74bc28d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57d8ca35315ff1e70f8b5b56071f7d3a"><td class="memItemLeft" align="right" valign="top">value_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a57d8ca35315ff1e70f8b5b56071f7d3a">get</a> (const key_t &amp;key)</td></tr>
+<tr class="memitem:a57d8ca35315ff1e70f8b5b56071f7d3a"><td class="memItemLeft" align="right" valign="top"><a id="a57d8ca35315ff1e70f8b5b56071f7d3a"></a>
+value_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a57d8ca35315ff1e70f8b5b56071f7d3a">get</a> (const key_t &amp;key)</td></tr>
+<tr class="memdesc:a57d8ca35315ff1e70f8b5b56071f7d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">给定 key ，获得 value 。 <br /></td></tr>
 <tr class="separator:a57d8ca35315ff1e70f8b5b56071f7d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c3d531583f770aa60211035af6e96ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a3c3d531583f770aa60211035af6e96ae">exists</a> (const key_t &amp;key) const</td></tr>
+<tr class="memitem:a3c3d531583f770aa60211035af6e96ae"><td class="memItemLeft" align="right" valign="top"><a id="a3c3d531583f770aa60211035af6e96ae"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a3c3d531583f770aa60211035af6e96ae">exists</a> (const key_t &amp;key) const</td></tr>
+<tr class="memdesc:a3c3d531583f770aa60211035af6e96ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">key 是否存在。 <br /></td></tr>
 <tr class="separator:a3c3d531583f770aa60211035af6e96ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c81e09f72a6c8fa5fa634bc7174ffc2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a7c81e09f72a6c8fa5fa634bc7174ffc2">size</a> () const</td></tr>
+<tr class="memitem:a7c81e09f72a6c8fa5fa634bc7174ffc2"><td class="memItemLeft" align="right" valign="top"><a id="a7c81e09f72a6c8fa5fa634bc7174ffc2"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a7c81e09f72a6c8fa5fa634bc7174ffc2">size</a> () const</td></tr>
+<tr class="memdesc:a7c81e09f72a6c8fa5fa634bc7174ffc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前缓存中键值对数量。 <br /></td></tr>
 <tr class="separator:a7c81e09f72a6c8fa5fa634bc7174ffc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82a44e24eee4f00e6a964273216d243"><td class="memItemLeft" align="right" valign="top"><a id="af82a44e24eee4f00e6a964273216d243"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a> () const</td></tr>
+<tr class="memdesc:af82a44e24eee4f00e6a964273216d243"><td class="mdescLeft">&#160;</td><td class="mdescRight">缓存最多能装下几个键值对。 <br /></td></tr>
+<tr class="separator:af82a44e24eee4f00e6a964273216d243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private 成员函数</h2></td></tr>
-<tr class="memitem:a6b6a9cdab62d698e60207423c8b77825"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825">overflow</a> (const key_t &amp;key, const value_t &amp;value)</td></tr>
+<tr class="memitem:a6b6a9cdab62d698e60207423c8b77825"><td class="memItemLeft" align="right" valign="top"><a id="a6b6a9cdab62d698e60207423c8b77825"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825">overflow</a> (const key_t &amp;key, const value_t &amp;value)</td></tr>
+<tr class="memdesc:a6b6a9cdab62d698e60207423c8b77825"><td class="mdescLeft">&#160;</td><td class="mdescRight">重写虚函数 <a class="el" href="classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825" title="重写虚函数 lru_cache::overflow 来自定义丢弃行为。默认无操作。">lru_cache::overflow</a> 来自定义丢弃行为。默认无操作。 <br /></td></tr>
 <tr class="separator:a6b6a9cdab62d698e60207423c8b77825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96608e5da686d23028aa097481417652"><td class="memItemLeft" align="right" valign="top">virtual value_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652">miss</a> (const key_t &amp;key)</td></tr>
 <tr class="separator:a96608e5da686d23028aa097481417652"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,46 +147,11 @@ Private 成员函数</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename key_t, typename value_t&gt;<br />
 class llama::lru_cache&lt; key_t, value_t &gt;</h3>
 
+<p>一个简单的 LRU 缓存。 </p>
+<p>LRU 缓存是一个类似 map 的数据结构，可以存取键值对。 用 <a class="el" href="classllama_1_1lru__cache.html#a4b64555be28a636f0d70d9a74bc28d1d" title="向缓存中插入键值对。">lru_cache::put</a> 向缓存中插入键值对时，如果超过缓存的最大容量，则 缓存会将最久没访问的键值对丢弃。重写虚函数 <a class="el" href="classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825" title="重写虚函数 lru_cache::overflow 来自定义丢弃行为。默认无操作。">lru_cache::overflow</a> 来自定义丢弃行为。 用 <a class="el" href="classllama_1_1lru__cache.html#a57d8ca35315ff1e70f8b5b56071f7d3a" title="给定 key ，获得 value 。">lru_cache::get</a> 访问键值对。访问需要 key 。如果缓存中不包含这个 key ， 则虚函数 <a class="el" href="classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652">lru_cache::miss</a> 被调用，默认行为是抛出异常。 </p>
 
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00051">51</a> 行定义.</p>
-</div><h2 class="groupheader">成员类型定义说明</h2>
-<a id="aea1741992aace5a7f7a72307d4d80616"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea1741992aace5a7f7a72307d4d80616">&#9670;&nbsp;</a></span>key_value_pair_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::pair&lt;key_t, value_t&gt; <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::<a class="el" href="classllama_1_1lru__cache.html#aea1741992aace5a7f7a72307d4d80616">key_value_pair_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00054">54</a> 行定义.</p>
-
-</div>
-</div>
-<a id="abc64fdf8d5aa41183b7979731332e7fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc64fdf8d5aa41183b7979731332e7fe">&#9670;&nbsp;</a></span>list_iterator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::list&lt;<a class="el" href="classllama_1_1lru__cache.html#aea1741992aace5a7f7a72307d4d80616">key_value_pair_t</a>&gt;::iterator <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::<a class="el" href="classllama_1_1lru__cache.html#abc64fdf8d5aa41183b7979731332e7fe">list_iterator_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00055">55</a> 行定义.</p>
-
-</div>
-</div>
-<h2 class="groupheader">构造及析构函数说明</h2>
+<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00057">57</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a2de6712a6666e70c3b02bd389d1e3e9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2de6712a6666e70c3b02bd389d1e3e9e">&#9670;&nbsp;</a></span>lru_cache()</h2>
 
@@ -193,74 +177,18 @@ template&lt;typename key_t , typename value_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>构造。 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max_size</td><td>缓存最多能装下几个键值对。 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00057">57</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00065">65</a> 行定义.</p>
 
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a3c3d531583f770aa60211035af6e96ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c3d531583f770aa60211035af6e96ae">&#9670;&nbsp;</a></span>exists()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::exists </td>
-          <td>(</td>
-          <td class="paramtype">const key_t &amp;&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00098">98</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a57d8ca35315ff1e70f8b5b56071f7d3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57d8ca35315ff1e70f8b5b56071f7d3a">&#9670;&nbsp;</a></span>get()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_t <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::get </td>
-          <td>(</td>
-          <td class="paramtype">const key_t &amp;&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00082">82</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="lru__cache_8h_source.html#l00113">llama::lru_cache&lt; key_t, value_t &gt;::miss()</a> , 以及 <a class="el" href="lru__cache_8h_source.html#l00061">llama::lru_cache&lt; key_t, value_t &gt;::put()</a>.</p>
-
-</div>
-</div>
 <a id="a96608e5da686d23028aa097481417652"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96608e5da686d23028aa097481417652">&#9670;&nbsp;</a></span>miss()</h2>
 
@@ -286,127 +214,13 @@ template&lt;typename key_t , typename value_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>重写虚函数 <a class="el" href="classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652">lru_cache::miss</a> 来自定义找不到 key 时的行为。 如果能从其他地方找到这个 key 的 value ，就返回它。 默认抛 <a class="el" href="classllama_1_1Exception.html" title="IException 的实现类。内部保存异常信息字符串。">Exception</a> 。 </p>
 
 <p>被 <a class="el" href="classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e">llama::fso::Cache</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00113">113</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00135">135</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="lru__cache_8h_source.html#l00082">llama::lru_cache&lt; key_t, value_t &gt;::get()</a>.</p>
-
-</div>
-</div>
-<a id="a6b6a9cdab62d698e60207423c8b77825"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b6a9cdab62d698e60207423c8b77825">&#9670;&nbsp;</a></span>overflow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::overflow </td>
-          <td>(</td>
-          <td class="paramtype">const key_t &amp;&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const value_t &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00109">109</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="lru__cache_8h_source.html#l00061">llama::lru_cache&lt; key_t, value_t &gt;::put()</a>.</p>
-
-</div>
-</div>
-<a id="a4b64555be28a636f0d70d9a74bc28d1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b64555be28a636f0d70d9a74bc28d1d">&#9670;&nbsp;</a></span>put()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::put </td>
-          <td>(</td>
-          <td class="paramtype">const key_t &amp;&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const value_t &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00061">61</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="lru__cache_8h_source.html#l00109">llama::lru_cache&lt; key_t, value_t &gt;::overflow()</a>.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="lru__cache_8h_source.html#l00082">llama::lru_cache&lt; key_t, value_t &gt;::get()</a>.</p>
-
-</div>
-</div>
-<a id="a7c81e09f72a6c8fa5fa634bc7174ffc2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c81e09f72a6c8fa5fa634bc7174ffc2">&#9670;&nbsp;</a></span>size()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename key_t , typename value_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="classllama_1_1lru__cache.html">llama::lru_cache</a>&lt; key_t, value_t &gt;::size </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="lru__cache_8h_source.html">lru_cache.h</a> 第 <a class="el" href="lru__cache_8h_source.html#l00103">103</a> 行定义.</p>
+<p class="reference">被这些函数引用 <a class="el" href="lru__cache_8h_source.html#l00092">llama::lru_cache&lt; key_t, value_t &gt;::get()</a>.</p>
 
 </div>
 </div>
@@ -418,7 +232,7 @@ template&lt;typename key_t , typename value_t &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="classllama_1_1lru__cache.html">lru_cache</a></li>
+    <li class="navelem"><b>llama</b></li><li class="navelem"><a class="el" href="classllama_1_1lru__cache.html">lru_cache</a></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -89,38 +89,36 @@ $(document).ready(function(){initNavTree('exception_8h_source.html',''); initRes
 <div class="title">exception.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="exception_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1IException.html">IException</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html#a4d9543f2b803361e73138671fdc49530">    9</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classllama_1_1IException.html#a4d9543f2b803361e73138671fdc49530">~IException</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1IException.html">IException</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">   12</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">GetMessage_IException</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classllama_1_1IException.html">IException</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">   15</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">GetMessage</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">GetMessage_IException</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="aclassllama_1_1IException_html"><div class="ttname"><a href="classllama_1_1IException.html">llama::IException</a></div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00005">exception.h:6</a></div></div>
-<div class="ttc" id="aclassllama_1_1IException_html_a4d9543f2b803361e73138671fdc49530"><div class="ttname"><a href="classllama_1_1IException.html#a4d9543f2b803361e73138671fdc49530">llama::IException::~IException</a></div><div class="ttdeci">virtual ~IException()=default</div></div>
-<div class="ttc" id="aclassllama_1_1IException_html_aa757286f7a99903e39124f4eab6c0f26"><div class="ttname"><a href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">llama::IException::GetMessage</a></div><div class="ttdeci">const char * GetMessage() const</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00015">exception.h:15</a></div></div>
-<div class="ttc" id="aclassllama_1_1IException_html_aedc52d85629261dd087c52794997928e"><div class="ttname"><a href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">llama::IException::GetMessage_IException</a></div><div class="ttdeci">virtual const char * GetMessage_IException() const =0</div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">   16</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">GetMessage_IException</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">   20</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">GetMessage</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">GetMessage_IException</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <span class="comment">// namespace llama</span></div>
+<div class="ttc" id="aclassllama_1_1IException_html"><div class="ttname"><a href="classllama_1_1IException.html">llama::IException</a></div><div class="ttdoc">异常对象。</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00008">exception.h:9</a></div></div>
+<div class="ttc" id="aclassllama_1_1IException_html_aa757286f7a99903e39124f4eab6c0f26"><div class="ttname"><a href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">llama::IException::GetMessage</a></div><div class="ttdeci">const char * GetMessage() const</div><div class="ttdoc">返回异常的说明信息</div><div class="ttdef"><b>Definition:</b> <a href="exception_8h_source.html#l00020">exception.h:20</a></div></div>
+<div class="ttc" id="aclassllama_1_1IException_html_aedc52d85629261dd087c52794997928e"><div class="ttname"><a href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">llama::IException::GetMessage_IException</a></div><div class="ttdeci">virtual const char * GetMessage_IException() const =0</div><div class="ttdoc">返回异常的说明信息</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_5b74b20e1858d41934a8e8bc5aa2df6e.html">include</a></li><li class="navelem"><a class="el" href="dir_ff36a88c3985189e92b7f39982288838.html">base</a></li><li class="navelem"><a class="el" href="dir_5cf9f2eb18198102c2fbb20f1ce6bccd.html">interfaces</a></li><li class="navelem"><a class="el" href="exception_8h.html">exception.h</a></li>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_5b74b20e1858d41934a8e8bc5aa2df6e.html">include</a></li><li class="navelem"><a class="el" href="dir_ff36a88c3985189e92b7f39982288838.html">base</a></li><li class="navelem"><a class="el" href="dir_5cf9f2eb18198102c2fbb20f1ce6bccd.html">interfaces</a></li><li class="navelem"><b>exception.h</b></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

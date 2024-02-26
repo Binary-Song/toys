@@ -94,6 +94,9 @@ $(document).ready(function(){initNavTree('classllama_1_1fso_1_1Cache.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 对象的键值对数据库。  
+ <a href="classllama_1_1fso_1_1Cache.html#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cache_8h_source.html">cache.h</a>&gt;</code></p>
 <div class="dynheader">
 类 llama::fso::Cache 继承关系图:</div>
@@ -101,109 +104,37 @@ $(document).ready(function(){initNavTree('classllama_1_1fso_1_1Cache.html',''); 
  <div class="center">
   <img src="classllama_1_1fso_1_1Cache.png" usemap="#llama::fso::Cache_map" alt=""/>
   <map id="llama::fso::Cache_map" name="llama::fso::Cache_map">
-<area href="classllama_1_1fso_1_1ICache.html" alt="llama::fso::ICache" shape="rect" coords="0,0,227,24"/>
+<area href="classllama_1_1fso_1_1ICache.html" title="见 Cache。" alt="llama::fso::ICache" shape="rect" coords="0,0,227,24"/>
 <area href="classllama_1_1lru__cache.html" alt="llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;" shape="rect" coords="237,0,464,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a83c73d93fc8838c6343f3054d64d5f80"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#a83c73d93fc8838c6343f3054d64d5f80">Cache</a> (<a class="el" href="classllama_1_1p.html">p</a>&lt; <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> &gt; ctx, size_t max_size)</td></tr>
+<tr class="memitem:a83c73d93fc8838c6343f3054d64d5f80"><td class="memItemLeft" align="right" valign="top"><a id="a83c73d93fc8838c6343f3054d64d5f80"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Cache</b> (<a class="el" href="classllama_1_1p.html">p</a>&lt; <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> &gt; ctx, size_t <a class="el" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a>)</td></tr>
 <tr class="separator:a83c73d93fc8838c6343f3054d64d5f80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classllama_1_1fso_1_1ICache"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classllama_1_1fso_1_1ICache')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classllama_1_1fso_1_1ICache.html">llama::fso::ICache</a></td></tr>
-<tr class="memitem:a2849960d4a3a6d357736c432b901191a inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1ICache.html#a2849960d4a3a6d357736c432b901191a">~ICache</a> ()=default</td></tr>
-<tr class="separator:a2849960d4a3a6d357736c432b901191a inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa5ad67e4598a01378e1ea5ff510a5f0 inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1ICache.html#afa5ad67e4598a01378e1ea5ff510a5f0">Get</a> (const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;hash)</td></tr>
+<tr class="memitem:afa5ad67e4598a01378e1ea5ff510a5f0 inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memItemLeft" align="right" valign="top"><a id="afa5ad67e4598a01378e1ea5ff510a5f0"></a>
+sp&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Get</b> (const Hash &amp;hash)</td></tr>
 <tr class="separator:afa5ad67e4598a01378e1ea5ff510a5f0 inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace55ed1c7bc0877032353d6ddea75498 inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1ICache.html#ace55ed1c7bc0877032353d6ddea75498">Put</a> (<a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; obj)</td></tr>
+<tr class="memitem:ace55ed1c7bc0877032353d6ddea75498 inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memItemLeft" align="right" valign="top"><a id="ace55ed1c7bc0877032353d6ddea75498"></a>
+Hash&#160;</td><td class="memItemRight" valign="bottom"><b>Put</b> (sp&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; obj)</td></tr>
 <tr class="separator:ace55ed1c7bc0877032353d6ddea75498 inherit pub_methods_classllama_1_1fso_1_1ICache"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private 成员函数</h2></td></tr>
-<tr class="memitem:ae4bc019c35bd2d2b80271d042a459721"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#ae4bc019c35bd2d2b80271d042a459721">Put_fso_ICache</a> (<a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; obj) override</td></tr>
-<tr class="separator:ae4bc019c35bd2d2b80271d042a459721"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4690288787dc04dd561328fc54ad569e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#a4690288787dc04dd561328fc54ad569e">Get_fso_ICache</a> (const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;hash) override</td></tr>
-<tr class="separator:a4690288787dc04dd561328fc54ad569e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0a3070ceeb341ef88b1f608e71ac66f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#ae0a3070ceeb341ef88b1f608e71ac66f">overflow</a> (const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;key, const <a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; &amp;value) override</td></tr>
+<tr class="memitem:ae0a3070ceeb341ef88b1f608e71ac66f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#ae0a3070ceeb341ef88b1f608e71ac66f">overflow</a> (const Hash &amp;key, const sp&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; &amp;value) override</td></tr>
 <tr class="separator:ae0a3070ceeb341ef88b1f608e71ac66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8b334da18b1d4add136542d99a9679e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e">miss</a> (const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;key) override</td></tr>
+<tr class="memitem:ac8b334da18b1d4add136542d99a9679e"><td class="memItemLeft" align="right" valign="top">virtual sp&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e">miss</a> (const Hash &amp;key) override</td></tr>
 <tr class="separator:ac8b334da18b1d4add136542d99a9679e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00013">13</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="a83c73d93fc8838c6343f3054d64d5f80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83c73d93fc8838c6343f3054d64d5f80">&#9670;&nbsp;</a></span>Cache()</h2>
+<div class="textblock"><p><a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 对象的键值对数据库。 </p>
+<p>使用上，类似从 Hash 键映射到 <a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 值的 map 。区别是 存放（ ICache::Get ）时不需要指定键类型 Hash ，因为 Hash 可以直接从值类型 <a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 算出来。 存放后会将 <a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 对象的哈希返回出来。 用 ICache::Put 可以将之前存入的对象取回。 重写了 <a class="el" href="classllama_1_1lru__cache.html" title="一个简单的 LRU 缓存。">lru_cache</a> 的虚函数，用磁盘做二级缓存： 在溢出时将 <a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 序列化并写入文件。在找不到 key 时，会从文件反序列化出一个 <a class="el" href="classllama_1_1fso_1_1IFso.html" title="实现类必须有 RTTI ，否则无法反序列化。">IFso</a> 。 请确保存入的对象具有 LLAMA_RTTI 。否则将无法反序列化。 和 <a class="el" href="classllama_1_1fso_1_1DelayedPointer.html">DelayedPointer</a> 一起使用，实现无感知的对象懒加载。 </p>
 
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">llama::fso::Cache::Cache </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classllama_1_1p.html">p</a>&lt; <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> &gt;&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>max_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00017">17</a> 行定义.</p>
-
-</div>
-</div>
-<h2 class="groupheader">成员函数说明</h2>
-<a id="a4690288787dc04dd561328fc54ad569e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4690288787dc04dd561328fc54ad569e">&#9670;&nbsp;</a></span>Get_fso_ICache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt;<a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a>&gt; llama::fso::Cache::Get_fso_ICache </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;&#160;</td>
-          <td class="paramname"><em>hash</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>实现了 <a class="el" href="classllama_1_1fso_1_1ICache.html#ac11a743f44e4f5ddda7ee803f8184b0c">llama::fso::ICache</a>.</p>
-
-<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00029">29</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="lru__cache_8h_source.html#l00082">llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;::get()</a>.</p>
-
-</div>
-</div>
+<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00022">22</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
 <a id="ac8b334da18b1d4add136542d99a9679e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8b334da18b1d4add136542d99a9679e">&#9670;&nbsp;</a></span>miss()</h2>
 
@@ -214,9 +145,9 @@ Private 成员函数</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt;<a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a>&gt; llama::fso::Cache::miss </td>
+          <td class="memname">virtual sp&lt;<a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a>&gt; llama::fso::Cache::miss </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;&#160;</td>
+          <td class="paramtype">const Hash &amp;&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
           <td></td>
         </tr>
@@ -227,12 +158,11 @@ Private 成员函数</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>重写虚函数 <a class="el" href="classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652">lru_cache::miss</a> 来自定义找不到 key 时的行为。 如果能从其他地方找到这个 key 的 value ，就返回它。 默认抛 <a class="el" href="classllama_1_1Exception.html" title="IException 的实现类。内部保存异常信息字符串。">Exception</a> 。 </p>
 
 <p>重载 <a class="el" href="classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652">llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00044">44</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="hash_8h_source.html#l00010">llama::HashToString()</a>.</p>
+<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00053">53</a> 行定义.</p>
 
 </div>
 </div>
@@ -248,13 +178,13 @@ Private 成员函数</h2></td></tr>
         <tr>
           <td class="memname">virtual void llama::fso::Cache::overflow </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> &amp;&#160;</td>
+          <td class="paramtype">const Hash &amp;&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const sp&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -271,41 +201,7 @@ Private 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>可以假定 key 和 value.GetHash() 确实一致</p>
 
-<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00034">34</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="hash_8h_source.html#l00010">llama::HashToString()</a>.</p>
-
-</div>
-</div>
-<a id="ae4bc019c35bd2d2b80271d042a459721"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4bc019c35bd2d2b80271d042a459721">&#9670;&nbsp;</a></span>Put_fso_ICache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="namespacellama.html#a4a4f341ffdf8fca412c75f1f105fd23c">Hash</a> llama::fso::Cache::Put_fso_ICache </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacellama.html#a6835c17d548bf77e8023ddfc4373d606">sp</a>&lt; <a class="el" href="classllama_1_1fso_1_1IFso.html">IFso</a> &gt;&#160;</td>
-          <td class="paramname"><em>obj</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>实现了 <a class="el" href="classllama_1_1fso_1_1ICache.html#a77f71da643c59851f1dda43ebd45e9e8">llama::fso::ICache</a>.</p>
-
-<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00022">22</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="lru__cache_8h_source.html#l00061">llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;::put()</a>.</p>
+<p class="definition">在文件 <a class="el" href="cache_8h_source.html">cache.h</a> 第 <a class="el" href="cache_8h_source.html#l00043">43</a> 行定义.</p>
 
 </div>
 </div>
@@ -317,7 +213,7 @@ Private 成员函数</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="namespacellama_1_1fso.html">fso</a></li><li class="navelem"><a class="el" href="classllama_1_1fso_1_1Cache.html">Cache</a></li>
+    <li class="navelem"><b>llama</b></li><li class="navelem"><b>fso</b></li><li class="navelem"><a class="el" href="classllama_1_1fso_1_1Cache.html">Cache</a></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

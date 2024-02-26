@@ -1,7 +1,7 @@
 var annotated_dup =
 [
-    [ "llama", "namespacellama.html", [
-      [ "fso", "namespacellama_1_1fso.html", [
+    [ "llama", null, [
+      [ "fso", null, [
         [ "Serializer", "classllama_1_1fso_1_1Serializer.html", "classllama_1_1fso_1_1Serializer" ],
         [ "NumericProperty", "classllama_1_1fso_1_1NumericProperty.html", "classllama_1_1fso_1_1NumericProperty" ],
         [ "StringProperty", "classllama_1_1fso_1_1StringProperty.html", "classllama_1_1fso_1_1StringProperty" ],

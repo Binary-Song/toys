@@ -89,19 +89,19 @@ $(document).ready(function(){initNavTree('rtti_8cpp_source.html',''); initResiza
 <div class="title">rtti.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="rtti_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rtti_8h.html">base/rtti.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="interfaces_2rtti_8h.html">base/interfaces/rtti.h</a>&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;base/rtti.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;base/interfaces/rtti.h&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;RttiContext &amp;RttiContext::GetDefaultInstance()</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">static</span> <a class="code" href="classllama_1_1RttiContext.html#af3663172a26665cf863545e065a957cd">RttiContext</a> context{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">static</span> RttiContext context{<span class="keyword">false</span>};</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">return</span> context;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;up&lt;IRtti&gt; RttiContext::Instantiate(<a class="code" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a> typeId)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;up&lt;IRtti&gt; RttiContext::Instantiate(TypeId typeId)</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
@@ -121,17 +121,12 @@ $(document).ready(function(){initNavTree('rtti_8cpp_source.html',''); initResiza
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="aclassllama_1_1RttiContext_html_af3663172a26665cf863545e065a957cd"><div class="ttname"><a href="classllama_1_1RttiContext.html#af3663172a26665cf863545e065a957cd">llama::RttiContext::RttiContext</a></div><div class="ttdeci">RttiContext(bool fromDefaultInstance=true)</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00098">rtti.h:98</a></div></div>
-<div class="ttc" id="ainterfaces_2rtti_8h_html"><div class="ttname"><a href="interfaces_2rtti_8h.html">rtti.h</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
-<div class="ttc" id="anamespacellama_html_a37fbbf8b527f07494eeb97a720b04e50"><div class="ttname"><a href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">llama::TypeId</a></div><div class="ttdeci">std::string_view TypeId</div><div class="ttdoc">类型ID，一个静态的字符串。比较时比较其内容而不是地址。</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00078">rtti.h:78</a></div></div>
-<div class="ttc" id="artti_8h_html"><div class="ttname"><a href="rtti_8h.html">rtti.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_efc93f6f07b7e8cf5b2ba4c2daed13c0.html">src</a></li><li class="navelem"><a class="el" href="rtti_8cpp.html">rtti.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_efc93f6f07b7e8cf5b2ba4c2daed13c0.html">src</a></li><li class="navelem"><b>rtti.cpp</b></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

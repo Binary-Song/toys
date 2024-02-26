@@ -89,15 +89,15 @@ $(document).ready(function(){initNavTree('serializer_8h_source.html',''); initRe
 <div class="title">serializer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="serializer_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="exceptions_8h.html">base/exceptions.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="misc_8h.html">base/misc.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fso_8h.html">interface/fso.h</a>&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;base/exceptions.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;base/misc.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;interface/fso.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>fso</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
@@ -105,15 +105,15 @@ $(document).ready(function(){initNavTree('serializer_8h_source.html',''); initRe
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Serializer.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1Serializer.html">Serializer</a> : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html">IVisitor</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Serializer.html#a29c058347a70a9b053c60debdf9beb76">   17</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1Serializer.html#a29c058347a70a9b053c60debdf9beb76">Serializer</a>(<a class="code" href="classllama_1_1p.html">p&lt;std::ostream&gt;</a> stream) : m_stream(stream)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1Serializer.html">Serializer</a>(<a class="code" href="classllama_1_1p.html">p&lt;std::ostream&gt;</a> stream) : m_stream(stream)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Serializer.html#a9d3c80eb4ef8461a6ae36152fc151949">   21</a></span>&#160;    <a class="code" href="classllama_1_1fso_1_1Serializer.html#a9d3c80eb4ef8461a6ae36152fc151949">LLAMA_API</a>(fso) <span class="keywordtype">void</span> Execute(<a class="code" href="classllama_1_1RttiContext.html">RttiContext</a> &amp;context, <a class="code" href="classllama_1_1fso_1_1IFso.html">IFso</a> &amp;<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    LLAMA_API(fso) <span class="keywordtype">void</span> Execute(<a class="code" href="classllama_1_1RttiContext.html">RttiContext</a> &amp;context, <a class="code" href="classllama_1_1fso_1_1IFso.html">IFso</a> &amp;<span class="keywordtype">object</span>);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Serializer.html#aab2f0285f765b1d581c64567e9d81210">   23</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1Serializer.html#aab2f0285f765b1d581c64567e9d81210">SerializeProperty</a>(<a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html">IReadOnlyProperty</a> &amp;prop, std::ostream &amp;stream)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> SerializeProperty(<a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html">IReadOnlyProperty</a> &amp;prop, std::ostream &amp;stream)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::string value = prop.<a class="code" href="classllama_1_1fso_1_1IReadOnlyProperty.html#a3df68f59d63b8f2a840ee58ca339bf2a">GetValue</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::string value = prop.GetValue();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span> (value.size() &gt; std::numeric_limits&lt;uint32_t&gt;::max())</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">throw</span> EncodeFailure();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">// todo: Make Async!!! Make Safe!!!</span></div>
@@ -137,9 +137,9 @@ $(document).ready(function(){initNavTree('serializer_8h_source.html',''); initRe
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;encode failure&quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Serializer.html#a1a746eddb2376c6582d3a2ee85291a3d">   49</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1Serializer.html#a1a746eddb2376c6582d3a2ee85291a3d">Visit_fso_IVisitor</a>(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;prop)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Visit_fso_IVisitor(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;prop)<span class="keyword"> override</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1Serializer.html#aab2f0285f765b1d581c64567e9d81210">SerializeProperty</a>(prop, *m_stream);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> SerializeProperty(prop, *m_stream);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classllama_1_1p.html">p&lt;std::ostream&gt;</a> m_stream;</div>
@@ -147,29 +147,20 @@ $(document).ready(function(){initNavTree('serializer_8h_source.html',''); initRe
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">// namespace fso</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="aclassllama_1_1Exception_html"><div class="ttname"><a href="classllama_1_1Exception.html">llama::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8h_source.html#l00007">exceptions.h:8</a></div></div>
+<div class="ttc" id="aclassllama_1_1Exception_html"><div class="ttname"><a href="classllama_1_1Exception.html">llama::Exception</a></div><div class="ttdoc">IException 的实现类。内部保存异常信息字符串。</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8h_source.html#l00007">exceptions.h:8</a></div></div>
 <div class="ttc" id="aclassllama_1_1RttiContext_html"><div class="ttname"><a href="classllama_1_1RttiContext.html">llama::RttiContext</a></div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00092">rtti.h:93</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1IFso_html"><div class="ttname"><a href="classllama_1_1fso_1_1IFso.html">llama::fso::IFso</a></div><div class="ttdoc">实现类必须有 RTTI ，否则无法反序列化。</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00062">fso.h:63</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1IProperty_html"><div class="ttname"><a href="classllama_1_1fso_1_1IProperty.html">llama::fso::IProperty</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00025">fso.h:26</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1IReadOnlyProperty_html"><div class="ttname"><a href="classllama_1_1fso_1_1IReadOnlyProperty.html">llama::fso::IReadOnlyProperty</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00010">fso.h:11</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1IReadOnlyProperty_html_a3df68f59d63b8f2a840ee58ca339bf2a"><div class="ttname"><a href="classllama_1_1fso_1_1IReadOnlyProperty.html#a3df68f59d63b8f2a840ee58ca339bf2a">llama::fso::IReadOnlyProperty::GetValue</a></div><div class="ttdeci">std::string GetValue() const</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00015">fso.h:15</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html">llama::fso::IVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00041">fso.h:42</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1Serializer_html"><div class="ttname"><a href="classllama_1_1fso_1_1Serializer.html">llama::fso::Serializer</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8h_source.html#l00014">serializer.h:15</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Serializer_html_a1a746eddb2376c6582d3a2ee85291a3d"><div class="ttname"><a href="classllama_1_1fso_1_1Serializer.html#a1a746eddb2376c6582d3a2ee85291a3d">llama::fso::Serializer::Visit_fso_IVisitor</a></div><div class="ttdeci">virtual void Visit_fso_IVisitor(IProperty &amp;prop) override</div><div class="ttdef"><b>Definition:</b> <a href="serializer_8h_source.html#l00049">serializer.h:49</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Serializer_html_a29c058347a70a9b053c60debdf9beb76"><div class="ttname"><a href="classllama_1_1fso_1_1Serializer.html#a29c058347a70a9b053c60debdf9beb76">llama::fso::Serializer::Serializer</a></div><div class="ttdeci">Serializer(p&lt; std::ostream &gt; stream)</div><div class="ttdef"><b>Definition:</b> <a href="serializer_8h_source.html#l00017">serializer.h:17</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Serializer_html_a9d3c80eb4ef8461a6ae36152fc151949"><div class="ttname"><a href="classllama_1_1fso_1_1Serializer.html#a9d3c80eb4ef8461a6ae36152fc151949">llama::fso::Serializer::LLAMA_API</a></div><div class="ttdeci">LLAMA_API(fso) void Execute(RttiContext &amp;context</div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Serializer_html_aab2f0285f765b1d581c64567e9d81210"><div class="ttname"><a href="classllama_1_1fso_1_1Serializer.html#aab2f0285f765b1d581c64567e9d81210">llama::fso::Serializer::SerializeProperty</a></div><div class="ttdeci">static void SerializeProperty(IReadOnlyProperty &amp;prop, std::ostream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="serializer_8h_source.html#l00023">serializer.h:23</a></div></div>
 <div class="ttc" id="aclassllama_1_1p_html"><div class="ttname"><a href="classllama_1_1p.html">llama::p&lt; std::ostream &gt;</a></div></div>
-<div class="ttc" id="aexceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
-<div class="ttc" id="afso_8h_html"><div class="ttname"><a href="fso_8h.html">fso.h</a></div></div>
-<div class="ttc" id="amisc_8h_html"><div class="ttname"><a href="misc_8h.html">misc.h</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><a class="el" href="serializer_8h.html">serializer.h</a></li>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><b>serializer.h</b></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

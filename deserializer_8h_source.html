@@ -89,15 +89,15 @@ $(document).ready(function(){initNavTree('deserializer_8h_source.html',''); init
 <div class="title">deserializer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="deserializer_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="exceptions_8h.html">base/exceptions.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rtti_8h.html">base/rtti.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fso_8h.html">interface/fso.h</a>&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;base/exceptions.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;base/rtti.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;interface/fso.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;istream&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>fso</div>
@@ -106,13 +106,13 @@ $(document).ready(function(){initNavTree('deserializer_8h_source.html',''); init
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Deserializer.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classllama_1_1fso_1_1Deserializer.html">Deserializer</a> : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="classllama_1_1fso_1_1IVisitor.html">IVisitor</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Deserializer.html#a19230137912ace2b6cedc76e39d77f3a">   18</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1Deserializer.html#a19230137912ace2b6cedc76e39d77f3a">Deserializer</a>(<a class="code" href="classllama_1_1p.html">p&lt;std::istream&gt;</a> stream) : m_stream(stream)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1Deserializer.html">Deserializer</a>(<a class="code" href="classllama_1_1p.html">p&lt;std::istream&gt;</a> stream) : m_stream(stream)</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Deserializer.html#a14d11ad0d11b277f3c7765780bbfc3b3">   22</a></span>&#160;    <a class="code" href="classllama_1_1fso_1_1Deserializer.html#a14d11ad0d11b277f3c7765780bbfc3b3">LLAMA_API</a>(fso) <a class="code" href="namespacellama.html#ae87ab60e7db82488fe115b84f3890dfc">up&lt;IFso&gt;</a> Execute(<a class="code" href="classllama_1_1RttiContext.html">RttiContext</a> &amp;context);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    LLAMA_API(fso) up&lt;IFso&gt; Execute(<a class="code" href="classllama_1_1RttiContext.html">RttiContext</a> &amp;context);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Deserializer.html#a95b814e533764697886b8764e0686c09">   24</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1Deserializer.html#a95b814e533764697886b8764e0686c09">DeserializeProperty</a>(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;prop, std::istream &amp;stream)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> DeserializeProperty(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;prop, std::istream &amp;stream)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        uint32_t size = 0;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; i++)</div>
@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('deserializer_8h_source.html',''); init
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        stream.read((<span class="keywordtype">char</span> *)str.data(), str.size());</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (!stream)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">throw</span> DecodeFailure();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        prop.<a class="code" href="classllama_1_1fso_1_1IProperty.html#a9ec271fbddfd4de8a54bca67e8d5aa99">SetValue</a>(str);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        prop.SetValue(str);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
@@ -142,9 +142,9 @@ $(document).ready(function(){initNavTree('deserializer_8h_source.html',''); init
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1Exception.html">Exception</a>(<span class="stringliteral">&quot;decode failure&quot;</span>);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Deserializer.html#a75ce4d71a190bbdcd4735d285ce3f2a5">   54</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classllama_1_1fso_1_1Deserializer.html#a75ce4d71a190bbdcd4735d285ce3f2a5">Visit_fso_IVisitor</a>(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;prop)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Visit_fso_IVisitor(<a class="code" href="classllama_1_1fso_1_1IProperty.html">IProperty</a> &amp;prop)<span class="keyword"> override</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1fso_1_1Deserializer.html#a95b814e533764697886b8764e0686c09">DeserializeProperty</a>(prop, *m_stream);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> DeserializeProperty(prop, *m_stream);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classllama_1_1p.html">p&lt;std::istream&gt;</a> m_stream;</div>
@@ -152,28 +152,18 @@ $(document).ready(function(){initNavTree('deserializer_8h_source.html',''); init
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">// namespace fso</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="aclassllama_1_1Exception_html"><div class="ttname"><a href="classllama_1_1Exception.html">llama::Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8h_source.html#l00007">exceptions.h:8</a></div></div>
+<div class="ttc" id="aclassllama_1_1Exception_html"><div class="ttname"><a href="classllama_1_1Exception.html">llama::Exception</a></div><div class="ttdoc">IException 的实现类。内部保存异常信息字符串。</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8h_source.html#l00007">exceptions.h:8</a></div></div>
 <div class="ttc" id="aclassllama_1_1RttiContext_html"><div class="ttname"><a href="classllama_1_1RttiContext.html">llama::RttiContext</a></div><div class="ttdef"><b>Definition:</b> <a href="rtti_8h_source.html#l00092">rtti.h:93</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1Deserializer_html"><div class="ttname"><a href="classllama_1_1fso_1_1Deserializer.html">llama::fso::Deserializer</a></div><div class="ttdef"><b>Definition:</b> <a href="deserializer_8h_source.html#l00015">deserializer.h:16</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Deserializer_html_a14d11ad0d11b277f3c7765780bbfc3b3"><div class="ttname"><a href="classllama_1_1fso_1_1Deserializer.html#a14d11ad0d11b277f3c7765780bbfc3b3">llama::fso::Deserializer::LLAMA_API</a></div><div class="ttdeci">LLAMA_API(fso) up&lt; IFso &gt; Execute(RttiContext &amp;context)</div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Deserializer_html_a19230137912ace2b6cedc76e39d77f3a"><div class="ttname"><a href="classllama_1_1fso_1_1Deserializer.html#a19230137912ace2b6cedc76e39d77f3a">llama::fso::Deserializer::Deserializer</a></div><div class="ttdeci">Deserializer(p&lt; std::istream &gt; stream)</div><div class="ttdef"><b>Definition:</b> <a href="deserializer_8h_source.html#l00018">deserializer.h:18</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Deserializer_html_a75ce4d71a190bbdcd4735d285ce3f2a5"><div class="ttname"><a href="classllama_1_1fso_1_1Deserializer.html#a75ce4d71a190bbdcd4735d285ce3f2a5">llama::fso::Deserializer::Visit_fso_IVisitor</a></div><div class="ttdeci">virtual void Visit_fso_IVisitor(IProperty &amp;prop) override</div><div class="ttdef"><b>Definition:</b> <a href="deserializer_8h_source.html#l00054">deserializer.h:54</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1Deserializer_html_a95b814e533764697886b8764e0686c09"><div class="ttname"><a href="classllama_1_1fso_1_1Deserializer.html#a95b814e533764697886b8764e0686c09">llama::fso::Deserializer::DeserializeProperty</a></div><div class="ttdeci">static void DeserializeProperty(IProperty &amp;prop, std::istream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="deserializer_8h_source.html#l00024">deserializer.h:24</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1IProperty_html"><div class="ttname"><a href="classllama_1_1fso_1_1IProperty.html">llama::fso::IProperty</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00025">fso.h:26</a></div></div>
-<div class="ttc" id="aclassllama_1_1fso_1_1IProperty_html_a9ec271fbddfd4de8a54bca67e8d5aa99"><div class="ttname"><a href="classllama_1_1fso_1_1IProperty.html#a9ec271fbddfd4de8a54bca67e8d5aa99">llama::fso::IProperty::SetValue</a></div><div class="ttdeci">void SetValue(std::string_view data)</div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00028">fso.h:28</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1IVisitor_html"><div class="ttname"><a href="classllama_1_1fso_1_1IVisitor.html">llama::fso::IVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="fso_8h_source.html#l00041">fso.h:42</a></div></div>
 <div class="ttc" id="aclassllama_1_1p_html"><div class="ttname"><a href="classllama_1_1p.html">llama::p&lt; std::istream &gt;</a></div></div>
-<div class="ttc" id="aexceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
-<div class="ttc" id="afso_8h_html"><div class="ttname"><a href="fso_8h.html">fso.h</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
-<div class="ttc" id="anamespacellama_html_ae87ab60e7db82488fe115b84f3890dfc"><div class="ttname"><a href="namespacellama.html#ae87ab60e7db82488fe115b84f3890dfc">llama::up</a></div><div class="ttdeci">std::unique_ptr&lt; T &gt; up</div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00368">pointers.h:368</a></div></div>
-<div class="ttc" id="artti_8h_html"><div class="ttname"><a href="rtti_8h.html">rtti.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><a class="el" href="deserializer_8h.html">deserializer.h</a></li>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_703dee1acf3a81488d2dc81e59a04f32.html">fso</a></li><li class="navelem"><a class="el" href="dir_4f3f5a13c331cd5b0e07d02484347386.html">include</a></li><li class="navelem"><a class="el" href="dir_4a1f33d9bdd9c36196d3d09be1a9b9d3.html">fso</a></li><li class="navelem"><b>deserializer.h</b></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

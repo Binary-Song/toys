@@ -89,8 +89,8 @@ $(document).ready(function(){initNavTree('misc_8h_source.html',''); initResizabl
 <div class="title">misc.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="misc_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pointers_8h.html">pointers.h</a>&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;pointers.h&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
@@ -99,60 +99,56 @@ $(document).ready(function(){initNavTree('misc_8h_source.html',''); initResizabl
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define LLAMA_EXPORT __declspec(dllexport)</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define LLAMA_IMPORT __declspec(dllimport)</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="misc_8h.html#a331ec86158a0a6dd5c81714f9766eae1">   11</a></span>&#160;<span class="preprocessor">#define LLAMA_EXPORT __attribute__((visibility(&quot;default&quot;</span>)))</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="misc_8h.html#a7cb5f530512b4e6300023e2497bdd465">   12</a></span>&#160;<span class="preprocessor">#define LLAMA_IMPORT __attribute__((visibility(&quot;default&quot;</span>)))</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define LLAMA_EXPORT __attribute__((visibility(&quot;default&quot;</span>)))</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define LLAMA_IMPORT __attribute__((visibility(&quot;default&quot;</span>)))</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="misc_8h.html#a7b9eaa0f0b633f9f0308a79c11cbce7d">   15</a></span>&#160;<span class="preprocessor">#define LLAMA_CONCAT_NO_EXPAND(x, y) x##y</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="misc_8h.html#a32d611d980dc9b19a9487e0e4031a17d">   16</a></span>&#160;<span class="preprocessor">#define LLAMA_CONCAT(x, y) LLAMA_CONCAT_NO_EXPAND(x, y)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define LLAMA_CONCAT_NO_EXPAND(x, y) x##y</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define LLAMA_CONCAT(x, y) LLAMA_CONCAT_NO_EXPAND(x, y)</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// 提供宏重载功能，使用方法见 LLAMA_SECOND</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="misc_8h.html#ac733dc5046c30aca2c53d4f4dcf496cd">   19</a></span>&#160;<span class="preprocessor">#define LLAMA_SELECT(prefix, n) LLAMA_CONCAT_NO_EXPAND(prefix##_, n)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="misc_8h.html#af3cc3ddb52ee4287046736e7d0dea3af">   20</a></span>&#160;<span class="preprocessor">#define LLAMA_GET_COUNT(_1, _2, _3, _4, _5, _6, _7, _8, _9, count, ...) count</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="misc_8h.html#a5431b843911c2beb868dce0f840ea30f">   21</a></span>&#160;<span class="preprocessor">#define LLAMA_VA_SIZE(...) LLAMA_GET_COUNT(__VA_ARGS__, 9, 8, 7, 6, 5, 4, 3, 2, 1)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="misc_8h.html#a48e6a567eb0e645f50a1f69f38246303">   22</a></span>&#160;<span class="preprocessor">#define LLAMA_VA_SELECT(prefix, ...) LLAMA_SELECT(prefix, LLAMA_VA_SIZE(__VA_ARGS__))(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define LLAMA_SELECT(prefix, n) LLAMA_CONCAT_NO_EXPAND(prefix##_, n)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define LLAMA_GET_COUNT(_1, _2, _3, _4, _5, _6, _7, _8, _9, count, ...) count</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define LLAMA_VA_SIZE(...) LLAMA_GET_COUNT(__VA_ARGS__, 9, 8, 7, 6, 5, 4, 3, 2, 1)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define LLAMA_VA_SELECT(prefix, ...) LLAMA_SELECT(prefix, LLAMA_VA_SIZE(__VA_ARGS__))(__VA_ARGS__)</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// 不管传几个参，只留第二个</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="misc_8h.html#a292573737d5ca84fc0744540ab5a8358">   25</a></span>&#160;<span class="preprocessor">#define LLAMA_SECOND(...) LLAMA_VA_SELECT(LLAMA_SECOND, __VA_ARGS__)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="misc_8h.html#a2033477f3e3f2b28488ebcf281696728">   26</a></span>&#160;<span class="preprocessor">#define LLAMA_SECOND_1(x)</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="misc_8h.html#a7977e6d25e8174b427d0ed0404149b52">   27</a></span>&#160;<span class="preprocessor">#define LLAMA_SECOND_2(x, y) y</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="misc_8h.html#a53a7f0dafc17cda49e1edd5ffbe23925">   28</a></span>&#160;<span class="preprocessor">#define LLAMA_SECOND_3(x, y, z) y</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="misc_8h.html#a45d46ea92321ef4dc4664d859af11f2f">   29</a></span>&#160;<span class="preprocessor">#define LLAMA_SECOND_4(x, y, z, w) y</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define LLAMA_SECOND(...) LLAMA_VA_SELECT(LLAMA_SECOND, __VA_ARGS__)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define LLAMA_SECOND_1(x)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define LLAMA_SECOND_2(x, y) y</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define LLAMA_SECOND_3(x, y, z) y</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define LLAMA_SECOND_4(x, y, z, w) y</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// 展开出一个逗号，等于多了一个参数</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="misc_8h.html#a824eb2b5f6d1dcba20c0899127dc2de0">   32</a></span>&#160;<span class="preprocessor">#define LLAMA_FUNNY1 , LLAMA_EXPORT</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define LLAMA_FUNNY1 , LLAMA_EXPORT</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// LLAMA_##mod##_EXPORT 应该定义为 1 或者未定义。否则出问题。</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="misc_8h.html#ab65a404899a4fb7d7e0a8df4ee00b9a2">   34</a></span>&#160;<span class="preprocessor">#define LLAMA_HELPER1(mod) LLAMA_##mod##_EXPORT</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define LLAMA_HELPER1(mod) LLAMA_##mod##_EXPORT</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="misc_8h.html#a7a7802dea9a427a4d2024c6160675ea0">   49</a></span>&#160;<span class="preprocessor">#define LLAMA_API(mod) LLAMA_SECOND(2 LLAMA_CONCAT(LLAMA_FUNNY, LLAMA_HELPER1(mod)), LLAMA_IMPORT)</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define LLAMA_API(mod) LLAMA_SECOND(2 LLAMA_CONCAT(LLAMA_FUNNY, LLAMA_HELPER1(mod)), LLAMA_IMPORT)</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacellama.html#ae8d9a3979072bd16e11d1d237d0b5ca5">   54</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> P&gt; std::tuple&lt;&gt; <a class="code" href="namespacellama.html#ae8d9a3979072bd16e11d1d237d0b5ca5">FillWithSame</a>(P &amp;&amp;param)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> P&gt; std::tuple&lt;&gt; FillWithSame(P &amp;&amp;param)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> std::tuple&lt;&gt;{};</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="namespacellama.html#abf09c94f85346e8f19e8cbaf3cacf6f4">   59</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> P, <span class="keyword">typename</span> T1, <span class="keyword">typename</span>... Ts&gt; std::tuple&lt;T1, Ts...&gt; <a class="code" href="namespacellama.html#ae8d9a3979072bd16e11d1d237d0b5ca5">FillWithSame</a>(P &amp;&amp;param)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> P, <span class="keyword">typename</span> T1, <span class="keyword">typename</span>... Ts&gt; std::tuple&lt;T1, Ts...&gt; FillWithSame(P &amp;&amp;param)</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> std::tuple_cat(std::tuple&lt;T1&gt;{std::forward&lt;P&gt;(param)}, <a class="code" href="namespacellama.html#ae8d9a3979072bd16e11d1d237d0b5ca5">FillWithSame</a>&lt;P, Ts...&gt;(std::forward&lt;P&gt;(param)));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> std::tuple_cat(std::tuple&lt;T1&gt;{std::forward&lt;P&gt;(param)}, FillWithSame&lt;P, Ts...&gt;(std::forward&lt;P&gt;(param)));</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespacellama.html#a593b424d1b3c8c8f18df74e7f9d45cf6">   64</a></span>&#160;<span class="keyword">using</span> <span class="keywordtype">byte</span> = <span class="keywordtype">unsigned</span> char;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="namespacellama.html#ac582984f8faa756b5f17814600fca070">   65</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespacellama.html#ac582984f8faa756b5f17814600fca070">sbyte</a> = <span class="keywordtype">signed</span> char;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">using</span> <span class="keywordtype">byte</span> = <span class="keywordtype">unsigned</span> char;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">using</span> sbyte = <span class="keywordtype">signed</span> char;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdef"><b>Definition:</b> <a href="serializer_8cpp_source.html#l00006">serializer.cpp:7</a></div></div>
-<div class="ttc" id="anamespacellama_html_ac582984f8faa756b5f17814600fca070"><div class="ttname"><a href="namespacellama.html#ac582984f8faa756b5f17814600fca070">llama::sbyte</a></div><div class="ttdeci">signed char sbyte</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.html#l00065">misc.h:65</a></div></div>
-<div class="ttc" id="anamespacellama_html_ae8d9a3979072bd16e11d1d237d0b5ca5"><div class="ttname"><a href="namespacellama.html#ae8d9a3979072bd16e11d1d237d0b5ca5">llama::FillWithSame</a></div><div class="ttdeci">std::tuple FillWithSame(P &amp;&amp;param)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.html#l00054">misc.h:54</a></div></div>
-<div class="ttc" id="apointers_8h_html"><div class="ttname"><a href="pointers_8h.html">pointers.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_5b74b20e1858d41934a8e8bc5aa2df6e.html">include</a></li><li class="navelem"><a class="el" href="dir_ff36a88c3985189e92b7f39982288838.html">base</a></li><li class="navelem"><a class="el" href="misc_8h.html">misc.h</a></li>
+    <li class="navelem"><a class="el" href="dir_a9ec1ef424966475f993eb98877e3088.html">projects</a></li><li class="navelem"><a class="el" href="dir_f28f9eb1b08b85950b5c08477b035541.html">llama</a></li><li class="navelem"><a class="el" href="dir_530db5732212317727f6b2733e5ab46e.html">src</a></li><li class="navelem"><a class="el" href="dir_c9a2396d1f60c54f20e3edc2afbb68b7.html">base</a></li><li class="navelem"><a class="el" href="dir_5b74b20e1858d41934a8e8bc5aa2df6e.html">include</a></li><li class="navelem"><a class="el" href="dir_ff36a88c3985189e92b7f39982288838.html">base</a></li><li class="navelem"><b>misc.h</b></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hasher_286',['Hasher',['../classllama_1_1fso_1_1Hasher.html#a446b9bf78cb5307bc3fc026b4e58f443',1,'llama::fso::Hasher::Hasher()'],['../classllama_1_1fso_1_1Hasher.html#a7ff119876b78c39fdce91ef236f84244',1,'llama::fso::Hasher::Hasher(Hasher &amp;&amp;) noexcept'],['../classllama_1_1fso_1_1Hasher.html#a6be195884e0dff2350753f51c666cd8b',1,'llama::fso::Hasher::Hasher(const Hasher &amp;)=delete']]],
-  ['hashtostring_287',['HashToString',['../namespacellama.html#a40db07177997c74a05cffd060115d691',1,'llama']]]
+  ['max_5fsize_110',['max_size',['../classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243',1,'llama::lru_cache']]],
+  ['miss_111',['miss',['../classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e',1,'llama::fso::Cache::miss()'],['../classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652',1,'llama::lru_cache::miss()']]]
 ];
