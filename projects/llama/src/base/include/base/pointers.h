@@ -369,13 +369,19 @@ using up = std::unique_ptr<T>;
 
 
 /// 多重指针。用来接受同时实现多个接口的对象。
+/// 可以用 std::get 访问这些接口。
 /// 例：
 /// ```
-/// void func(mp<IHashable, IException> obj);
+/// void foo(mp<IMyInterface1, IMyInterface2> obj)
+/// {
+///     p<IMyInterface1> if1 = std::get<0>(obj);
+///     p<IMyInterface2> if2 = std::get<1>(obj);
+/// }
 /// ...
-/// MyObject obj; // MyObject 实现 IHashable 和 IException
-/// func(&obj);
+/// MyObject obj; // 假设 MyObject 类实现了 IMyInterface1 和 IMyInterface2
+/// foo(&obj);
 /// ```
+/// 
 template <typename... Interfaces> class mp : public std::tuple<p<Interfaces>...>
 {
 public:

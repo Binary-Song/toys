@@ -86,6 +86,7 @@ private:
     // virtual bool IsDirty_fso_IFso() const = 0;
 };
 
+/// 见 Cache。
 class ICache
 {
 public:

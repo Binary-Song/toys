@@ -48,16 +48,25 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace llama
 {
 
+/// @brief 一个简单的 LRU 缓存。
+/// @details LRU 缓存是一个类似 map 的数据结构，可以存取键值对。
+/// 用 lru_cache::put 向缓存中插入键值对时，如果超过缓存的最大容量，则
+/// 缓存会将最久没访问的键值对丢弃。重写虚函数 lru_cache::overflow 来自定义丢弃行为。
+/// 用 lru_cache::get 访问键值对。访问需要 key 。如果缓存中不包含这个 key ，
+/// 则虚函数 lru_cache::miss 被调用，默认行为是抛出异常。
 template <typename key_t, typename value_t> class lru_cache
 {
 public:
     typedef typename std::pair<key_t, value_t> key_value_pair_t;
     typedef typename std::list<key_value_pair_t>::iterator list_iterator_t;
 
+    /// 构造。
+    /// @param max_size 缓存最多能装下几个键值对。
     lru_cache(size_t max_size) : _max_size(max_size)
     {
     }
 
+    /// 向缓存中插入键值对。
     void put(const key_t &key, const value_t &value)
     {
         auto it = _cache_items_map.find(key);
@@ -79,6 +88,7 @@ public:
         }
     }
 
+    /// 给定 key ，获得 value 。
     value_t get(const key_t &key)
     {
         auto it = _cache_items_map.find(key);
@@ -95,21 +105,33 @@ public:
         }
     }
 
+    /// key 是否存在。
     bool exists(const key_t &key) const
     {
         return _cache_items_map.find(key) != _cache_items_map.end();
     }
 
+    /// 当前缓存中键值对数量。
     size_t size() const
     {
         return _cache_items_map.size();
     }
 
+    /// 缓存最多能装下几个键值对。
+    size_t max_size() const
+    {
+        return _max_size;
+    }
+
 private:
+    /// 重写虚函数 lru_cache::overflow 来自定义丢弃行为。默认无操作。
     virtual void overflow(const key_t &key, const value_t &value)
     {
     }
 
+    /// 重写虚函数 lru_cache::miss 来自定义找不到 key 时的行为。
+    /// 如果能从其他地方找到这个 key 的 value ，就返回它。
+    /// 默认抛 Exception 。
     virtual value_t miss(const key_t &key)
     {
         throw llama::Exception{"lru_cache: Key not found."};

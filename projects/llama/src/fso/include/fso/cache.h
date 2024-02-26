@@ -10,6 +10,15 @@ namespace llama
 namespace fso
 {
 
+/// @brief IFso 对象的键值对数据库。
+/// @details 使用上，类似从 Hash 键映射到 IFso 值的 map 。区别是
+/// 存放（ ICache::Get ）时不需要指定键类型 Hash ，因为 Hash 可以直接从值类型 IFso 算出来。
+/// 存放后会将 IFso 对象的哈希返回出来。
+/// 用 ICache::Put 可以将之前存入的对象取回。
+/// 重写了 lru_cache 的虚函数，用磁盘做二级缓存：
+/// 在溢出时将 IFso 序列化并写入文件。在找不到 key 时，会从文件反序列化出一个 IFso 。
+/// 请确保存入的对象具有 LLAMA_RTTI 。否则将无法反序列化。
+/// 和 DelayedPointer 一起使用，实现无感知的对象懒加载。
 class Cache : public virtual ICache, private lru_cache<Hash, sp<IFso>>
 {
 
