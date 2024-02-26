@@ -247,13 +247,13 @@ template <typename From, typename To> inline void ModifyDefaultRtti()
 }
 
 template <typename T>
-inline std::enable_if<!std::is_default_constructible<T>::value, void>::type
+inline typename std::enable_if<!std::is_default_constructible<T>::value, void>::type
 AddDefaultInstantiatorIfDefaultConstructible()
 {
 }
 
 template <typename T>
-inline std::enable_if<std::is_default_constructible<T>::value, void>::type
+inline typename std::enable_if<std::is_default_constructible<T>::value, void>::type
 AddDefaultInstantiatorIfDefaultConstructible()
 {
     RttiContext::AddDefaultInstantiator(rtti_trait<T>::id, []() -> IRtti * { return new T{}; });

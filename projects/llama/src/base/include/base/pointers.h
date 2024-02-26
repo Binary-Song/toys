@@ -379,7 +379,7 @@ using up = std::unique_ptr<T>;
 template <typename... Interfaces> class mp : public std::tuple<p<Interfaces>...>
 {
 public:
-    template <typename Arg, typename U = std::enable_if<
+    template <typename Arg, typename U = typename std::enable_if<
                                 !std::is_same<typename std::decay<mp>::type, typename std::decay<Arg>::type>::value,
                                 void>::type /* 防止隐藏拷贝和移动构造函数 */>
     mp(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}

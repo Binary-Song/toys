@@ -20,7 +20,7 @@ namespace fso
 class NumericProperty : public virtual IProperty
 {
 public:
-    template <typename T, typename = std::enable_if<std::is_arithmetic<T>::value, void>::type>
+    template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value, void>::type>
     explicit NumericProperty(T &buffer)
         : m_get([&buffer]() -> double { return static_cast<double>(buffer); }),
           m_set([&buffer](double num) { buffer = static_cast<double>(num); })

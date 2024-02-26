@@ -106,6 +106,11 @@ function(llama_module name type)
     target_include_directories("${name}-if" INTERFACE "${CMAKE_CURRENT_LIST_DIR}/include")
     target_include_directories("${name}-object" PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src")
     target_compile_definitions("${name}-object" PUBLIC "${PLAT_DEF}")
+    if(MSVC)
+        target_compile_options(${name}-object PRIVATE /W4)
+    else()
+        target_compile_options(${name}-object PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
     target_link_libraries("${name}-if" INTERFACE fmt::fmt)
 
     # 设置 test 库各种属性
