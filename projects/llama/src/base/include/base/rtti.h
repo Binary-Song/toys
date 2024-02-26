@@ -239,13 +239,6 @@ public:
     inline static constexpr const char *id = &T::s_typeId[0];
 };
 
-template <typename From, typename To> inline void ModifyDefaultRtti()
-{
-    RttiContext::AddDefaultCast(rtti_trait<From>::id, rtti_trait<To>::id,
-                                [](void *from) noexcept -> void * { return static_cast<To *>((From *)from); });
-    AddDefaultInstantiatorIfDefaultConstructible<From>();
-}
-
 template <typename T>
 inline typename std::enable_if<!std::is_default_constructible<T>::value, void>::type
 AddDefaultInstantiatorIfDefaultConstructible()
@@ -257,6 +250,13 @@ inline typename std::enable_if<std::is_default_constructible<T>::value, void>::t
 AddDefaultInstantiatorIfDefaultConstructible()
 {
     RttiContext::AddDefaultInstantiator(rtti_trait<T>::id, []() -> IRtti * { return new T{}; });
+}
+
+template <typename From, typename To> inline void ModifyDefaultRtti()
+{
+    RttiContext::AddDefaultCast(rtti_trait<From>::id, rtti_trait<To>::id,
+                                [](void *from) noexcept -> void * { return static_cast<To *>((From *)from); });
+    AddDefaultInstantiatorIfDefaultConstructible<From>();
 }
 
 inline constexpr bool LLAMA_RTTI_ArgCheck(const char *arg)
