@@ -61,7 +61,7 @@ jobs:
         with:
           workflowPreset: "linux-docs"
       - name: Moving Files
-        run: mkdir -p ./docs/api && mv ${{github.workspace}}/build/docs/html ./docs/api
+        run: ls -R ${{github.workspace}}/build/ && mkdir -p ./docs/api && mv ${{github.workspace}}/build/docs/html ./docs/api
         # Deploy to GitHub Pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
