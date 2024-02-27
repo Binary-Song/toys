@@ -207,7 +207,7 @@ function(llama_docs)
             OUTPUT "${DOXYFILE_OUTPUT_PATH}"
             COMMAND
                 "${CMAKE_COMMAND}" "-DDOXYFILE_INPUT_PATH=${DOXYFILE_INPUT_PATH}" "-DDOXYFILE_OUTPUT_PATH=${DOXYFILE_OUTPUT_PATH}"
-                "-DINPUT=$CACHE{llama_doc_sources_sp}" "-DOUTPUT_DIR=${OUTPUT_DIR}"
+                "-DINPUT=$CACHE{llama_doc_sources_sp}" "-DOUTPUT_DIR=${OUTPUT_DIR}" "-DMAINPAGE=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/main.md"
                 "-DCLANG_DATABASE_PATH=${CMAKE_BINARY_DIR}/compile_commands.json"
                 "-DDOXYGEN_STYLE_SHEET_PATH=${DOXYGEN_STYLE_SHEET_PATH}" "-P"
                 "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/llama_configure_doxygen.cmake"
