@@ -19,7 +19,6 @@ set(LLAMA_SOURCE_EXTENSIONS
 set(LLAMA_HEADER_EXTENSIONS
     "*.hpp" "*.h"
     CACHE INTERNAL "header file extensions that are allowed within the llama project")
-unset(llama_doc_sources_sp CACHE)
 unset(llama_doc_sources_ls CACHE)
 
 # 自动创建 llama 模块。“模块”包含多个自动创建的目标。
@@ -68,11 +67,8 @@ function(llama_module name type)
     # include 文件 source.cmake
     llama_internal_include_source_list()
 
-    # llama_doc_sources_sp 和 llama_doc_sources_ls 都是 文档的输入文件列表，不过前者用空格切分，后者用分号
+    # llama_doc_sources_ls  是 文档的输入文件列表
     foreach(src ${SOURCE_LIST})
-        set(llama_doc_sources_sp
-            "${CMAKE_CURRENT_LIST_DIR}/${src} $CACHE{llama_doc_sources_sp}"
-            CACHE INTERNAL "space-separated list of source files that need to be documented")
         set(llama_doc_sources_ls
             "${CMAKE_CURRENT_LIST_DIR}/${src};$CACHE{llama_doc_sources_ls}"
             CACHE INTERNAL "semi-column-separated list of source files that need to be documented")
@@ -190,7 +186,7 @@ function(llama_docs)
         file(TO_CMAKE_PATH "${DOXYGEN_STYLE_SHEET_PATH1}" DOXYGEN_STYLE_SHEET_PATH1)
         set(DOXYGEN_STYLE_SHEET_PATH2 "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/doc-css/doxygen-awesome-sidebar-only.css")
         file(TO_CMAKE_PATH "${DOXYGEN_STYLE_SHEET_PATH2}" DOXYGEN_STYLE_SHEET_PATH2)
-        set(DOXYGEN_STYLE_SHEET_PATH "${DOXYGEN_STYLE_SHEET_PATH1} ${DOXYGEN_STYLE_SHEET_PATH2}")
+        set(DOXYGEN_STYLE_SHEET_PATH "${DOXYGEN_STYLE_SHEET_PATH1}")
     endif()
     string(REPLACE ";" " " "INPUT_FILE_PATTERNS" "${LLAMA_SOURCE_EXTENSIONS};${LLAMA_HEADER_EXTENSIONS}")
     file(MAKE_DIRECTORY "${OUTPUT_DIR}")
@@ -202,14 +198,29 @@ function(llama_docs)
         # 无法找到Doxygen。如果不希望生成文档，请在cmake命令行增加 -DLLAMA_BUILD_DOCS=OFF
         find_package(Doxygen REQUIRED)
 
+        # llama_doc_sources_list - 分号分隔的 doc 源文件列表 
+        set(llama_doc_sources_list "$CACHE{llama_doc_sources_ls}")
+
+        file(GLOB_RECURSE doc_pages ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/md/**.md)
+        list(APPEND llama_doc_sources_list ${doc_pages})
+
+        foreach(src ${llama_doc_sources_list})
+            # llama_doc_sources - 空格分隔的 doc 源文件列表
+            set(llama_doc_sources "${src} ${llama_doc_sources}")
+        endforeach()
+
         # 配置Doxyfile
         add_custom_command(
             OUTPUT "${DOXYFILE_OUTPUT_PATH}"
             COMMAND
-                "${CMAKE_COMMAND}" "-DDOXYFILE_INPUT_PATH=${DOXYFILE_INPUT_PATH}" "-DDOXYFILE_OUTPUT_PATH=${DOXYFILE_OUTPUT_PATH}"
-                "-DINPUT=$CACHE{llama_doc_sources_sp}" "-DOUTPUT_DIR=${OUTPUT_DIR}" "-DMAINPAGE=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs/main.md"
+                "${CMAKE_COMMAND}"
+                "-DDOXYFILE_INPUT_PATH=${DOXYFILE_INPUT_PATH}"
+                "-DDOXYFILE_OUTPUT_PATH=${DOXYFILE_OUTPUT_PATH}"
+                "-DINPUT=${llama_doc_sources}" "-DOUTPUT_DIR=${OUTPUT_DIR}"
+                "-DDOCS_DIR=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../docs"
                 "-DCLANG_DATABASE_PATH=${CMAKE_BINARY_DIR}/compile_commands.json"
-                "-DDOXYGEN_STYLE_SHEET_PATH=${DOXYGEN_STYLE_SHEET_PATH}" "-P"
+                "-DDOXYGEN_STYLE_SHEET_PATH=${DOXYGEN_STYLE_SHEET_PATH}"
+                "-P"
                 "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/llama_configure_doxygen.cmake"
             WORKING_DIRECTORY "${OUTPUT_DIR}"
             DEPENDS "${DOXYFILE_INPUT_PATH}"
@@ -224,7 +235,7 @@ function(llama_docs)
             COMMAND echo "delete me to trigger a rebuild of the docs" > "${OUTPUT_DIR}/docs.stamp"
             COMMAND "${CMAKE_COMMAND}" -E create_symlink "${OUTPUT_DIR}/html/index.html" "${OUTPUT_DIR}/llama-documentation.html"
             WORKING_DIRECTORY "${OUTPUT_DIR}"
-            DEPENDS "${DOXYFILE_OUTPUT_PATH}" "docs-configure" ${llama_doc_sources_ls} # add_custom_command 的 depend 可以是文件或者
+            DEPENDS "${DOXYFILE_OUTPUT_PATH}" "docs-configure" ${llama_doc_sources_list} # add_custom_command 的 depend 可以是文件或者
                                                                                        # target
             COMMENT "Generating docs"
             VERBATIM)
