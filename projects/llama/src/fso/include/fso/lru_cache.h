@@ -40,7 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _LRUCACHE_HPP_INCLUDED_
 #define _LRUCACHE_HPP_INCLUDED_
 
-#include "exceptions.h"
+#include "base/exceptions.h"
 #include <cstddef>
 #include <list>
 #include <map>

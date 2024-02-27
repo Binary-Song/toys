@@ -1,5 +1,5 @@
 #include "base/base.h"
-#include "base/lru_cache.h"
+#include "lru_cache.h"
 #include "fso/deserializer.h"
 #include "fso/interface/fso.h"
 #include "fso/serializer.h"

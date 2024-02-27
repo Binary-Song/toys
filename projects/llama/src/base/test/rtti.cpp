@@ -1,4 +1,5 @@
 #include "base/rtti.h"
+#include "base/exceptions.h"
 #include "base/interfaces/rtti.h"
 #include "base/misc.h"
 #include <gtest/gtest.h>
@@ -49,6 +50,12 @@ class Child : public Parent
     int data3;
 };
 
+class Child2 : public Parent
+{
+    LLAMA_RTTI(::llama::Child2, ::llama::Parent)
+    int data3;
+};
+
 class NoDefaultCtor : public virtual IRtti
 {
     LLAMA_RTTI(::llama::NoDefaultCtor)
@@ -89,8 +96,9 @@ TEST(rtti, case3)
     EXPECT_EQ(&child, child2);
     std::stringstream strm;
     ctx.DebugPrint(strm);
-    EXPECT_EQ("2 cast edge(s) :\n  ::llama::Child -> ::llama::Parent\n  ::llama::Parent -> ::llama::GrandParent\n2 "
-              "instantiator(s) :\n  ::llama::Child \n  ::llama::Parent \n",
+    EXPECT_EQ("3 cast edge(s) :\n  ::llama::Child -> ::llama::Parent\n  ::llama::Child2 -> ::llama::Parent\n  "
+              "::llama::Parent -> ::llama::GrandParent\n3 instantiator(s) :\n  ::llama::Child \n  ::llama::Child2 \n  "
+              "::llama::Parent \n",
               strm.str());
 }
 
@@ -104,3 +112,11 @@ TEST(rtti, case3)
 //     EXPECT_EQ(std::get<0>(p1), std::get<0>(p2));
 //     EXPECT_EQ(std::get<1>(p1), std::get<1>(p2));
 // }
+
+TEST(rtti, case5)
+{
+    llama::Child2 child2;
+    llama::GrandParent &gp = child2;
+    llama::RttiContext c;
+    EXPECT_THROW({ auto p = gp.Cast<llama::Child>(c); }, llama::Exception);
+}
