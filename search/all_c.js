@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['p_43',['p',['../classllama_1_1p.html',1,'llama::p&lt; T &gt;'],['../classllama_1_1p.html#aeb2b25324127d85cfc9d920ed2b16238',1,'llama::p::p(std::nullptr_t)=delete'],['../classllama_1_1p.html#a82116fcb5f70e684bdc8b2132624a5d1',1,'llama::p::p(T *ptr)'],['../classllama_1_1p.html#af6403f570c0c5ebc342ae34aaf6a4de9',1,'llama::p::p(p&lt; U &gt; ptr)']]],
-  ['p_3c_20hash_20_3e_44',['p&lt; Hash &gt;',['../classllama_1_1p.html',1,'llama']]],
-  ['p_3c_20llama_3a_3artticontext_20_3e_45',['p&lt; llama::RttiContext &gt;',['../classllama_1_1p.html',1,'llama']]],
-  ['p_3c_20std_3a_3aistream_20_3e_46',['p&lt; std::istream &gt;',['../classllama_1_1p.html',1,'llama']]],
-  ['p_3c_20std_3a_3aostream_20_3e_47',['p&lt; std::ostream &gt;',['../classllama_1_1p.html',1,'llama']]],
-  ['p_3c_20std_3a_3astring_20_3e_48',['p&lt; std::string &gt;',['../classllama_1_1p.html',1,'llama']]],
-  ['p_3c_20std_3a_3avector_3c_20llama_3a_3afso_3a_3adelayedpointer_3c_20t_20_3e_20_3e_20_3e_49',['p&lt; std::vector&lt; llama::fso::DelayedPointer&lt; T &gt; &gt; &gt;',['../classllama_1_1p.html',1,'llama']]],
-  ['put_50',['put',['../classllama_1_1lru__cache.html#a4b64555be28a636f0d70d9a74bc28d1d',1,'llama::lru_cache']]]
+  ['operator_20bool_44',['operator bool',['../classllama_1_1np.html#a06464669622dc4c64da42fd54ab5b13f',1,'llama::np']]],
+  ['operator_20t_2a_45',['operator T*',['../classllama_1_1p.html#a6a7e9a047fcb28380f107e9de494d93a',1,'llama::p::operator T*()'],['../classllama_1_1np.html#acf8248af0b9c78d070d20d4b23df5348',1,'llama::np::operator T*()']]],
+  ['operator_2a_46',['operator*',['../classllama_1_1p.html#aca63d5fa186d0cbb7b2dde7384b26359',1,'llama::p::operator*()'],['../classllama_1_1np.html#a001c8cf3b9095b4e5a07c11b5c008aec',1,'llama::np::operator*() const']]],
+  ['operator_2d_3e_47',['operator-&gt;',['../classllama_1_1np.html#a3986b233edd9375b6d38ba01700983df',1,'llama::np']]],
+  ['operator_5b_5d_48',['operator[]',['../classllama_1_1p.html#a4097e309aa25f998901ee49859f023ca',1,'llama::p::operator[]()'],['../classllama_1_1np.html#af7c75d36ea437b195f113ac76e5fdd21',1,'llama::np::operator[]()']]],
+  ['overflow_49',['overflow',['../classllama_1_1fso_1_1Cache.html#ae0a3070ceeb341ef88b1f608e71ac66f',1,'llama::fso::Cache::overflow()'],['../classllama_1_1lru__cache.html#a6b6a9cdab62d698e60207423c8b77825',1,'llama::lru_cache::overflow()']]]
 ];

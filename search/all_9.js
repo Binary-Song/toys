@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['max_5fsize_32',['max_size',['../classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243',1,'llama::lru_cache']]],
-  ['miss_33',['miss',['../classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e',1,'llama::fso::Cache::miss()'],['../classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652',1,'llama::lru_cache::miss()']]],
-  ['mp_34',['mp',['../classllama_1_1mp.html',1,'llama']]]
+  ['lru_5fcache_37',['lru_cache',['../classllama_1_1lru__cache.html',1,'llama::lru_cache&lt; key_t, value_t &gt;'],['../classllama_1_1lru__cache.html#a2de6712a6666e70c3b02bd389d1e3e9e',1,'llama::lru_cache::lru_cache()']]],
+  ['lru_5fcache_3c_20hash_2c_20sp_3c_20ifso_20_3e_20_3e_38',['lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;',['../classllama_1_1lru__cache.html',1,'llama']]]
 ];

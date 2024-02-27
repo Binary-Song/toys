@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>llama: housekeep 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">llama
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A happy llama</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">housekeep 参考 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__home_runner_work_toys_toys_projects_llama_docs_md_general_housekeep"></a> housekeep 有两种配置文件： housekeep.json 和 housekeep-modules.json。 housekeep.json 负责配置每个模块要包含哪些源文件。housekeep-modules.json 负责配置要包含哪些模块。</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+通用规则</h1>
+<p>名为 include 和 exclude 的字段，若无特殊说明，都适用如下规则：</p>
+<p>include 和 exclude 都是字符串数组，每个字符串是一个匹配规则。 当一个文件的相对路径（相对于 housekeep.json 或 housekeep-modules.json 所在目录） 匹配 include 中的任意规则但不匹配 exclude 的任何规则时，才能出现最终的结果集里。</p>
+<p>默认 include 所有文件。</p>
+<p>匹配规则用 python 的 glob 函数实现，支持通配符 <code>*</code>（匹配≥0个字符）和 <code>**</code> （匹配≥0个目录名）。 例如 **/*.txt 将递归匹配目录内所有.txt文件。</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+housekeep.json 说明</h1>
+<p>下面是一个 housekeep.json 文件的实例。</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">    &quot;umbrella_header&quot;: {</div>
+<div class="line">        &quot;generate&quot;: false,</div>
+<div class="line">        &quot;include&quot; : [&quot;**/*foo*.cpp&quot;],</div>
+<div class="line">        &quot;exclude&quot; : [&quot;foobar.cpp&quot;]</div>
+<div class="line">    },</div>
+<div class="line">    &quot;include&quot;: [&quot;**/*.h&quot;, &quot;**/*.cpp&quot;]</div>
+<div class="line">    &quot;exclude&quot;: [&quot;foobar.cpp&quot;]</div>
+<div class="line">}</div>
+</div><!-- fragment --><ul>
+<li><code>include</code> ：包含在sources.cmake内的文件。</li>
+<li><code>exclude</code> ：排除在sources.cmake外的文件。这些文件不会生成。</li>
+<li><code>umbrella_header.generate</code> ：布尔值，表示是否生成方便头文件。</li>
+<li><code>umbrella_header.include</code> ：包含在方便头文件中的文件。</li>
+<li><code>umbrella_header.exclude</code> ：排除在方便头文件之外的文件。</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+housekeep-modules.json 说明</h1>
+<ul>
+<li><code>include</code> ：包含在 modules.cmake 内的模块。</li>
+<li><code>exclude</code> ：排除在 modules.cmake 外的模块。这些模块不会生成，也不会参与 housekeep。 </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
