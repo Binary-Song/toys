@@ -64,7 +64,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>llama</b></li><li class="navelem"><a class="el" href="classllama_1_1RttiContext.html">RttiContext</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="classllama_1_1RttiContext.html">RttiContext</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,6 +72,8 @@ $(function() {
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#friends">友元</a> &#124;
 <a href="classllama_1_1RttiContext-members.html">所有成员列表</a>  </div>
   <div class="headertitle">
 <div class="title">llama::RttiContext类 参考</div>  </div>
@@ -85,7 +87,7 @@ $(function() {
  <div class="center">
   <img src="classllama_1_1RttiContext.png" usemap="#llama::RttiContext_map" alt=""/>
   <map id="llama::RttiContext_map" name="llama::RttiContext_map">
-<area href="classllama_1_1IDebugPrint.html" alt="llama::IDebugPrint" shape="rect" coords="0,0,113,24"/>
+<area href="classllama_1_1IDebugPrint.html" title="输出自己的状态供调试用。" alt="llama::IDebugPrint" shape="rect" coords="0,0,113,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -100,24 +102,13 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>Instantiator</b> = <
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:af3663172a26665cf863545e065a957cd"><td class="memItemLeft" align="right" valign="top"><a id="af3663172a26665cf863545e065a957cd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RttiContext</b> (bool fromDefaultInstance=true)</td></tr>
-<tr class="separator:af3663172a26665cf863545e065a957cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e713a8c4c8fee82ba87e013e2fc2ed5"><td class="memItemLeft" align="right" valign="top"><a id="a5e713a8c4c8fee82ba87e013e2fc2ed5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddInstantiator</b> (TypeId src, Instantiator fn)</td></tr>
-<tr class="separator:a5e713a8c4c8fee82ba87e013e2fc2ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d8e076b6165f67a3bebd96b8c51616d"><td class="memItemLeft" align="right" valign="top"><a id="a7d8e076b6165f67a3bebd96b8c51616d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#a7d8e076b6165f67a3bebd96b8c51616d">AddCast</a> (TypeId src, TypeId dst, CastFunction fn)</td></tr>
-<tr class="memdesc:a7d8e076b6165f67a3bebd96b8c51616d"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册继承关系 这些信息会在 <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> 对象创建时写入该对象。 为当前对象添加 RTTI 信息。 <br /></td></tr>
-<tr class="separator:a7d8e076b6165f67a3bebd96b8c51616d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6783a76b2ca1b3dd8103200e378f9ebb"><td class="memItemLeft" align="right" valign="top"><a id="a6783a76b2ca1b3dd8103200e378f9ebb"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Cast</b> (void *src_obj, TypeId src, TypeId dst)</td></tr>
-<tr class="separator:a6783a76b2ca1b3dd8103200e378f9ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe4d418e3a4b341f25f3588baf43872b"><td class="memItemLeft" align="right" valign="top"><a id="afe4d418e3a4b341f25f3588baf43872b"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; const void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Cast</b> (const void *src_obj, TypeId src, TypeId dst)</td></tr>
+<tr class="memitem:ab221d7336daf18c43737a8cc27436605"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#ab221d7336daf18c43737a8cc27436605">Cast</a> (void *src_obj, <a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a> src, <a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a> dst)</td></tr>
+<tr class="separator:ab221d7336daf18c43737a8cc27436605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe4d418e3a4b341f25f3588baf43872b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; const void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#afe4d418e3a4b341f25f3588baf43872b">Cast</a> (const void *src_obj, <a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a> src, <a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a> dst)</td></tr>
 <tr class="separator:afe4d418e3a4b341f25f3588baf43872b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45ddcbd5734259edb6aa781682c14d8e"><td class="memItemLeft" align="right" valign="top"><a id="a45ddcbd5734259edb6aa781682c14d8e"></a>
-up&lt; <a class="el" href="classllama_1_1IRtti.html">IRtti</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Instantiate</b> (TypeId typeId)</td></tr>
+up&lt; <a class="el" href="classllama_1_1IRtti.html">IRtti</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#a45ddcbd5734259edb6aa781682c14d8e">Instantiate</a> (<a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a> typeId)</td></tr>
+<tr class="memdesc:a45ddcbd5734259edb6aa781682c14d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定类型，构造其实例。 <br /></td></tr>
 <tr class="separator:a45ddcbd5734259edb6aa781682c14d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classllama_1_1IDebugPrint"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classllama_1_1IDebugPrint')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classllama_1_1IDebugPrint.html">llama::IDebugPrint</a></td></tr>
 <tr class="memitem:ac34214bfe9d5db710994560c3c05d020 inherit pub_methods_classllama_1_1IDebugPrint"><td class="memItemLeft" align="right" valign="top"><a id="ac34214bfe9d5db710994560c3c05d020"></a>
@@ -126,21 +117,117 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DebugPrint</b> (std::
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a0b0d050325cfa3004d7b69b5d4edd5e4"><td class="memItemLeft" align="right" valign="top"><a id="a0b0d050325cfa3004d7b69b5d4edd5e4"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddDefaultInstantiator</b> (TypeId src, Instantiator fn)</td></tr>
-<tr class="separator:a0b0d050325cfa3004d7b69b5d4edd5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53e0df3d61d898b50fc20549ba07ce76"><td class="memItemLeft" align="right" valign="top"><a id="a53e0df3d61d898b50fc20549ba07ce76"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#a53e0df3d61d898b50fc20549ba07ce76">AddDefaultCast</a> (TypeId src, TypeId dst, CastFunction fn)</td></tr>
-<tr class="memdesc:a53e0df3d61d898b50fc20549ba07ce76"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册继承关系 这些信息会在 <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> 对象创建时写入该对象。 <br /></td></tr>
-<tr class="separator:a53e0df3d61d898b50fc20549ba07ce76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c0e94e0705203cc001f3d47a21ffabe"><td class="memItemLeft" align="right" valign="top"><a id="a6c0e94e0705203cc001f3d47a21ffabe"></a>
+static <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#a6c0e94e0705203cc001f3d47a21ffabe">GetDefaultInstance</a> ()</td></tr>
+<tr class="memdesc:a6c0e94e0705203cc001f3d47a21ffabe"><td class="mdescLeft">&#160;</td><td class="mdescRight">返回单例。 <br /></td></tr>
+<tr class="separator:a6c0e94e0705203cc001f3d47a21ffabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a93fd3210976774a47fc16c89bd4fa7ee"><td class="memItemLeft" align="right" valign="top"><a id="a93fd3210976774a47fc16c89bd4fa7ee"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1RttiContext.html#a93fd3210976774a47fc16c89bd4fa7ee">DebugPrint_IDebugPrint</a> (std::ostream &amp;stream) const</td></tr>
+<tr class="memdesc:a93fd3210976774a47fc16c89bd4fa7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">实现这个方法，输出调试信息 <br /></td></tr>
+<tr class="separator:a93fd3210976774a47fc16c89bd4fa7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:ac63f03db570a981a879bceb2e3369daa"><td class="memItemLeft" align="right" valign="top"><a id="ac63f03db570a981a879bceb2e3369daa"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>detail::RttiModifier</b></td></tr>
+<tr class="separator:ac63f03db570a981a879bceb2e3369daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>保存RTTI信息，并提供类型转换实现。 </p><dl class="section note"><dt>注解</dt><dd>如果需要进行类型转换，建议用 <a class="el" href="classllama_1_1IRtti.html">IRtti</a> 接口提供的类型安全 API 。 <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> 具有一个全局单例，本类提供的静态 (函数名带 "Default" 的) 方法能向这个单例注册各种信息。 <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> 在创建时，默认拷贝此全局单例。全局单例修改，其他已有的 <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> 对象不会 收到通知或受到任何影响。</dd>
-<dd>
-不要自己创建 Context 对象，需要时应将其参数化或保存其指针。RttiContext 的作者认为将来会有一个更大的 Context 去继承或者包含 这个类型。要用时就传 Context ，最终目的是除了极少数情况之外，消除全局变量/单例。这样创建新的 Context 程序就能从干净的状态重新执行，有利于单测。 目前本类型属于这个“极少数情况”，因为不这样的话注册 RTTI 将变的格外复杂，这种做法是 <a class="el" href="classllama_1_1RttiContext.html">RttiContext</a> 的特例，不可作为惯例。 </dd></dl>
+<div class="textblock"><p>保存RTTI数据（继承图），并提供类型转换实现。 </p><dl class="section note"><dt>注解</dt><dd>关于 LLAMA 风格 RTTI 的说明，参见 <a href="#rtti">RTTI</a> 。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="classllama_1_1IRtti.html" title="表示该类型的对象具有&quot;运行时类型信息&quot;(rtti)。">llama::IRtti</a> <a href="#rtti">RTTI</a> </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00092">92</a> 行定义.</p>
-</div><hr/>该类的文档由以下文件生成:<ul>
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00090">90</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="afe4d418e3a4b341f25f3588baf43872b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe4d418e3a4b341f25f3588baf43872b">&#9670;&nbsp;</a></span>Cast() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classllama_1_1np.html">np</a>&lt;const void&gt; llama::RttiContext::Cast </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>src_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a>&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a>&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>将动态类型为 src 的 src_obj 转换为 dst 类型，src 和 dst 都是类型 id 。 常量重载。 </p><dl class="section warning"><dt>警告</dt><dd>如果需要进行类型转换，建议用 <a class="el" href="classllama_1_1IRtti.html" title="表示该类型的对象具有&quot;运行时类型信息&quot;(rtti)。">IRtti</a> 接口提供的类型安全 API 来替代。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="rtti_8h_source.html">rtti.h</a> 第 <a class="el" href="rtti_8h_source.html#l00108">108</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="rtti_8cpp_source.html#l00089">Cast()</a>.</p>
+
+</div>
+</div>
+<a id="ab221d7336daf18c43737a8cc27436605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab221d7336daf18c43737a8cc27436605">&#9670;&nbsp;</a></span>Cast() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classllama_1_1np.html">np</a>&lt; void &gt; llama::RttiContext::Cast </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>src_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a>&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacellama.html#a37fbbf8b527f07494eeb97a720b04e50">TypeId</a>&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将动态类型为 src 的 src_obj 转换为 dst 类型，src 和 dst 都是类型 id 。 </p><dl class="section warning"><dt>警告</dt><dd>如果需要进行类型转换，建议用 <a class="el" href="classllama_1_1IRtti.html" title="表示该类型的对象具有&quot;运行时类型信息&quot;(rtti)。">IRtti</a> 接口提供的类型安全 API 来替代。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="rtti_8cpp_source.html">rtti.cpp</a> 第 <a class="el" href="rtti_8cpp_source.html#l00089">89</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="interfaces_2rtti_8h_source.html#l00066">llama::IRtti::Cast()</a>, <a class="el" href="rtti_8h_source.html#l00108">Cast()</a> , 以及 <a class="el" href="interfaces_2rtti_8h_source.html#l00086">llama::IRtti::TryCast()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
 <li>/home/runner/work/toys/toys/projects/llama/src/base/include/base/<a class="el" href="rtti_8h_source.html">rtti.h</a></li>
 <li>/home/runner/work/toys/toys/projects/llama/src/base/src/<a class="el" href="rtti_8cpp_source.html">rtti.cpp</a></li>
 </ul>
