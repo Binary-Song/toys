@@ -64,7 +64,7 @@ TEST_F(PointerTest, P3)
             p<std::string> p = sp;
         },
         llama::Exception);
-    EXPECT_THROW({ np<int>(nullptr).deref(); }, llama::Exception);
+    EXPECT_THROW({ np<int>(nullptr).as_ref(); }, llama::Exception);
     EXPECT_THROW({ auto p = np<std::string>(nullptr)->data(); }, llama::Exception);
     EXPECT_THROW({ np<std::string>(nullptr)[0]; }, llama::Exception);
 }
@@ -117,10 +117,10 @@ TEST_F(PointerTest, Arith)
 {
     int x[] = {1, 2, 3, 4, 5};
     p<int> p1(x);
-    EXPECT_EQ(p1.deref(), 1);
-    EXPECT_EQ((p1 + 1).deref(), 2);
-    EXPECT_EQ((p1 + 2).deref(), 3);
-    EXPECT_EQ((p1 + 4).deref(), 5);
+    EXPECT_EQ(p1.as_ref(), 1);
+    EXPECT_EQ((p1 + 1).as_ref(), 2);
+    EXPECT_EQ((p1 + 2).as_ref(), 3);
+    EXPECT_EQ((p1 + 4).as_ref(), 5);
     EXPECT_GT((p1 + 4), p1);
     EXPECT_LT((p1 + 1), p1 + 2);
 }
@@ -132,7 +132,7 @@ TEST_F(PointerTest, void_ptr)
     p<void> p2 = p1.unwrap();
     void *r1 = static_cast<void *>(p1);
     void *r2 = static_cast<void *>(p1);
-    np<int> t1 = p1.cast_static<int>();
+    np<int> t1 = p1.static_as<int>();
     EXPECT_EQ(r1, r2);
     EXPECT_EQ(r1, p1);
     EXPECT_EQ(p1, p2);

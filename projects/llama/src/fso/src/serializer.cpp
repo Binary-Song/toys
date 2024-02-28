@@ -8,7 +8,7 @@ namespace llama
 namespace fso
 {
 
-LLAMA_API(fso) void Serializer::Execute(RttiContext &context, IFso &object)
+LLAMA_API(fso) void Serializer::Execute(IFso &object)
 {
     // 写入类型名称
     std::string type(object.GetTypeId());

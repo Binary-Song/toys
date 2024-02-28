@@ -38,7 +38,7 @@
 /// 在Windows上，导出/导入前缀为 `__declspec(dllexport)` / `__declspec(dllimport)`。
 /// 其他平台皆为 `__attribute__((visibility ("default")))` 。
 ///
-/// @details 实现原理：
+/// @internal 实现原理：
 /// ```
 /// LLAMA_CONCAT(LLAMA_FUNNY, LLAMA_HELPER1(mod))
 /// ```

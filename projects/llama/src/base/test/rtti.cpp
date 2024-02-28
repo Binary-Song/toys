@@ -1,7 +1,6 @@
 #include "base/rtti.h"
 #include "base/exceptions.h"
 #include "base/interfaces/rtti.h"
-#include "base/misc.h"
 #include <gtest/gtest.h>
 #include <sstream>
 
@@ -89,13 +88,12 @@ TEST(rtti, case3)
     using llama::Parent;
     using llama::RttiContext;
 
-    RttiContext ctx;
     Child child;
     GrandParent &parent = child;
-    Child *child2 = parent.Cast<Child>(ctx);
+    Child *child2 = parent.Cast<Child>();
     EXPECT_EQ(&child, child2);
     std::stringstream strm;
-    ctx.DebugPrint(strm);
+    RttiContext::GetDefaultInstance().DebugPrint(strm);
     EXPECT_EQ("3 cast edge(s) :\n  ::llama::Child -> ::llama::Parent\n  ::llama::Child2 -> ::llama::Parent\n  "
               "::llama::Parent -> ::llama::GrandParent\n3 instantiator(s) :\n  ::llama::Child \n  ::llama::Child2 \n  "
               "::llama::Parent \n",
@@ -117,6 +115,5 @@ TEST(rtti, case5)
 {
     llama::Child2 child2;
     llama::GrandParent &gp = child2;
-    llama::RttiContext c;
-    EXPECT_THROW({ auto p = gp.Cast<llama::Child>(c); }, llama::Exception);
+    EXPECT_THROW({ auto p = gp.Cast<llama::Child>(); }, llama::Exception);
 }

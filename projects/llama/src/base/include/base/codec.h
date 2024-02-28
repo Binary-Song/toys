@@ -25,12 +25,14 @@ LLAMA_API(base) std::u16string EncodeUtf16(const uint32_t *data, size_t length);
 /// 将代码点编码为 UTF-8 字符串
 LLAMA_API(base) std::string EncodeUtf8(const uint32_t *data, size_t length);
 
+/// @brief 将 utf-8 字符串转为 utf-16
 inline std::u16string ToUtf16(std::string_view str)
 {
     auto codes = DecodeUtf8(str.data(), str.size());
     return EncodeUtf16(codes.data(), codes.size());
 }
 
+/// @brief 将 宽字符 字符串转为 utf-8
 inline std::u16string ToUtf16(std::wstring_view str)
 {
 #ifdef LLAMA_WIN
@@ -39,13 +41,13 @@ inline std::u16string ToUtf16(std::wstring_view str)
     return EncodeUtf16((const uint32_t *)str.data(), str.size());
 #endif
 }
-
+/// @brief 将 utf-16 字符串转为 utf-8
 inline std::string ToUtf8(std::u16string_view str)
 {
     auto codes = DecodeUtf16(str.data(), str.size());
     return EncodeUtf8(codes.data(), codes.size());
 }
-
+/// @brief 将 宽字符 字符串转为 utf-8
 inline std::string ToUtf8(std::wstring_view str)
 {
 #ifdef LLAMA_WIN

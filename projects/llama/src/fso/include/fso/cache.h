@@ -1,8 +1,8 @@
 #include "base/base.h"
-#include "lru_cache.h"
 #include "fso/deserializer.h"
 #include "fso/interface/fso.h"
 #include "fso/serializer.h"
+#include "lru_cache.h"
 #include <cstddef>
 #include <fstream>
 namespace llama
@@ -23,7 +23,7 @@ class Cache : public virtual ICache, private lru_cache<Hash, sp<IFso>>
 {
 
 public:
-    explicit Cache(p<RttiContext> ctx, size_t max_size) : lru_cache<Hash, sp<IFso>>(max_size), m_context(ctx)
+    explicit Cache(size_t max_size) : lru_cache<Hash, sp<IFso>>(max_size)
     {
     }
 
@@ -47,7 +47,7 @@ private:
         /// 可以假定 key 和 value.GetHash() 确实一致
         std::ofstream file(fileName, std::ios::binary);
         Serializer s(&file);
-        s.Execute(*m_context, *value);
+        s.Execute(*value);
     }
 
     virtual sp<IFso> miss(const Hash &key) override
@@ -55,11 +55,9 @@ private:
         std::string fileName = HashToString(key);
         fileName += ".bin";
         std::ifstream file(fileName, std::ios::binary);
-        up<IFso> p = Deserializer(&file).Execute(*m_context);
+        up<IFso> p = Deserializer(&file).Execute();
         return p;
     }
-
-    p<RttiContext> m_context;
 };
 
 } // namespace fso

@@ -5,7 +5,6 @@
 #include "fso/hash.h"
 #include "fso/hasher.h"
 #include "fso/properties.h"
-#include "fso/serializer.h"
 #include <cstdint>
 #include <gtest/gtest.h>
 #include <memory>
@@ -56,10 +55,10 @@ private:
     std::string m_text = "";
 };
 
-class Context : public virtual RttiContext, public virtual Cache
+class Context : public virtual Cache
 {
 public:
-    explicit Context(size_t maxCacheSize) : RttiContext(), Cache(static_cast<RttiContext *>(this), maxCacheSize)
+    explicit Context(size_t maxCacheSize) : Cache(maxCacheSize)
     {
     }
 };
@@ -74,7 +73,7 @@ private:
     }
 
 public:
-    explicit Table(mp<ICache, RttiContext> ctx) : m_ctx(ctx)
+    explicit Table(mp<ICache > ctx) : m_ctx(ctx)
     {
     }
 
@@ -98,7 +97,7 @@ public:
 
 private:
     std::vector<dp<Cell>> m_cells;
-    mp<ICache, RttiContext> m_ctx;
+    mp<ICache > m_ctx;
 };
 
 TEST(fso, serial)

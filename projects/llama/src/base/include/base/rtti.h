@@ -1,9 +1,7 @@
 #pragma once
 
-#include "base/exceptions.h"
 #include "base/interfaces/debug_print.h"
 #include "base/pointers.h"
-#include "base/rtti.h"
 #include "misc.h"
 #include <fmt/format.h>
 #include <map>
@@ -25,16 +23,16 @@ private:                                                                        
 private:                                                                                                               \
     inline static constexpr char s_typeId[] = #T;                                                                      \
     static_assert(                                                                                                     \
-        LLAMA_RTTI_ArgCheck(#T),                                                                                       \
+        ::llama::detail::RttiModifier::LLAMA_RTTI_ArgCheck(#T),                                                        \
         "All args to LLAMA_RTTI must be fully-qualified and should not contain any spaces (e.g. ::llama::MyClass )");  \
                                                                                                                        \
 private:                                                                                                               \
     inline static unsigned char s_auto_init_rtti = []() {
 
 #define LLAMA_RTTI_UPCAST_ENTRY(From, To)                                                                              \
-    ::llama::ModifyDefaultRtti<From, To>();                                                                            \
+    ::llama::detail::RttiModifier::ModifyDefaultRtti<From, To>();                                                      \
     static_assert(                                                                                                     \
-        LLAMA_RTTI_ArgCheck(#To),                                                                                      \
+        ::llama::detail::RttiModifier::LLAMA_RTTI_ArgCheck(#To),                                                       \
         "All args to LLAMA_RTTI must be fully-qualified and should not contain any spaces (e.g. ::llama::MyClass "     \
         ")");
 
@@ -71,30 +69,51 @@ private:                                                                        
 #define LLAMA_RTTI_9(T, B1, B2, B3, B4, B5, B6, B7, B8) LLAMA_RTTI_8(T, B1, B2, B3, B4, B5, B6, B7) LLAMA_RTTI_UPCAST_ENTRY(T, B8)
 // clang-format on
 
+/// llama 的 API
 namespace llama
 {
+
+/// detail 命名空间里的所有成员都属于实现细节。不可使用。
+namespace detail
+{
+class RttiModifier;
+}
 
 /// 类型ID，一个静态的字符串。比较时比较其内容而不是地址。
 using TypeId = std::string_view;
 
 class IRtti;
 
-/// 保存RTTI信息，并提供类型转换实现。
-/// @note 如果需要进行类型转换，建议用 IRtti 接口提供的类型安全 API 。
-/// RttiContext 具有一个全局单例，本类提供的静态 (函数名带 "Default" 的) 方法能向这个单例注册各种信息。
-/// RttiContext 在创建时，默认拷贝此全局单例。全局单例修改，其他已有的 RttiContext 对象不会
-/// 收到通知或受到任何影响。
-///
-/// @note 不要自己创建 Context 对象，需要时应将其参数化或保存其指针。RttiContext 的作者认为将来会有一个更大的 Context
-/// 去继承或者包含 这个类型。要用时就传 Context ，最终目的是除了极少数情况之外，消除全局变量/单例。这样创建新的 Context
-/// 程序就能从干净的状态重新执行，有利于单测。 目前本类型属于这个“极少数情况”，因为不这样的话注册 RTTI
-/// 将变的格外复杂，这种做法是 RttiContext 的特例，不可作为惯例。
+/// 保存RTTI数据（继承图），并提供类型转换实现。
+/// @note 关于 LLAMA 风格 RTTI 的说明，参见 [RTTI](#rtti) 。
+/// @sa llama::IRtti [RTTI](#rtti)
 class RttiContext : public virtual IDebugPrint
 {
+    friend class detail::RttiModifier;
+
 public:
     using CastFunction = void *(*)(void *) noexcept;
     using Instantiator = IRtti *(*)();
 
+    /// 返回单例。
+    LLAMA_API(base) static RttiContext &GetDefaultInstance();
+
+    /// 将动态类型为 src 的 src_obj 转换为 dst 类型，src 和 dst 都是类型 id 。
+    /// @warning 如果需要进行类型转换，建议用 IRtti 接口提供的类型安全 API 来替代。
+    LLAMA_API(base) np<void> Cast(void *src_obj, TypeId src, TypeId dst);
+
+    /// 将动态类型为 src 的 src_obj 转换为 dst 类型，src 和 dst 都是类型 id 。
+    /// 常量重载。
+    /// @warning 如果需要进行类型转换，建议用 IRtti 接口提供的类型安全 API 来替代。
+    np<const void> Cast(const void *src_obj, TypeId src, TypeId dst)
+    {
+        return Cast(const_cast<void *>(src_obj), src, dst);
+    }
+
+    /// 指定类型，构造其实例。
+    LLAMA_API(base) up<IRtti> Instantiate(TypeId typeId);
+
+private:
     explicit RttiContext(bool fromDefaultInstance = true)
     {
         if (fromDefaultInstance)
@@ -113,98 +132,20 @@ public:
         return m_instantiators.insert({src, fn}).second;
     }
 
-    /// @brief 注册继承关系
-    /// 这些信息会在 RttiContext 对象创建时写入该对象。
     static bool AddDefaultCast(TypeId src, TypeId dst, CastFunction fn)
     {
         return GetDefaultInstance().AddCast(src, dst, fn);
     }
 
-    /// @copybrief AddDefaultCast
-    /// 为当前对象添加 RTTI 信息。
     bool AddCast(TypeId src, TypeId dst, CastFunction fn)
     {
         auto &&dst_map = m_casts[src];
         return dst_map.insert({dst, fn}).second;
     }
 
-    np<void> Cast(void *src_obj, TypeId src, TypeId dst)
-    {
-        if (void *result = DirectCast(src_obj, src, dst))
-        {
-            return result;
-        }
-        std::set<TypeId> blacklist;
-        if (void *result = RecursiveCast(src_obj, src, dst, blacklist))
-        {
-            return result;
-        }
-        return nullptr;
-    }
-
-    np<const void> Cast(const void *src_obj, TypeId src, TypeId dst)
-    {
-        return Cast(const_cast<void *>(src_obj), src, dst);
-    }
-
-    LLAMA_API(base) up<IRtti> Instantiate(TypeId typeId);
-
 private:
-    void *DirectCast(void *src_obj, TypeId src, TypeId dst)
-    {
-        if (src == dst)
-            return src_obj;
-        auto src_iter = m_casts.find(src);
-        if (src_iter != m_casts.end())
-        {
-            auto &&dst_to_fn = src_iter->second;
-            auto dst_iter = dst_to_fn.find(dst);
-            if (dst_iter != dst_to_fn.end())
-            {
-                auto cast_fn = dst_iter->second;
-                return cast_fn(src_obj);
-            }
-        }
-        return nullptr;
-    }
-
-    void *RecursiveCast(void *src_obj, TypeId src, TypeId dst, std::set<TypeId> &blacklist)
-    {
-        auto src_iter = m_casts.find(src);
-        if (src_iter != m_casts.end())
-        {
-            auto &&dst_to_fn_map = src_iter->second;
-            // for bridge in src.children:
-            //    try cast: src -> bridge -> dst
-            for (auto &&pair : dst_to_fn_map)
-            {
-                const TypeId bridge = pair.first;
-
-                if (blacklist.count(bridge))
-                    continue;
-
-                auto src_to_bridge_fn = pair.second;
-                void *bridge_obj = src_to_bridge_fn(src_obj);
-                if (bridge_obj == nullptr)
-                {
-                    blacklist.insert(bridge);
-                    continue;
-                }
-
-                void *dst_obj = RecursiveCast(bridge_obj, bridge, dst, blacklist);
-                if (dst_obj)
-                {
-                    return dst_obj;
-                }
-                else
-                {
-                    blacklist.insert(bridge);
-                    continue;
-                }
-            }
-        }
-        return nullptr;
-    }
+    LLAMA_API(base) void *DirectCast(void *src_obj, TypeId src, TypeId dst);
+    LLAMA_API(base) void *RecursiveCast(void *src_obj, TypeId src, TypeId dst, std::set<TypeId> &blacklist);
 
 private:
     virtual void DebugPrint_IDebugPrint(std::ostream &stream) const
@@ -229,8 +170,6 @@ private:
     /// m_casts[src][dst] -> cast_fn
     std::map<TypeId, std::map<TypeId, CastFunction>> m_casts;
     std::map<TypeId, Instantiator> m_instantiators;
-
-    LLAMA_API(base) static RttiContext &GetDefaultInstance();
 };
 
 template <typename T> class rtti_trait
@@ -238,45 +177,56 @@ template <typename T> class rtti_trait
 public:
     inline static constexpr const char *id = &T::s_typeId[0];
 };
-
-template <typename T>
-inline typename std::enable_if<!std::is_default_constructible<T>::value, void>::type
-AddDefaultInstantiatorIfDefaultConstructible()
+namespace detail
 {
-}
 
-template <typename T>
-inline typename std::enable_if<std::is_default_constructible<T>::value, void>::type
-AddDefaultInstantiatorIfDefaultConstructible()
+/// Rtti 修改器。里面装着永远都别碰的危险黑科技。
+class RttiModifier
 {
-    RttiContext::AddDefaultInstantiator(rtti_trait<T>::id, []() -> IRtti * { return new T{}; });
-}
+public:
+    friend class ::llama::RttiContext;
 
-template <typename From, typename To> inline void ModifyDefaultRtti()
-{
-    RttiContext::AddDefaultCast(rtti_trait<From>::id, rtti_trait<To>::id,
-                                [](void *from) noexcept -> void * { return static_cast<To *>((From *)from); });
-    AddDefaultInstantiatorIfDefaultConstructible<From>();
-}
-
-inline constexpr bool LLAMA_RTTI_ArgCheck(const char *arg)
-{
-    if (arg[0] != ':')
-        return false;
-
-    if (arg[1] != ':')
-        return false;
-
-    while (*arg)
+    template <typename T>
+    static inline typename std::enable_if<!std::is_default_constructible<T>::value, void>::type
+    AddDefaultInstantiatorIfDefaultConstructible()
     {
-        char c = *arg;
+    }
 
-        if (c == ' ' || c == '\t' || c == '\n')
+    template <typename T>
+    static inline typename std::enable_if<std::is_default_constructible<T>::value, void>::type
+    AddDefaultInstantiatorIfDefaultConstructible()
+    {
+        RttiContext::AddDefaultInstantiator(rtti_trait<T>::id, []() -> IRtti * { return new T{}; });
+    }
+
+    template <typename From, typename To> static inline void ModifyDefaultRtti()
+    {
+        static_assert(std::is_base_of<To, From>::value, "The 1st argument to LLAMA_RTTI should derive publicly from the other arguments.");
+        RttiContext::AddDefaultCast(rtti_trait<From>::id, rtti_trait<To>::id,
+                                    [](void *from) noexcept -> void * { return static_cast<To *>((From *)from); });
+        AddDefaultInstantiatorIfDefaultConstructible<From>();
+    }
+
+    static inline constexpr bool LLAMA_RTTI_ArgCheck(const char *arg)
+    {
+        if (arg[0] != ':')
             return false;
 
-        arg++;
-    }
-    return true;
-}
+        if (arg[1] != ':')
+            return false;
 
+        while (*arg)
+        {
+            char c = *arg;
+
+            if (c == ' ' || c == '\t' || c == '\n')
+                return false;
+
+            arg++;
+        }
+        return true;
+    }
+};
+
+} // namespace detail
 } // namespace llama

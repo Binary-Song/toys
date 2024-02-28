@@ -18,7 +18,7 @@ public:
     {
     }
 
-    LLAMA_API(fso) void Execute(RttiContext &context, IFso &object);
+    LLAMA_API(fso) void Execute( IFso &object);
 
     static void SerializeProperty(IReadOnlyProperty &prop, std::ostream &stream)
     {

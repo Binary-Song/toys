@@ -11,214 +11,241 @@ inline Exception NullPointerException()
     return Exception("null error");
 }
 
+/// @brief 见 llama::p
+/// @details 如果你 **真的** 知道一个指针不是空，在 llama::p 的构造函数传这个玩意绕过空检查。
 class bypass_null_check
 {
 };
 
-/// 非空指针 `T*` 。用它来表示已经判过空的指针。它没有空的状态，如果试图用空初始化它，会
-/// 在运行时抛出 NullPointerException 异常。除此之外不会检查空，因此有更好的性能。
-/// 没有默认构造函数。如果由于种种原因需要默认构造，请用np代替。
+/// @brief 非空指针。
+/// @details 用它来表示已经非空的指针。它没有空的状态，如果试图用空指针初始化它，会
+/// 在运行时抛出 NullPointerException 异常。除此之外不会检查空，因此比 llama::np 有更好的性能。
+/// 没有默认构造函数。
+/// @sa llama::np
 template <typename T> class p
 {
 public:
-    /// 禁止用空指针构造。
+    /// @brief 禁止用空指针构造。
     p(std::nullptr_t) = delete;
 
-    /// 如果 `U*` 可以转为 `T*` ，则 `U*` 也可以转为 `p<T>`
+    /// @brief 如果 `U*` 可以转为 `T*` ，则 `U*` 也可以转为 `p<T>`
     /// @exception 要求 `ptr` 非空。否则抛出异常。
-    p(T *ptr) : ptr(ptr)
+    p(T *ptr) : m_ptr(ptr)
     {
         if (!ptr)
             throw NullPointerException();
     }
 
-    /// 如果 `U*` 可以转为 `T*`，则 `p<U>` 也可以转为 `p<T>`
+    /// @brief 如果 `U*` 可以转为 `T*`，则 `p<U>` 也可以转为 `p<T>`
     /// @exception 要求 `ptr` 非空。否则抛出异常。
-    template <typename U> p(p<U> ptr) : ptr(ptr.data())
+    template <typename U> p(p<U> ptr) : m_ptr(ptr.as_raw())
     {
         if (!ptr)
             throw NullPointerException();
     }
 
-    p(T *ptr, bypass_null_check) : ptr(ptr)
+    /// @brief 绕过空检查，构造。
+    /// @details 调用本重载前，请在心中默念十遍， **我真的确定它不是空** 。
+    p(T *ptr, bypass_null_check) noexcept : m_ptr(ptr)
     {
     }
 
-    template <typename U> p(p<U> ptr, bypass_null_check) : ptr(ptr.data())
+    /// @brief 绕过空检查，从其他类型的指针构造。
+    /// @details 调用本重载前，请在心中默念十遍， **我真的确定它不是空** 。
+    template <typename U> p(p<U> ptr, bypass_null_check) noexcept : m_ptr(ptr.as_raw())
     {
     }
 
-    /// 可以隐式转换为普通指针
-    operator T *() const
+    /// @brief 可以隐式转换为普通指针
+    operator T *() const noexcept
     {
-        return ptr;
+        return m_ptr;
     }
 
-    template <typename U> p<U> cast_static() const
+    /// @brief 对内部指针进行 static_cast
+    template <typename U> p<U> static_as() const noexcept
     {
-        return p<U>(static_cast<U *>(ptr), bypass_null_check{});
+        return p<U>(static_cast<U *>(m_ptr), bypass_null_check{});
     }
 
-    template <typename U> p<U> cast_reinterp() const
+    /// @brief 对内部指针进行 reinterpret_cast
+    template <typename U> p<U> reinterpret_as() const noexcept
     {
-        return p<U>(reinterpret_cast<U *>(ptr), bypass_null_check{});
+        return p<U>(reinterpret_cast<U *>(m_ptr), bypass_null_check{});
     }
 
-    template <typename U> p<U> cast_const() const
+    /// @brief 对内部指针进行 const_cast
+    template <typename U> p<U> const_as() const noexcept
     {
-        return p<U>(const_cast<U *>(ptr), bypass_null_check{});
-    }
-
-    /// 解引用。
-    /// 如果 T=void ，无效。
-    /// @exception 要求 `ptr` 非空。否则抛出异常。
-    template <typename U = T> U &operator*() const
-    {
-        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
-        return *ptr;
+        return p<U>(const_cast<U *>(m_ptr), bypass_null_check{});
     }
 
     /// 解引用。
-    /// 如果 T=void ，无效。
-    /// @exception 要求 `ptr` 非空。否则抛出异常。
-    template <typename U = T> U &deref() const
+    /// 如果 T=void ，无法调用。
+    template <typename U = T> U &operator*() const noexcept
     {
         static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
-        return *ptr;
+        return *m_ptr;
     }
 
-    T *operator->() const
-    {
-        return ptr;
-    }
-    T *data() const
-    {
-        return ptr;
-    }
-
-    /// 访问偏移量
-    /// 如果 T=void ，无效。
-    /// @exception 要求 `ptr` 非空。否则抛出异常。
-    template <typename U = T> U &operator[](ptrdiff_t offset) const
+    /// 解引用。
+    /// 如果 T=void ，无法调用。
+    template <typename U = T> U &as_ref() const noexcept
     {
         static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
-        return ptr[offset];
+        return *m_ptr;
     }
 
-    // p1 - p2
-    ptrdiff_t operator-(p<T> p2) const
+    /// 返回裸指针。
+    T *operator->() const noexcept
     {
-        return ptr - p2.ptr;
+        return m_ptr;
     }
-    // p + 1
-    p<T> operator+(ptrdiff_t offset) const
+
+    /// 返回裸指针。
+    T *as_raw() const noexcept
     {
-        return ptr + offset;
+        return m_ptr;
     }
-    // 1 + p
-    friend p<T> operator+(ptrdiff_t offset, p<T> p)
+
+    /// 访问偏移量。
+    /// 如果 T=void ，无效。
+    template <typename U = T> U &operator[](ptrdiff_t offset) const noexcept
     {
-        return p.ptr + offset;
+        static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
+        return m_ptr[offset];
     }
-    // p ++
-    p<T> operator++(int)
+
+    /// 指针算术。
+    ptrdiff_t operator-(p<T> p2) const noexcept
+    {
+        return m_ptr - p2.m_ptr;
+    }
+
+    /// 指针算术。
+    p<T> operator+(ptrdiff_t offset) const noexcept
+    {
+        return m_ptr + offset;
+    }
+
+    /// 指针算术。
+    friend p<T> operator+(ptrdiff_t offset, p<T> p) noexcept
+    {
+        return p.m_ptr + offset;
+    }
+
+    /// 指针算术。
+    p<T> operator++(int) noexcept
     {
         p<T> old = *this;
-        ++ptr;
+        ++m_ptr;
         return old;
     }
-    // ++ p
-    p<T> &operator++()
+
+    /// 指针算术。
+    p<T> &operator++() noexcept
     {
-        ++ptr;
+        ++m_ptr;
         return *this;
     }
-    // p --
-    p<T> operator--(int)
+
+    /// 指针算术。
+    p<T> operator--(int) noexcept
     {
         p<T> old = *this;
-        --ptr;
+        --m_ptr;
         return old;
     }
-    // -- p
-    p<T> &operator--()
+
+    /// 指针算术。
+    p<T> &operator--() noexcept
     {
-        --ptr;
+        --m_ptr;
         return *this;
     }
-    // p += 1
-    p<T> &operator+=(ptrdiff_t offset)
+
+    /// 指针算术。
+    p<T> &operator+=(ptrdiff_t offset) noexcept
     {
-        ptr += offset;
+        m_ptr += offset;
         return *this;
     }
-    // p -= 1
-    p<T> &operator-=(ptrdiff_t offset)
+
+    /// 指针算术。
+    p<T> &operator-=(ptrdiff_t offset) noexcept
     {
-        ptr -= offset;
+        m_ptr -= offset;
         return *this;
     }
 
 private:
-    T *ptr;
+    T *m_ptr;
 };
 
-/// 可空指针 `T*` 。
+/// @brief 可空指针。
+/// @details 与 llama::p 相反，可以为空。
+/// 所有需要解引用的操作都会触发判空，试图对空指针解引用会抛出 llama::Exception 。
+/// 如果不希望每次访问都判空，用 unwrap 将其转为 llama::p 即可。
 template <typename T> class np
 {
 public:
-    np() : ptr(nullptr)
+    /// @brief 构造空指针
+    np() noexcept : ptr(nullptr)
     {
     }
 
-    np(std::nullptr_t) : ptr(nullptr)
+    /// @brief 构造空指针
+    np(std::nullptr_t) noexcept : ptr(nullptr)
     {
     }
 
-    /// 如果 `U*` 可以转为 `T*` ，则 `U*` 也可以转为 `np<T>`
-    np(T *ptr) : ptr(ptr)
+    /// @brief 转换构造函数，如果 `U*` 可以转为 `T*` ，则 `U*` 也可以转为 `np<T>`
+    np(T *ptr) noexcept : ptr(ptr)
     {
     }
 
-    /// 如果 `U*` 可以转为 `T*` ，则 `np<U>` 也可以转为 `np<T>`
-    template <typename U> np(np<U> ptr) : ptr(ptr.data())
+    /// @brief 转换构造函数，如果 `U*` 可以转为 `T*` ，则 `np<U>` 也可以转为 `np<T>`
+    template <typename U> np(np<U> ptr) noexcept : ptr(ptr.as_raw())
     {
     }
 
-    /// 如果 `U*` 可以转为 `T*` ，则 `p<U>` 可以转为 `np<T>`
-    template <typename U> np(p<U> ptr) : ptr(ptr.data())
+    /// @brief 转换构造函数，如果 `U*` 可以转为 `T*` ，则 `p<U>` 可以转为 `np<T>`
+    template <typename U> np(p<U> ptr) noexcept : ptr(ptr.as_raw())
     {
     }
 
-    /// 可以在特定语境下转为 bool （用在 if / while 的条件里）
-    explicit operator bool() const
-    {
-        return ptr;
-    }
-
-    /// 可以隐式转为普通指针。
-    operator T *() const
+    /// @brief 该函数使 llama::np 可在 if 里作为条件。
+    explicit operator bool() const noexcept
     {
         return ptr;
     }
 
-    template <typename U> np<U> cast_static() const
+    /// @brief 可以隐式转为普通指针。
+    operator T *() const noexcept
+    {
+        return ptr;
+    }
+
+    /// @brief 对内部指针进行 static_cast
+    template <typename U> np<U> static_as() const noexcept
     {
         return np<U>(static_cast<U *>(ptr));
     }
 
-    template <typename U> np<U> cast_reinterp() const
+    /// @brief 对内部指针进行 reinterpret_cast
+    template <typename U> np<U> reinterpret_as() const noexcept
     {
         return np<U>(reinterpret_cast<U *>(ptr));
     }
 
-    template <typename U> np<U> cast_const() const
+    /// @brief 对内部指针进行 const_cast
+    template <typename U> np<U> const_as() const noexcept
     {
         return np<U>(const_cast<U *>(ptr));
     }
 
-    /// 解引用。
-    /// 如果 T=void ， 无效。
+    /// @brief 解引用。
+    /// 如果 T=void ，无法调用。
     /// @exception 要求 `ptr` 非空。否则抛出异常。
     template <typename U = T> U &operator*() const
     {
@@ -228,10 +255,10 @@ public:
         return *ptr;
     }
 
-    /// 解引用。
-    /// 如果 T=void ， 无效。
+    /// @brief 解引用。
+    /// 如果 T=void ，无法调用。
     /// @exception 要求 `ptr` 非空。否则抛出异常。
-    template <typename U = T> U &deref() const
+    template <typename U = T> U &as_ref() const
     {
         static_assert(!std::is_void<U>::value, "Cannot dereference a void pointer.");
         if (!ptr)
@@ -239,7 +266,7 @@ public:
         return *ptr;
     }
 
-    /// `->` 运算符
+    ///  @brief `->` 运算符
     /// @exception 要求 `ptr` 非空。否则抛出异常。
     T *operator->() const
     {
@@ -248,7 +275,7 @@ public:
         return ptr;
     }
 
-    /// 转为 `p<T>`
+    /// @brief 转为 `p<T>` 。
     /// @exception 要求 `ptr` 非空。否则抛出异常。
     p<T> unwrap() const
     {
@@ -257,13 +284,22 @@ public:
         return ptr;
     }
 
-    T *data() const
+    /// @brief 转为 `p<T>` ，如果当前指针为空，返回 subs 作为替代。
+    /// @exception 要求 `ptr` 非空。否则抛出异常。
+    p<T> unwrap_or(p<T> subs) const noexcept
+    {
+        if (!ptr)
+            return subs;
+        return ptr;
+    }
+
+    /// @brief 转为裸指针
+    T *as_raw() const noexcept
     {
         return ptr;
     }
 
-    /// 访问偏移量
-    /// 如果 T=void ，无效。
+    /// @brief 当数组一般访问
     /// @exception 要求 `ptr` 非空。否则抛出异常。
     template <typename U = T> U &operator[](ptrdiff_t offset) const
     {
@@ -273,55 +309,63 @@ public:
         return ptr[offset];
     }
 
-    // np1 - np2
-    ptrdiff_t operator-(np<T> p2) const
+    /// @brief 指针算术
+    ptrdiff_t operator-(np<T> p2) const noexcept
     {
         return ptr - p2.ptr;
     }
-    // np + 1
-    np<T> operator+(ptrdiff_t offset) const
+
+    /// @brief 指针算术
+    np<T> operator+(ptrdiff_t offset) const noexcept
     {
         return ptr + offset;
     }
-    // 1 + np
-    friend np<T> operator+(ptrdiff_t offset, np<T> p)
+
+    /// @brief 指针算术
+    friend np<T> operator+(ptrdiff_t offset, np<T> p) noexcept
     {
         return p.ptr + offset;
     }
-    // np ++
-    np<T> operator++(int)
+
+    /// @brief 指针算术
+    np<T> operator++(int) noexcept
     {
         np<T> old = *this;
         ++ptr;
         return old;
     }
-    // ++ np
-    np<T> &operator++()
+
+    /// @brief 指针算术
+    np<T> &operator++() noexcept
     {
         ++ptr;
         return *this;
     }
-    // np --
-    np<T> operator--(int)
+
+    /// @brief 指针算术
+    np<T> operator--(int) noexcept
     {
         np<T> old = *this;
         --ptr;
         return old;
     }
-    // -- np
-    np<T> &operator--()
+
+    /// @brief 指针算术
+    np<T> &operator--() noexcept
     {
         --ptr;
         return *this;
     }
-    // np += 1
-    np<T> &operator+=(ptrdiff_t offset)
+
+    /// @brief 指针算术
+    np<T> &operator+=(ptrdiff_t offset) noexcept
     {
         ptr += offset;
         return *this;
     }
-    // np -= 1
-    np<T> &operator-=(ptrdiff_t offset)
+
+    /// @brief 指针算术
+    np<T> &operator-=(ptrdiff_t offset) noexcept
     {
         ptr -= offset;
         return *this;
@@ -390,13 +434,13 @@ public:
                                 void>::type /* 防止隐藏拷贝和移动构造函数 */>
     mp(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}
     {
-    }
-
-    ~mp() = default;
+    } 
+ 
+    ~mp() = default; 
     mp(const mp &) = default;
     mp &operator=(const mp &) = default;
     mp(mp &&) = default;
-    mp &operator=(mp &&) = default;
+    mp &operator=(mp &&) = default; 
 };
 
 

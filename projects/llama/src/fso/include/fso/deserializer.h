@@ -19,7 +19,7 @@ public:
     {
     }
 
-    LLAMA_API(fso) up<IFso> Execute(RttiContext &context);
+    LLAMA_API(fso) up<IFso> Execute();
 
     static void DeserializeProperty(IProperty &prop, std::istream &stream)
     {
