@@ -39,21 +39,21 @@ public:
 private:
     /// 返回的指针的类型为 “最派生” 且标记了 LLAMA_RTTI 的类型。
     /// @note 不要手动实现本函数，用 LLAMA_RTTI 。
-    virtual const void *GetSelf_IRtti() const = 0;
+    virtual const void *GetCanonicalAddress_IRtti() const = 0;
 
     /// 应返回 “最派生” 且标记了 LLAMA_RTTI 的类型ID。
     /// @note 不要手动实现本函数，用 LLAMA_RTTI 。
     virtual TypeId GetTypeId_IRtti() const = 0;
 
 public:
-    void *GetSelf()
+    void *GetCanonicalAddress()
     {
-        return const_cast<void *>(const_cast<const IRtti *>(this)->GetSelf_IRtti());
+        return const_cast<void *>(const_cast<const IRtti *>(this)->GetCanonicalAddress_IRtti());
     }
 
-    const void *GetSelf() const
+    const void *GetCanonicalAddress() const
     {
-        return GetSelf_IRtti();
+        return GetCanonicalAddress_IRtti();
     }
 
     TypeId GetTypeId() const
@@ -66,7 +66,7 @@ public:
     template <typename Dst> p<Dst> Cast()
     {
         return RttiContext::GetDefaultInstance()
-            .Cast(GetSelf(), GetTypeId(), rtti_trait<Dst>::id)
+            .Cast(GetCanonicalAddress(), GetTypeId(), rtti_trait<Dst>::id)
             .unwrap()
             .template static_as<Dst>();
     }
@@ -76,7 +76,7 @@ public:
     template <typename Dst> p<const Dst> Cast() const
     {
         return RttiContext::GetDefaultInstance()
-            .Cast(GetSelf(), GetTypeId(), rtti_trait<Dst>::id)
+            .Cast(GetCanonicalAddress(), GetTypeId(), rtti_trait<Dst>::id)
             .unwrap()
             .template static_as<Dst>();
     }
@@ -86,7 +86,7 @@ public:
     template <typename Dst> np<Dst> TryCast()
     {
         return RttiContext::GetDefaultInstance()
-            .Cast(GetSelf(), GetTypeId(), rtti_trait<Dst>::id)
+            .Cast(GetCanonicalAddress(), GetTypeId(), rtti_trait<Dst>::id)
             .template static_as<Dst>();
     }
 
@@ -95,7 +95,7 @@ public:
     template <typename Dst> np<const Dst> TryCast() const
     {
         return RttiContext::GetDefaultInstance()
-            .Cast(GetSelf(), GetTypeId(), rtti_trait<Dst>::id)
+            .Cast(GetCanonicalAddress(), GetTypeId(), rtti_trait<Dst>::id)
             .template static_as<Dst>();
     }
 };

@@ -43,7 +43,7 @@ private:                                                                        
 
 #define LLAMA_RTTI_OVERRIDE_FUNCS(T)                                                                                   \
 private:                                                                                                               \
-    const void *GetSelf_IRtti() const override                                                                         \
+    const void *GetCanonicalAddress_IRtti() const override                                                                         \
     {                                                                                                                  \
         static_assert(std::is_same<std::decay<decltype(*this)>::type, T>::value,                                       \
                       "The 1st arg to LLAMA_RTTI must be the current type.");                                          \
