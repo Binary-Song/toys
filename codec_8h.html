@@ -69,7 +69,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">命名空间</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle">
 <div class="title">codec.h 文件参考</div>  </div>
@@ -84,50 +83,81 @@ $(function() {
 </div>
 <p><a href="codec_8h_source.html">浏览源代码.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-命名空间</h2></td></tr>
-<tr class="memitem:namespacellama"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html">llama</a></td></tr>
-<tr class="memdesc:namespacellama"><td class="mdescLeft">&#160;</td><td class="mdescRight">llama 的 API <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:a269c5a657ad4298ec6c97caa1f92b120"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a269c5a657ad4298ec6c97caa1f92b120">llama::DecodeUtf16</a> (const char16_t *data, size_t length)</td></tr>
+<tr class="memitem:a269c5a657ad4298ec6c97caa1f92b120"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codec_8h.html#a269c5a657ad4298ec6c97caa1f92b120">llama::DecodeUtf16</a> (const char16_t *data, size_t length)</td></tr>
 <tr class="separator:a269c5a657ad4298ec6c97caa1f92b120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23dee0e6847292cdc0755e331cf378df"><td class="memItemLeft" align="right" valign="top"><a id="a23dee0e6847292cdc0755e331cf378df"></a>
-std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a23dee0e6847292cdc0755e331cf378df">llama::DecodeUtf8</a> (const char *data, size_t length)</td></tr>
+std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codec_8h.html#a23dee0e6847292cdc0755e331cf378df">llama::DecodeUtf8</a> (const char *data, size_t length)</td></tr>
 <tr class="memdesc:a23dee0e6847292cdc0755e331cf378df"><td class="mdescLeft">&#160;</td><td class="mdescRight">将 UTF-8 字符串解析成代码点 <br /></td></tr>
 <tr class="separator:a23dee0e6847292cdc0755e331cf378df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a596765138d598fd5219ccd94b014a97d"><td class="memItemLeft" align="right" valign="top"><a id="a596765138d598fd5219ccd94b014a97d"></a>
-std::u16string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a596765138d598fd5219ccd94b014a97d">llama::EncodeUtf16</a> (const uint32_t *data, size_t length)</td></tr>
+std::u16string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codec_8h.html#a596765138d598fd5219ccd94b014a97d">llama::EncodeUtf16</a> (const uint32_t *data, size_t length)</td></tr>
 <tr class="memdesc:a596765138d598fd5219ccd94b014a97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">将代码点编码为 UTF-16 字符串 <br /></td></tr>
 <tr class="separator:a596765138d598fd5219ccd94b014a97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf63ea8002725cb77c094a164f08647d"><td class="memItemLeft" align="right" valign="top"><a id="adf63ea8002725cb77c094a164f08647d"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#adf63ea8002725cb77c094a164f08647d">llama::EncodeUtf8</a> (const uint32_t *data, size_t length)</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codec_8h.html#adf63ea8002725cb77c094a164f08647d">llama::EncodeUtf8</a> (const uint32_t *data, size_t length)</td></tr>
 <tr class="memdesc:adf63ea8002725cb77c094a164f08647d"><td class="mdescLeft">&#160;</td><td class="mdescRight">将代码点编码为 UTF-8 字符串 <br /></td></tr>
 <tr class="separator:adf63ea8002725cb77c094a164f08647d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a713e993a76b2cd4103ac4055710cf0f7"><td class="memItemLeft" align="right" valign="top"><a id="a713e993a76b2cd4103ac4055710cf0f7"></a>
-std::u16string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a713e993a76b2cd4103ac4055710cf0f7">llama::ToUtf16</a> (std::string_view str)</td></tr>
-<tr class="memdesc:a713e993a76b2cd4103ac4055710cf0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">将 utf-8 字符串转为 utf-16 <br /></td></tr>
+std::u16string&#160;</td><td class="memItemRight" valign="bottom"><b>llama::ToUtf16</b> (std::string_view str)</td></tr>
 <tr class="separator:a713e993a76b2cd4103ac4055710cf0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8db29f2bbea98ff8abef0a97d2f88a69"><td class="memItemLeft" align="right" valign="top"><a id="a8db29f2bbea98ff8abef0a97d2f88a69"></a>
-std::u16string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a8db29f2bbea98ff8abef0a97d2f88a69">llama::ToUtf16</a> (std::wstring_view str)</td></tr>
-<tr class="memdesc:a8db29f2bbea98ff8abef0a97d2f88a69"><td class="mdescLeft">&#160;</td><td class="mdescRight">将 宽字符 字符串转为 utf-8 <br /></td></tr>
+std::u16string&#160;</td><td class="memItemRight" valign="bottom"><b>llama::ToUtf16</b> (std::wstring_view str)</td></tr>
 <tr class="separator:a8db29f2bbea98ff8abef0a97d2f88a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e49218a1fbfe60ff7f90fb197e69a6c"><td class="memItemLeft" align="right" valign="top"><a id="a8e49218a1fbfe60ff7f90fb197e69a6c"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a8e49218a1fbfe60ff7f90fb197e69a6c">llama::ToUtf8</a> (std::u16string_view str)</td></tr>
-<tr class="memdesc:a8e49218a1fbfe60ff7f90fb197e69a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">将 utf-16 字符串转为 utf-8 <br /></td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>llama::ToUtf8</b> (std::u16string_view str)</td></tr>
 <tr class="separator:a8e49218a1fbfe60ff7f90fb197e69a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a508bfddf6871a37e4f5c947bd0398124"><td class="memItemLeft" align="right" valign="top"><a id="a508bfddf6871a37e4f5c947bd0398124"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacellama.html#a508bfddf6871a37e4f5c947bd0398124">llama::ToUtf8</a> (std::wstring_view str)</td></tr>
-<tr class="memdesc:a508bfddf6871a37e4f5c947bd0398124"><td class="mdescLeft">&#160;</td><td class="mdescRight">将 宽字符 字符串转为 utf-8 <br /></td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>llama::ToUtf8</b> (std::wstring_view str)</td></tr>
 <tr class="separator:a508bfddf6871a37e4f5c947bd0398124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>字符串编码转换。 需要注意 llama 的所有 API 中， <code>char*</code> 、<code>std::string</code> 等窄字节字符串一律视为 utf-8 </p>
 
 <p class="definition">在文件 <a class="el" href="codec_8h_source.html">codec.h</a> 中定义.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">函数说明</h2>
+<a id="a269c5a657ad4298ec6c97caa1f92b120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269c5a657ad4298ec6c97caa1f92b120">&#9670;&nbsp;</a></span>DecodeUtf16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; uint32_t &gt; llama::DecodeUtf16 </td>
+          <td>(</td>
+          <td class="paramtype">const char16_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将 UTF-16 字符串解析成代码点。 </p><dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">如果解析失败，抛出</td><td>ExceptionKind::InvalidByteSequence </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="codec_8cpp_source.html">codec.cpp</a> 第 <a class="el" href="codec_8cpp_source.html#l00007">7</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="codec_8cpp_source.html#l00007">llama::DecodeUtf16()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="codec_8cpp_source.html#l00007">llama::DecodeUtf16()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

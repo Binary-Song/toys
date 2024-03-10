@@ -77,20 +77,20 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;fso/interface/fso.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;fso/properties.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>fso</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;LLAMA_API(fso) up&lt;IFso&gt; Deserializer::Execute()</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;LLAMA_API(fso) up&lt;IFso&gt; Deserializer::Execute(RttiContext &amp;context)</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::string type;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// 读取类型名称</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    StringProperty prop{type};</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    Visit(prop);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// 创建对象</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    up&lt;IRtti&gt; obj = <a class="code" href="classllama_1_1RttiContext.html#a6c0e94e0705203cc001f3d47a21ffabe">RttiContext::GetDefaultInstance</a>().<a class="code" href="classllama_1_1RttiContext.html#a45ddcbd5734259edb6aa781682c14d8e">Instantiate</a>(type);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    up&lt;IFso&gt; subobj(obj.release()-&gt;Cast&lt;IFso&gt;());</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    up&lt;IRtti&gt; obj = context.Instantiate(type);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    up&lt;IFso&gt; subobj(obj.release()-&gt;Cast&lt;IFso&gt;(context));</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// 写入对象</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    subobj-&gt;Accept(*<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> subobj;</div>
@@ -98,9 +98,6 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <span class="comment">// namespace fso</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <span class="comment">// namespace llama</span></div>
-<div class="ttc" id="aclassllama_1_1RttiContext_html_a45ddcbd5734259edb6aa781682c14d8e"><div class="ttname"><a href="classllama_1_1RttiContext.html#a45ddcbd5734259edb6aa781682c14d8e">llama::RttiContext::Instantiate</a></div><div class="ttdeci">up&lt; IRtti &gt; Instantiate(TypeId typeId)</div><div class="ttdoc">指定类型，构造其实例。</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8cpp_source.html#l00013">rtti.cpp:13</a></div></div>
-<div class="ttc" id="aclassllama_1_1RttiContext_html_a6c0e94e0705203cc001f3d47a21ffabe"><div class="ttname"><a href="classllama_1_1RttiContext.html#a6c0e94e0705203cc001f3d47a21ffabe">llama::RttiContext::GetDefaultInstance</a></div><div class="ttdeci">static RttiContext &amp; GetDefaultInstance()</div><div class="ttdoc">返回单例。</div><div class="ttdef"><b>Definition:</b> <a href="rtti_8cpp_source.html#l00007">rtti.cpp:7</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdoc">llama 的 API</div><div class="ttdef"><b>Definition:</b> <a href="codec_8h_source.html#l00014">codec.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

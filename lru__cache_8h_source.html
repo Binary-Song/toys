@@ -119,7 +119,7 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">namespace </span>llama</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classllama_1_1lru__cache.html">   57</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> value_t&gt; <span class="keyword">class </span><a class="code" href="classllama_1_1lru__cache.html">lru_cache</a></div>
@@ -203,7 +203,7 @@ $(function() {
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;} <span class="comment">// namespace llama</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _LRUCACHE_HPP_INCLUDED_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassllama_1_1Exception_html"><div class="ttname"><a href="classllama_1_1Exception.html">llama::Exception</a></div><div class="ttdoc">IException 的实现类。内部保存异常信息字符串。</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8h_source.html#l00008">exceptions.h:9</a></div></div>
+<div class="ttc" id="aclassllama_1_1Exception_html"><div class="ttname"><a href="classllama_1_1Exception.html">llama::Exception</a></div><div class="ttdoc">IException 的实现类。内部保存异常信息字符串。</div><div class="ttdef"><b>Definition:</b> <a href="exceptions_8h_source.html#l00007">exceptions.h:8</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html"><div class="ttname"><a href="classllama_1_1lru__cache.html">llama::lru_cache</a></div><div class="ttdoc">一个简单的 LRU 缓存。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00057">lru_cache.h:58</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html_a2de6712a6666e70c3b02bd389d1e3e9e"><div class="ttname"><a href="classllama_1_1lru__cache.html#a2de6712a6666e70c3b02bd389d1e3e9e">llama::lru_cache::lru_cache</a></div><div class="ttdeci">lru_cache(size_t max_size)</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00065">lru_cache.h:65</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html_a3c3d531583f770aa60211035af6e96ae"><div class="ttname"><a href="classllama_1_1lru__cache.html#a3c3d531583f770aa60211035af6e96ae">llama::lru_cache::exists</a></div><div class="ttdeci">bool exists(const key_t &amp;key) const</div><div class="ttdoc">key 是否存在。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00109">lru_cache.h:109</a></div></div>
@@ -213,7 +213,6 @@ $(function() {
 <div class="ttc" id="aclassllama_1_1lru__cache_html_a7c81e09f72a6c8fa5fa634bc7174ffc2"><div class="ttname"><a href="classllama_1_1lru__cache.html#a7c81e09f72a6c8fa5fa634bc7174ffc2">llama::lru_cache::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdoc">当前缓存中键值对数量。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00115">lru_cache.h:115</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html_a96608e5da686d23028aa097481417652"><div class="ttname"><a href="classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652">llama::lru_cache::miss</a></div><div class="ttdeci">virtual value_t miss(const key_t &amp;key)</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00135">lru_cache.h:135</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html_af82a44e24eee4f00e6a964273216d243"><div class="ttname"><a href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">llama::lru_cache::max_size</a></div><div class="ttdeci">size_t max_size() const</div><div class="ttdoc">缓存最多能装下几个键值对。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00121">lru_cache.h:121</a></div></div>
-<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdoc">llama 的 API</div><div class="ttdef"><b>Definition:</b> <a href="codec_8h_source.html#l00014">codec.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
