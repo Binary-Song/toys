@@ -73,13 +73,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;base/base.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;lru_cache.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;fso/deserializer.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;fso/interface/fso.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;fso/serializer.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;fso/deserializer.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;fso/interface/fso.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;fso/serializer.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;lru_cache.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>llama</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacellama.html">llama</a></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>fso</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
@@ -88,7 +88,7 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1Cache.html">Cache</a>(<a class="code" href="classllama_1_1p.html">p&lt;RttiContext&gt;</a> ctx, <span class="keywordtype">size_t</span> <a class="code" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a>) : <a class="code" href="classllama_1_1lru__cache.html">lru_cache&lt;Hash, sp&lt;IFso&gt;</a>&gt;(<a class="code" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a>), m_context(ctx)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classllama_1_1fso_1_1Cache.html">Cache</a>(<span class="keywordtype">size_t</span> <a class="code" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a>) : <a class="code" href="classllama_1_1lru__cache.html">lru_cache&lt;Hash, sp&lt;IFso&gt;</a>&gt;(<a class="code" href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">max_size</a>)</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
@@ -111,7 +111,7 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        fileName += <span class="stringliteral">&quot;.bin&quot;</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::ofstream file(fileName, std::ios::binary);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classllama_1_1fso_1_1Serializer.html">Serializer</a> s(&amp;file);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        s.Execute(*m_context, *value);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        s.Execute(*value);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e">   53</a></span>&#160;    <span class="keyword">virtual</span> sp&lt;IFso&gt; <a class="code" href="classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e">miss</a>(<span class="keyword">const</span> Hash &amp;key)<span class="keyword"> override</span></div>
@@ -119,15 +119,13 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::string fileName = HashToString(key);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        fileName += <span class="stringliteral">&quot;.bin&quot;</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::ifstream file(fileName, std::ios::binary);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        up&lt;IFso&gt; <a class="code" href="classllama_1_1p.html">p</a> = <a class="code" href="classllama_1_1fso_1_1Deserializer.html">Deserializer</a>(&amp;file).Execute(*m_context);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        up&lt;IFso&gt; <a class="code" href="classllama_1_1p.html">p</a> = <a class="code" href="classllama_1_1fso_1_1Deserializer.html">Deserializer</a>(&amp;file).Execute();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classllama_1_1p.html">p</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classllama_1_1p.html">p&lt;RttiContext&gt;</a> m_context;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace fso</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace llama</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace fso</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace llama</span></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1Cache_html"><div class="ttname"><a href="classllama_1_1fso_1_1Cache.html">llama::fso::Cache</a></div><div class="ttdoc">IFso 对象的键值对数据库。</div><div class="ttdef"><b>Definition:</b> <a href="cache_8h_source.html#l00022">cache.h:23</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1Cache_html_ac8b334da18b1d4add136542d99a9679e"><div class="ttname"><a href="classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e">llama::fso::Cache::miss</a></div><div class="ttdeci">virtual sp&lt; IFso &gt; miss(const Hash &amp;key) override</div><div class="ttdef"><b>Definition:</b> <a href="cache_8h_source.html#l00053">cache.h:53</a></div></div>
 <div class="ttc" id="aclassllama_1_1fso_1_1Cache_html_ae0a3070ceeb341ef88b1f608e71ac66f"><div class="ttname"><a href="classllama_1_1fso_1_1Cache.html#ae0a3070ceeb341ef88b1f608e71ac66f">llama::fso::Cache::overflow</a></div><div class="ttdeci">virtual void overflow(const Hash &amp;key, const sp&lt; IFso &gt; &amp;value) override</div><div class="ttdef"><b>Definition:</b> <a href="cache_8h_source.html#l00043">cache.h:43</a></div></div>
@@ -138,7 +136,8 @@ $(function() {
 <div class="ttc" id="aclassllama_1_1lru__cache_html_a4b64555be28a636f0d70d9a74bc28d1d"><div class="ttname"><a href="classllama_1_1lru__cache.html#a4b64555be28a636f0d70d9a74bc28d1d">llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;::put</a></div><div class="ttdeci">void put(const Hash &amp;key, const sp&lt; IFso &gt; &amp;value)</div><div class="ttdoc">向缓存中插入键值对。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00070">lru_cache.h:70</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html_a57d8ca35315ff1e70f8b5b56071f7d3a"><div class="ttname"><a href="classllama_1_1lru__cache.html#a57d8ca35315ff1e70f8b5b56071f7d3a">llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;::get</a></div><div class="ttdeci">sp&lt; IFso &gt; get(const Hash &amp;key)</div><div class="ttdoc">给定 key ，获得 value 。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00092">lru_cache.h:92</a></div></div>
 <div class="ttc" id="aclassllama_1_1lru__cache_html_af82a44e24eee4f00e6a964273216d243"><div class="ttname"><a href="classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243">llama::lru_cache&lt; Hash, sp&lt; IFso &gt; &gt;::max_size</a></div><div class="ttdeci">size_t max_size() const</div><div class="ttdoc">缓存最多能装下几个键值对。</div><div class="ttdef"><b>Definition:</b> <a href="lru__cache_8h_source.html#l00121">lru_cache.h:121</a></div></div>
-<div class="ttc" id="aclassllama_1_1p_html"><div class="ttname"><a href="classllama_1_1p.html">llama::p</a></div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00021">pointers.h:22</a></div></div>
+<div class="ttc" id="aclassllama_1_1p_html"><div class="ttname"><a href="classllama_1_1p.html">llama::p</a></div><div class="ttdoc">非空指针。</div><div class="ttdef"><b>Definition:</b> <a href="pointers_8h_source.html#l00026">pointers.h:27</a></div></div>
+<div class="ttc" id="anamespacellama_html"><div class="ttname"><a href="namespacellama.html">llama</a></div><div class="ttdoc">llama 的 API</div><div class="ttdef"><b>Definition:</b> <a href="codec_8h_source.html#l00014">codec.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

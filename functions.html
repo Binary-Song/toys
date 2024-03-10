@@ -70,34 +70,38 @@ $(function() {
 <li>Accept_fso_IFso()
 : <a class="el" href="classllama_1_1fso_1_1IFso.html#ad79c483791b49f6239083804eeaa7233">llama::fso::IFso</a>
 </li>
-<li>AddCast()
-: <a class="el" href="classllama_1_1RttiContext.html#a7d8e076b6165f67a3bebd96b8c51616d">llama::RttiContext</a>
+<li>as_raw()
+: <a class="el" href="classllama_1_1np.html#a395117a2c7446c2172187b3192795875">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#ac427a5c02f75c1d63438b3a7f7b71f00">llama::p&lt; T &gt;</a>
 </li>
-<li>AddDefaultCast()
-: <a class="el" href="classllama_1_1RttiContext.html#a53e0df3d61d898b50fc20549ba07ce76">llama::RttiContext</a>
+<li>as_ref()
+: <a class="el" href="classllama_1_1np.html#a8dc171105f0fa88a9521bf84d1874c16">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#ab8b7226b418f1ec1c3e11d0f3681da53">llama::p&lt; T &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>Cast()
-: <a class="el" href="classllama_1_1IRtti.html#a7df108fbe7cd208b45840e7cd8598ca9">llama::IRtti</a>
+: <a class="el" href="classllama_1_1IRtti.html#a8cef9f6b1f9734198c1f29efecc19dad">llama::IRtti</a>
+, <a class="el" href="classllama_1_1RttiContext.html#ab221d7336daf18c43737a8cc27436605">llama::RttiContext</a>
+</li>
+<li>const_as()
+: <a class="el" href="classllama_1_1np.html#ab9b389948240c201c22dea73cbcb2fad">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#a759a1794080d3b5f1df6faa226302f05">llama::p&lt; T &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
-<li>deref()
-: <a class="el" href="classllama_1_1np.html#aadda6ba987844ad2ab60edffc0d6a3dc">llama::np&lt; T &gt;</a>
-, <a class="el" href="classllama_1_1p.html#ad03b8d5f1550508d7c103656873db398">llama::p&lt; T &gt;</a>
+<li>DebugPrint_IDebugPrint()
+: <a class="el" href="classllama_1_1IDebugPrint.html#aa54782695bc6ac83624445b0c78078ee">llama::IDebugPrint</a>
+, <a class="el" href="classllama_1_1RttiContext.html#a93fd3210976774a47fc16c89bd4fa7ee">llama::RttiContext</a>
 </li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
-<li>Exception()
-: <a class="el" href="classllama_1_1Exception.html#a32ee934476432a0145bd5a452e40886d">llama::Exception</a>
-</li>
 <li>exists()
 : <a class="el" href="classllama_1_1lru__cache.html#a3c3d531583f770aa60211035af6e96ae">llama::lru_cache&lt; key_t, value_t &gt;</a>
 </li>
@@ -115,6 +119,15 @@ $(function() {
 , <a class="el" href="classllama_1_1fso_1_1StringProperty.html#a354f82765864980e059d45ff9a36da93">llama::fso::StringProperty</a>
 , <a class="el" href="classllama_1_1fso_1_1SubObjectProperty.html#a9b8a651e46367df7b2d77b0a3deb898e">llama::fso::SubObjectProperty</a>
 </li>
+<li>GetCanonicalAddress_IHasCanonicalAddress()
+: <a class="el" href="classllama_1_1IHasCanonicalAddress.html#a5fb12c01ae81d613274bf6c1e3888c5b">llama::IHasCanonicalAddress</a>
+</li>
+<li>GetCanonicalAddress_IRtti()
+: <a class="el" href="classllama_1_1IRtti.html#ae5d2efacdd4ed6faee5b923cf56fd991">llama::IRtti</a>
+</li>
+<li>GetDefaultInstance()
+: <a class="el" href="classllama_1_1RttiContext.html#a6c0e94e0705203cc001f3d47a21ffabe">llama::RttiContext</a>
+</li>
 <li>GetMessage()
 : <a class="el" href="classllama_1_1IException.html#aa757286f7a99903e39124f4eab6c0f26">llama::IException</a>
 </li>
@@ -122,11 +135,15 @@ $(function() {
 : <a class="el" href="classllama_1_1Exception.html#a03e421502c729e0f5b48dc1d91923f05">llama::Exception</a>
 , <a class="el" href="classllama_1_1IException.html#aedc52d85629261dd087c52794997928e">llama::IException</a>
 </li>
-<li>GetSelf_IRtti()
-: <a class="el" href="classllama_1_1IRtti.html#a6c046842f7b6834ab600c61b2e2a661b">llama::IRtti</a>
-</li>
 <li>GetTypeId_IRtti()
 : <a class="el" href="classllama_1_1IRtti.html#a5f5c882a9e98fc50b8e381785ceac68c">llama::IRtti</a>
+</li>
+</ul>
+
+
+<h3><a id="index_i"></a>- i -</h3><ul>
+<li>Instantiate()
+: <a class="el" href="classllama_1_1RttiContext.html#a45ddcbd5734259edb6aa781682c14d8e">llama::RttiContext</a>
 </li>
 </ul>
 
@@ -151,29 +168,54 @@ $(function() {
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>np()
-: <a class="el" href="classllama_1_1np.html#a981faa88a90294ca5121de70a7980560">llama::np&lt; T &gt;</a>
+: <a class="el" href="classllama_1_1np.html#a67323eb20e9c87c0d34a5c89e9d68951">llama::np&lt; T &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>operator bool()
-: <a class="el" href="classllama_1_1np.html#a06464669622dc4c64da42fd54ab5b13f">llama::np&lt; T &gt;</a>
+: <a class="el" href="classllama_1_1np.html#ae1179cecc943050706aaacc5b48290e1">llama::np&lt; T &gt;</a>
 </li>
 <li>operator T*()
-: <a class="el" href="classllama_1_1np.html#acf8248af0b9c78d070d20d4b23df5348">llama::np&lt; T &gt;</a>
-, <a class="el" href="classllama_1_1p.html#a6a7e9a047fcb28380f107e9de494d93a">llama::p&lt; T &gt;</a>
+: <a class="el" href="classllama_1_1np.html#a5f68368c384dcd1eb0247493166b3dc6">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#a1085867630b4f7dd769be7c07d7604f7">llama::p&lt; T &gt;</a>
 </li>
 <li>operator*()
 : <a class="el" href="classllama_1_1np.html#a001c8cf3b9095b4e5a07c11b5c008aec">llama::np&lt; T &gt;</a>
-, <a class="el" href="classllama_1_1p.html#aca63d5fa186d0cbb7b2dde7384b26359">llama::p&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#ad04a66b58d813ad57e8f1015f6a83c26">llama::p&lt; T &gt;</a>
+</li>
+<li>operator+()
+: <a class="el" href="classllama_1_1np.html#a01c17c9caa5af755ce882bf09f9ad3f0">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#aca604324cc5add5cc3fee8ff2ab0a49f">llama::p&lt; T &gt;</a>
+</li>
+<li>operator++()
+: <a class="el" href="classllama_1_1np.html#a02f2352c8518cee7b6c96ae02ece0fea">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#af5111319b01b2f62972d78c950f0da67">llama::p&lt; T &gt;</a>
+</li>
+<li>operator+=()
+: <a class="el" href="classllama_1_1np.html#a8d4f358fb1a8969bcde8e13fef134f36">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#af526258ce8010bde4b87df67a0fa57dd">llama::p&lt; T &gt;</a>
+</li>
+<li>operator-()
+: <a class="el" href="classllama_1_1np.html#a5a7a028bfd3c659d9521a8ca64bf4299">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#acd2b5011adad0bad0fba0de27c4606eb">llama::p&lt; T &gt;</a>
+</li>
+<li>operator--()
+: <a class="el" href="classllama_1_1np.html#a0cd6a1dc5122cce25056d2fd5309a015">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#a9ad6190ddbe8f6a33820736e4a76807a">llama::p&lt; T &gt;</a>
+</li>
+<li>operator-=()
+: <a class="el" href="classllama_1_1np.html#a2054b1bfe9f1192d0d504d2b21fcb558">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#af6e55640ecbd64b926f3efcfe0b006b7">llama::p&lt; T &gt;</a>
 </li>
 <li>operator-&gt;()
 : <a class="el" href="classllama_1_1np.html#a3986b233edd9375b6d38ba01700983df">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#a73deb5896a400b1eb35a1481c0d3c705">llama::p&lt; T &gt;</a>
 </li>
 <li>operator[]()
 : <a class="el" href="classllama_1_1np.html#af7c75d36ea437b195f113ac76e5fdd21">llama::np&lt; T &gt;</a>
-, <a class="el" href="classllama_1_1p.html#a4097e309aa25f998901ee49859f023ca">llama::p&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#aaa976dda268be839d020ae96b69ad180">llama::p&lt; T &gt;</a>
 </li>
 <li>overflow()
 : <a class="el" href="classllama_1_1fso_1_1Cache.html#ae0a3070ceeb341ef88b1f608e71ac66f">llama::fso::Cache</a>
@@ -192,6 +234,14 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_r"></a>- r -</h3><ul>
+<li>reinterpret_as()
+: <a class="el" href="classllama_1_1np.html#a9dbc5d3247816f0d6d89cb483ff737ea">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#a164b5dbee6ea53cad751cfb7d3289faf">llama::p&lt; T &gt;</a>
+</li>
+</ul>
+
+
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>Set_fso_IProperty()
 : <a class="el" href="classllama_1_1fso_1_1IProperty.html#ad1e2839c12e49c6ee9e6b5b65da72bd0">llama::fso::IProperty</a>
@@ -203,12 +253,16 @@ $(function() {
 <li>size()
 : <a class="el" href="classllama_1_1lru__cache.html#a7c81e09f72a6c8fa5fa634bc7174ffc2">llama::lru_cache&lt; key_t, value_t &gt;</a>
 </li>
+<li>static_as()
+: <a class="el" href="classllama_1_1np.html#a9906f76bc3c5a95845106102ef3103bf">llama::np&lt; T &gt;</a>
+, <a class="el" href="classllama_1_1p.html#a67c09fa218e9c0c4cc31c617080f1b7a">llama::p&lt; T &gt;</a>
+</li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>TryCast()
-: <a class="el" href="classllama_1_1IRtti.html#aee7f67491d42ff2015fff3a77fc983aa">llama::IRtti</a>
+: <a class="el" href="classllama_1_1IRtti.html#a7e56a5aa0330cd51ff9202845da51f7d">llama::IRtti</a>
 </li>
 </ul>
 
@@ -216,6 +270,9 @@ $(function() {
 <h3><a id="index_u"></a>- u -</h3><ul>
 <li>unwrap()
 : <a class="el" href="classllama_1_1np.html#ac5473413fa43fd09a5ae5d05f3e6680d">llama::np&lt; T &gt;</a>
+</li>
+<li>unwrap_or()
+: <a class="el" href="classllama_1_1np.html#a3fa7a1b475372571920d02b45fbfa1a6">llama::np&lt; T &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

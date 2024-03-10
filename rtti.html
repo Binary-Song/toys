@@ -68,7 +68,8 @@ $(function() {
 <div class="title">RTTI </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__home_runner_work_toys_toys_projects_llama_docs_md_modules_base_rtti"></a> RTTI 是 C++ 的语言特性，全称运行时类型信息。RTTI 的主要作用是为动态类型转换（ <code>dynamic_cast</code> ）提供必要信息。没有 RTTI ，将无法判断对象的实际类型（又称，“动态类型”），也就无法进行安全的类型转换。</p>
+<div class="textblock"><p><a class="anchor" id="md__home_runner_work_toys_toys_projects_llama_docs_md_modules_base_rtti"></a></p>
+<p>RTTI 是 C++ 的语言特性，全称运行时类型信息。RTTI 的主要作用是为动态类型转换（ <code>dynamic_cast</code> ）提供必要信息。没有 RTTI ，将无法判断对象的实际类型（又称，“动态类型”），也就无法进行安全的类型转换。</p>
 <p>RTTI 一直以来就是 C++ 中争议比较大的一个特性，很多观点认为它违反了 C++ “零开销抽象”的原则。 因为它并不是用多少功能就付出多少成本。一般开启 RTTI 后，所有带有虚函数的类及其子类 都会产生RTTI信息，不管你有没有对它使用 dynamic_cast 。对于较大的继承树，RTTI 可以占用不少空间。 因此，不少开源项目不使用 RTTI ，或者采用自己的机制来实现RTTI的功能，比较著名的有 <a href="https://llvm.org/docs/HowToSetUpLLVMStyleRTTI.html">LLVM-Style RTTI</a> 。</p>
 <p>llama 没有直接采用 LLVM 风格的原因主要包括2点：</p>
 <ol type="1">
@@ -88,7 +89,7 @@ $(function() {
 <p>首先，一个具有 RTTI 的类型必须直接或间接派生自 <a class="el" href="classllama_1_1IRtti.html">IRtti</a> 接口。 下方示例定义了一个直接派生自 <a class="el" href="classllama_1_1IRtti.html">IRtti</a> 的类 Foo。</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Foo : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="classllama_1_1IRtti.html">llama::IRtti</a></div>
 <div class="line">{};</div>
-<div class="ttc" id="aclassllama_1_1IRtti_html"><div class="ttname"><a href="classllama_1_1IRtti.html">llama::IRtti</a></div><div class="ttdef"><b>Definition:</b> <a href="interfaces_2rtti_8h_source.html#l00055">rtti.h:56</a></div></div>
+<div class="ttc" id="aclassllama_1_1IRtti_html"><div class="ttname"><a href="classllama_1_1IRtti.html">llama::IRtti</a></div><div class="ttdoc">表示该类型的对象具有&quot;运行时类型信息&quot;(rtti)。</div><div class="ttdef"><b>Definition:</b> <a href="interfaces_2rtti_8h_source.html#l00035">rtti.h:36</a></div></div>
 </div><!-- fragment --><p>为了实现 IRtti 接口，我们需要调用 LLAMA_RTTI 宏。</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Foo : <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="classllama_1_1IRtti.html">llama::IRtti</a></div>
 <div class="line">{</div>
@@ -100,13 +101,14 @@ $(function() {
 <div class="line">{</div>
 <div class="line">    LLAMA_RTTI(::Bar, ::Foo)</div>
 <div class="line">};</div>
-</div><!-- fragment --><p>LLAMA_RTTI(::Bar, ::Foo) 表示 Bar 派生自 Foo 。 如果有多个基类，还可以这样写：<code>LLAMA_RTTI(::Bar, ::Foo1, ::Foo2)</code>，表示 Bar 派生自 Foo1 和 Foo2 。</p>
-<dl class="section note"><dt>注解</dt><dd>用 LLAMA_RTTI 注册的继承关系必须是 <code>public</code> 继承。</dd></dl>
-<p>然后就可以用 <a class="el" href="classllama_1_1IRtti.html#a7df108fbe7cd208b45840e7cd8598ca9">Cast&lt;T&gt;</a> 方法来进行动态类型转换了。</p>
-<div class="fragment"><div class="line">RttiContext ctx;</div>
-<div class="line">Foo* foo = <span class="keyword">new</span> Bar();</div>
-<div class="line">p&lt;Bar&gt; bar = foo-&gt;Cast&lt;Bar&gt;(ctx);</div>
-</div><!-- fragment --><p>这里， <a class="el" href="classllama_1_1IRtti.html#a7df108fbe7cd208b45840e7cd8598ca9">Cast&lt;T&gt;</a> 执行了向下类型转换。在成功时，该函数返回给定类型的 <a href="{#p-pointer}">非空指针</a> 。如果实际类型不是 Bar ，则抛出异常。 </p>
+</div><!-- fragment --><p><code>LLAMA_RTTI(::Bar, ::Foo)</code> 表示 Bar 派生自 Foo 。 如果有多个基类，还可以这样写：<code>LLAMA_RTTI(::Bar, ::Foo1, ::Foo2)</code>，表示 Bar 派生自 Foo1 和 Foo2 。</p>
+<p>用 LLAMA_RTTI 注册的继承关系必须是 public 继承。</p>
+<p>用 <a class="el" href="classllama_1_1IRtti.html#a8cef9f6b1f9734198c1f29efecc19dad">Cast</a> 方法来进行动态类型转换。</p>
+<div class="fragment"><div class="line">Foo* foo = <span class="keyword">new</span> Bar();</div>
+<div class="line">p&lt;Bar&gt; bar = foo-&gt;Cast&lt;Bar&gt;();</div>
+</div><!-- fragment --><p>Cast 方法会从对象的实际类型（“动态类型”）沿着继承树向上搜索，直至找到 Bar 类型。 如果找不到，则抛出异常。所以 <code>LLAMA_RTTI</code> 本质上就是登记 Cast 可以搜索到的路径。</p>
+<p>最后，补充一个注意点，如上面所示，如果是 IRtti 的直接派生类， <b>不要在LLAMA_RTTI里指定IRtti这个基类</b> 。这是条特殊规则，没啥理由。除此之外，几乎没有别的规则。你可以在 LLAMA_RTTI 里指定间接基类、甚至可以指定同一个基类多次，因为你知道这玩意本质就是在图里加了一条边而已。虽然但是，不建议这么干。另外，不要试图欺骗 LLAMA_RTTI ，否则你会得到一大坨编译错误。</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="classllama_1_1IRtti.html" title="表示该类型的对象具有&quot;运行时类型信息&quot;(rtti)。">llama::IRtti</a> <a class="el" href="classllama_1_1RttiContext.html">llama::RttiContext</a> <a href="#rtti">RTTI</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

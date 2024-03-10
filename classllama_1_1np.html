@@ -64,7 +64,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>llama</b></li><li class="navelem"><a class="el" href="classllama_1_1np.html">np</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacellama.html">llama</a></li><li class="navelem"><a class="el" href="classllama_1_1np.html">np</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,107 +77,143 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>可空指针 <code>T*</code> 。  
+<p>可空指针。  
  <a href="classllama_1_1np.html#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="pointers_8h_source.html">pointers.h</a>&gt;</code></p>
+<div class="dynheader">
+类 llama::np&lt; T &gt; 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classllama_1_1np.png" usemap="#llama::np_3C_20T_20_3E_map" alt=""/>
+  <map id="llama::np_3C_20T_20_3E_map" name="llama::np_3C_20T_20_3E_map">
+<area href="classllama_1_1gc_1_1gnp.html" alt="llama::gc::gnp&lt; T &gt;" shape="rect" coords="0,56,119,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a3ff25fa7494d1c14a419b673e6934524"><td class="memItemLeft" align="right" valign="top"><a id="a3ff25fa7494d1c14a419b673e6934524"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>np</b> (std::nullptr_t)</td></tr>
-<tr class="separator:a3ff25fa7494d1c14a419b673e6934524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a981faa88a90294ca5121de70a7980560"><td class="memItemLeft" align="right" valign="top"><a id="a981faa88a90294ca5121de70a7980560"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a981faa88a90294ca5121de70a7980560">np</a> (T *ptr)</td></tr>
-<tr class="memdesc:a981faa88a90294ca5121de70a7980560"><td class="mdescLeft">&#160;</td><td class="mdescRight">如果 <code>U*</code> 可以转为 <code>T*</code> ，则 <code>U*</code> 也可以转为 <code>np&lt;T&gt;</code> <br /></td></tr>
-<tr class="separator:a981faa88a90294ca5121de70a7980560"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4485dc4d2b7dd1bff4cf01c7ae77e25f"><td class="memTemplParams" colspan="2"><a id="a4485dc4d2b7dd1bff4cf01c7ae77e25f"></a>
+<tr class="memitem:a67323eb20e9c87c0d34a5c89e9d68951"><td class="memItemLeft" align="right" valign="top"><a id="a67323eb20e9c87c0d34a5c89e9d68951"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a67323eb20e9c87c0d34a5c89e9d68951">np</a> () noexcept</td></tr>
+<tr class="memdesc:a67323eb20e9c87c0d34a5c89e9d68951"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造空指针 <br /></td></tr>
+<tr class="separator:a67323eb20e9c87c0d34a5c89e9d68951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4a35bf627b8f728168ee242ba858b91"><td class="memItemLeft" align="right" valign="top"><a id="aa4a35bf627b8f728168ee242ba858b91"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#aa4a35bf627b8f728168ee242ba858b91">np</a> (std::nullptr_t) noexcept</td></tr>
+<tr class="memdesc:aa4a35bf627b8f728168ee242ba858b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造空指针 <br /></td></tr>
+<tr class="separator:aa4a35bf627b8f728168ee242ba858b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada8fa9a46c8e9b99a3eeed604ea9477c"><td class="memItemLeft" align="right" valign="top"><a id="ada8fa9a46c8e9b99a3eeed604ea9477c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#ada8fa9a46c8e9b99a3eeed604ea9477c">np</a> (T *ptr) noexcept</td></tr>
+<tr class="memdesc:ada8fa9a46c8e9b99a3eeed604ea9477c"><td class="mdescLeft">&#160;</td><td class="mdescRight">转换构造函数，如果 <code>U*</code> 可以转为 <code>T*</code> ，则 <code>U*</code> 也可以转为 <code>np&lt;T&gt;</code> <br /></td></tr>
+<tr class="separator:ada8fa9a46c8e9b99a3eeed604ea9477c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de0ec0d45117bb20e3fa619f5bd10b2"><td class="memTemplParams" colspan="2"><a id="a1de0ec0d45117bb20e3fa619f5bd10b2"></a>
 template&lt;typename U &gt; </td></tr>
-<tr class="memitem:a4485dc4d2b7dd1bff4cf01c7ae77e25f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a4485dc4d2b7dd1bff4cf01c7ae77e25f">np</a> (<a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt; ptr)</td></tr>
-<tr class="memdesc:a4485dc4d2b7dd1bff4cf01c7ae77e25f"><td class="mdescLeft">&#160;</td><td class="mdescRight">如果 <code>U*</code> 可以转为 <code>T*</code> ，则 <code>np&lt;U&gt;</code> 也可以转为 <code>np&lt;T&gt;</code> <br /></td></tr>
-<tr class="separator:a4485dc4d2b7dd1bff4cf01c7ae77e25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac65cfcaffe4fc8a17eb4bf6fe57b686d"><td class="memTemplParams" colspan="2"><a id="ac65cfcaffe4fc8a17eb4bf6fe57b686d"></a>
+<tr class="memitem:a1de0ec0d45117bb20e3fa619f5bd10b2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a1de0ec0d45117bb20e3fa619f5bd10b2">np</a> (<a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt; ptr) noexcept</td></tr>
+<tr class="memdesc:a1de0ec0d45117bb20e3fa619f5bd10b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">转换构造函数，如果 <code>U*</code> 可以转为 <code>T*</code> ，则 <code>np&lt;U&gt;</code> 也可以转为 <code>np&lt;T&gt;</code> <br /></td></tr>
+<tr class="separator:a1de0ec0d45117bb20e3fa619f5bd10b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160990b3252a6c7f0b8d8359cdca54ff"><td class="memTemplParams" colspan="2"><a id="a160990b3252a6c7f0b8d8359cdca54ff"></a>
 template&lt;typename U &gt; </td></tr>
-<tr class="memitem:ac65cfcaffe4fc8a17eb4bf6fe57b686d"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#ac65cfcaffe4fc8a17eb4bf6fe57b686d">np</a> (<a class="el" href="classllama_1_1p.html">p</a>&lt; U &gt; ptr)</td></tr>
-<tr class="memdesc:ac65cfcaffe4fc8a17eb4bf6fe57b686d"><td class="mdescLeft">&#160;</td><td class="mdescRight">如果 <code>U*</code> 可以转为 <code>T*</code> ，则 <code>p&lt;U&gt;</code> 可以转为 <code>np&lt;T&gt;</code> <br /></td></tr>
-<tr class="separator:ac65cfcaffe4fc8a17eb4bf6fe57b686d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06464669622dc4c64da42fd54ab5b13f"><td class="memItemLeft" align="right" valign="top"><a id="a06464669622dc4c64da42fd54ab5b13f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a06464669622dc4c64da42fd54ab5b13f">operator bool</a> () const</td></tr>
-<tr class="memdesc:a06464669622dc4c64da42fd54ab5b13f"><td class="mdescLeft">&#160;</td><td class="mdescRight">可以在特定语境下转为 bool （用在 if / while 的条件里） <br /></td></tr>
-<tr class="separator:a06464669622dc4c64da42fd54ab5b13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf8248af0b9c78d070d20d4b23df5348"><td class="memItemLeft" align="right" valign="top"><a id="acf8248af0b9c78d070d20d4b23df5348"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#acf8248af0b9c78d070d20d4b23df5348">operator T*</a> () const</td></tr>
-<tr class="memdesc:acf8248af0b9c78d070d20d4b23df5348"><td class="mdescLeft">&#160;</td><td class="mdescRight">可以隐式转为普通指针。 <br /></td></tr>
-<tr class="separator:acf8248af0b9c78d070d20d4b23df5348"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e0cbc0a0dfef79725773755a6d56659"><td class="memTemplParams" colspan="2"><a id="a5e0cbc0a0dfef79725773755a6d56659"></a>
+<tr class="memitem:a160990b3252a6c7f0b8d8359cdca54ff"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a160990b3252a6c7f0b8d8359cdca54ff">np</a> (<a class="el" href="classllama_1_1p.html">p</a>&lt; U &gt; ptr) noexcept</td></tr>
+<tr class="memdesc:a160990b3252a6c7f0b8d8359cdca54ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">转换构造函数，如果 <code>U*</code> 可以转为 <code>T*</code> ，则 <code>p&lt;U&gt;</code> 可以转为 <code>np&lt;T&gt;</code> <br /></td></tr>
+<tr class="separator:a160990b3252a6c7f0b8d8359cdca54ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1179cecc943050706aaacc5b48290e1"><td class="memItemLeft" align="right" valign="top"><a id="ae1179cecc943050706aaacc5b48290e1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#ae1179cecc943050706aaacc5b48290e1">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:ae1179cecc943050706aaacc5b48290e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">该函数使 <a class="el" href="classllama_1_1np.html" title="可空指针。">llama::np</a> 可在 if 里作为条件。 <br /></td></tr>
+<tr class="separator:ae1179cecc943050706aaacc5b48290e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f68368c384dcd1eb0247493166b3dc6"><td class="memItemLeft" align="right" valign="top"><a id="a5f68368c384dcd1eb0247493166b3dc6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a5f68368c384dcd1eb0247493166b3dc6">operator T*</a> () const noexcept</td></tr>
+<tr class="memdesc:a5f68368c384dcd1eb0247493166b3dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">可以隐式转为普通指针。 <br /></td></tr>
+<tr class="separator:a5f68368c384dcd1eb0247493166b3dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9906f76bc3c5a95845106102ef3103bf"><td class="memTemplParams" colspan="2"><a id="a9906f76bc3c5a95845106102ef3103bf"></a>
 template&lt;typename U &gt; </td></tr>
-<tr class="memitem:a5e0cbc0a0dfef79725773755a6d56659"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>cast_static</b> () const</td></tr>
-<tr class="separator:a5e0cbc0a0dfef79725773755a6d56659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a851ee899aaf8d4db7529c815d834684b"><td class="memTemplParams" colspan="2"><a id="a851ee899aaf8d4db7529c815d834684b"></a>
+<tr class="memitem:a9906f76bc3c5a95845106102ef3103bf"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a9906f76bc3c5a95845106102ef3103bf">static_as</a> () const noexcept</td></tr>
+<tr class="memdesc:a9906f76bc3c5a95845106102ef3103bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">对内部指针进行 static_cast <br /></td></tr>
+<tr class="separator:a9906f76bc3c5a95845106102ef3103bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dbc5d3247816f0d6d89cb483ff737ea"><td class="memTemplParams" colspan="2"><a id="a9dbc5d3247816f0d6d89cb483ff737ea"></a>
 template&lt;typename U &gt; </td></tr>
-<tr class="memitem:a851ee899aaf8d4db7529c815d834684b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>cast_reinterp</b> () const</td></tr>
-<tr class="separator:a851ee899aaf8d4db7529c815d834684b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee8f2e4d0302f9866ed6836b90dd90ef"><td class="memTemplParams" colspan="2"><a id="aee8f2e4d0302f9866ed6836b90dd90ef"></a>
+<tr class="memitem:a9dbc5d3247816f0d6d89cb483ff737ea"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a9dbc5d3247816f0d6d89cb483ff737ea">reinterpret_as</a> () const noexcept</td></tr>
+<tr class="memdesc:a9dbc5d3247816f0d6d89cb483ff737ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">对内部指针进行 reinterpret_cast <br /></td></tr>
+<tr class="separator:a9dbc5d3247816f0d6d89cb483ff737ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9b389948240c201c22dea73cbcb2fad"><td class="memTemplParams" colspan="2"><a id="ab9b389948240c201c22dea73cbcb2fad"></a>
 template&lt;typename U &gt; </td></tr>
-<tr class="memitem:aee8f2e4d0302f9866ed6836b90dd90ef"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>cast_const</b> () const</td></tr>
-<tr class="separator:aee8f2e4d0302f9866ed6836b90dd90ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9b389948240c201c22dea73cbcb2fad"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1np.html">np</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#ab9b389948240c201c22dea73cbcb2fad">const_as</a> () const noexcept</td></tr>
+<tr class="memdesc:ab9b389948240c201c22dea73cbcb2fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">对内部指针进行 const_cast <br /></td></tr>
+<tr class="separator:ab9b389948240c201c22dea73cbcb2fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a001c8cf3b9095b4e5a07c11b5c008aec"><td class="memTemplParams" colspan="2">template&lt;typename U  = T&gt; </td></tr>
 <tr class="memitem:a001c8cf3b9095b4e5a07c11b5c008aec"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a001c8cf3b9095b4e5a07c11b5c008aec">operator*</a> () const</td></tr>
+<tr class="memdesc:a001c8cf3b9095b4e5a07c11b5c008aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">解引用。 如果 T=void ，无法调用。  <a href="classllama_1_1np.html#a001c8cf3b9095b4e5a07c11b5c008aec">更多...</a><br /></td></tr>
 <tr class="separator:a001c8cf3b9095b4e5a07c11b5c008aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadda6ba987844ad2ab60edffc0d6a3dc"><td class="memTemplParams" colspan="2">template&lt;typename U  = T&gt; </td></tr>
-<tr class="memitem:aadda6ba987844ad2ab60edffc0d6a3dc"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#aadda6ba987844ad2ab60edffc0d6a3dc">deref</a> () const</td></tr>
-<tr class="separator:aadda6ba987844ad2ab60edffc0d6a3dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc171105f0fa88a9521bf84d1874c16"><td class="memTemplParams" colspan="2">template&lt;typename U  = T&gt; </td></tr>
+<tr class="memitem:a8dc171105f0fa88a9521bf84d1874c16"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a8dc171105f0fa88a9521bf84d1874c16">as_ref</a> () const</td></tr>
+<tr class="memdesc:a8dc171105f0fa88a9521bf84d1874c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">解引用。 如果 T=void ，无法调用。  <a href="classllama_1_1np.html#a8dc171105f0fa88a9521bf84d1874c16">更多...</a><br /></td></tr>
+<tr class="separator:a8dc171105f0fa88a9521bf84d1874c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3986b233edd9375b6d38ba01700983df"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a3986b233edd9375b6d38ba01700983df">operator-&gt;</a> () const</td></tr>
+<tr class="memdesc:a3986b233edd9375b6d38ba01700983df"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>-&gt;</code> 运算符  <a href="classllama_1_1np.html#a3986b233edd9375b6d38ba01700983df">更多...</a><br /></td></tr>
 <tr class="separator:a3986b233edd9375b6d38ba01700983df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5473413fa43fd09a5ae5d05f3e6680d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1p.html">p</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#ac5473413fa43fd09a5ae5d05f3e6680d">unwrap</a> () const</td></tr>
+<tr class="memdesc:ac5473413fa43fd09a5ae5d05f3e6680d"><td class="mdescLeft">&#160;</td><td class="mdescRight">转为 <code>p&lt;T&gt;</code> 。  <a href="classllama_1_1np.html#ac5473413fa43fd09a5ae5d05f3e6680d">更多...</a><br /></td></tr>
 <tr class="separator:ac5473413fa43fd09a5ae5d05f3e6680d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6bd64e5b63b27f66ef750b67a477831"><td class="memItemLeft" align="right" valign="top"><a id="ae6bd64e5b63b27f66ef750b67a477831"></a>
-T *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> () const</td></tr>
-<tr class="separator:ae6bd64e5b63b27f66ef750b67a477831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fa7a1b475372571920d02b45fbfa1a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classllama_1_1p.html">p</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a3fa7a1b475372571920d02b45fbfa1a6">unwrap_or</a> (<a class="el" href="classllama_1_1p.html">p</a>&lt; T &gt; subs) const noexcept</td></tr>
+<tr class="memdesc:a3fa7a1b475372571920d02b45fbfa1a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">转为 <code>p&lt;T&gt;</code> ，如果当前指针为空，返回 subs 作为替代。  <a href="classllama_1_1np.html#a3fa7a1b475372571920d02b45fbfa1a6">更多...</a><br /></td></tr>
+<tr class="separator:a3fa7a1b475372571920d02b45fbfa1a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395117a2c7446c2172187b3192795875"><td class="memItemLeft" align="right" valign="top"><a id="a395117a2c7446c2172187b3192795875"></a>
+T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a395117a2c7446c2172187b3192795875">as_raw</a> () const noexcept</td></tr>
+<tr class="memdesc:a395117a2c7446c2172187b3192795875"><td class="mdescLeft">&#160;</td><td class="mdescRight">转为裸指针 <br /></td></tr>
+<tr class="separator:a395117a2c7446c2172187b3192795875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7c75d36ea437b195f113ac76e5fdd21"><td class="memTemplParams" colspan="2">template&lt;typename U  = T&gt; </td></tr>
 <tr class="memitem:af7c75d36ea437b195f113ac76e5fdd21"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#af7c75d36ea437b195f113ac76e5fdd21">operator[]</a> (ptrdiff_t offset) const</td></tr>
+<tr class="memdesc:af7c75d36ea437b195f113ac76e5fdd21"><td class="mdescLeft">&#160;</td><td class="mdescRight">当数组一般访问  <a href="classllama_1_1np.html#af7c75d36ea437b195f113ac76e5fdd21">更多...</a><br /></td></tr>
 <tr class="separator:af7c75d36ea437b195f113ac76e5fdd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a5aa9ea6cd266d9d67cba85588a1ed9"><td class="memItemLeft" align="right" valign="top"><a id="a1a5aa9ea6cd266d9d67cba85588a1ed9"></a>
-ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; p2) const</td></tr>
-<tr class="separator:a1a5aa9ea6cd266d9d67cba85588a1ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e1d2275c8721e090430b5ab2f33621c"><td class="memItemLeft" align="right" valign="top"><a id="a0e1d2275c8721e090430b5ab2f33621c"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (ptrdiff_t offset) const</td></tr>
-<tr class="separator:a0e1d2275c8721e090430b5ab2f33621c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a288143994b11ff141e07dc06f74e35e5"><td class="memItemLeft" align="right" valign="top"><a id="a288143994b11ff141e07dc06f74e35e5"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int)</td></tr>
-<tr class="separator:a288143994b11ff141e07dc06f74e35e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe4b456548ffad075f3803d5a75dc4ad"><td class="memItemLeft" align="right" valign="top"><a id="afe4b456548ffad075f3803d5a75dc4ad"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> ()</td></tr>
-<tr class="separator:afe4b456548ffad075f3803d5a75dc4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f95fbbf9257b0e378b6d2c83f81aecb"><td class="memItemLeft" align="right" valign="top"><a id="a1f95fbbf9257b0e378b6d2c83f81aecb"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> (int)</td></tr>
-<tr class="separator:a1f95fbbf9257b0e378b6d2c83f81aecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add01f52527941f2b16d070c0a7219e8c"><td class="memItemLeft" align="right" valign="top"><a id="add01f52527941f2b16d070c0a7219e8c"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> ()</td></tr>
-<tr class="separator:add01f52527941f2b16d070c0a7219e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43dedf163f218a6a6f026c1c0e562b61"><td class="memItemLeft" align="right" valign="top"><a id="a43dedf163f218a6a6f026c1c0e562b61"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (ptrdiff_t offset)</td></tr>
-<tr class="separator:a43dedf163f218a6a6f026c1c0e562b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae23739e36ea1d6185c7547e89e57973b"><td class="memItemLeft" align="right" valign="top"><a id="ae23739e36ea1d6185c7547e89e57973b"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (ptrdiff_t offset)</td></tr>
-<tr class="separator:ae23739e36ea1d6185c7547e89e57973b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a7a028bfd3c659d9521a8ca64bf4299"><td class="memItemLeft" align="right" valign="top"><a id="a5a7a028bfd3c659d9521a8ca64bf4299"></a>
+ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a5a7a028bfd3c659d9521a8ca64bf4299">operator-</a> (<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; p2) const noexcept</td></tr>
+<tr class="memdesc:a5a7a028bfd3c659d9521a8ca64bf4299"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a5a7a028bfd3c659d9521a8ca64bf4299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c17c9caa5af755ce882bf09f9ad3f0"><td class="memItemLeft" align="right" valign="top"><a id="a01c17c9caa5af755ce882bf09f9ad3f0"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a01c17c9caa5af755ce882bf09f9ad3f0">operator+</a> (ptrdiff_t offset) const noexcept</td></tr>
+<tr class="memdesc:a01c17c9caa5af755ce882bf09f9ad3f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a01c17c9caa5af755ce882bf09f9ad3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f2352c8518cee7b6c96ae02ece0fea"><td class="memItemLeft" align="right" valign="top"><a id="a02f2352c8518cee7b6c96ae02ece0fea"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a02f2352c8518cee7b6c96ae02ece0fea">operator++</a> (int) noexcept</td></tr>
+<tr class="memdesc:a02f2352c8518cee7b6c96ae02ece0fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a02f2352c8518cee7b6c96ae02ece0fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc11756102a0642af16e72c30c4675b4"><td class="memItemLeft" align="right" valign="top"><a id="adc11756102a0642af16e72c30c4675b4"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#adc11756102a0642af16e72c30c4675b4">operator++</a> () noexcept</td></tr>
+<tr class="memdesc:adc11756102a0642af16e72c30c4675b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:adc11756102a0642af16e72c30c4675b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd6a1dc5122cce25056d2fd5309a015"><td class="memItemLeft" align="right" valign="top"><a id="a0cd6a1dc5122cce25056d2fd5309a015"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a0cd6a1dc5122cce25056d2fd5309a015">operator--</a> (int) noexcept</td></tr>
+<tr class="memdesc:a0cd6a1dc5122cce25056d2fd5309a015"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a0cd6a1dc5122cce25056d2fd5309a015"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2dce4ac1b1582a03ca73ca76275a820"><td class="memItemLeft" align="right" valign="top"><a id="ad2dce4ac1b1582a03ca73ca76275a820"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#ad2dce4ac1b1582a03ca73ca76275a820">operator--</a> () noexcept</td></tr>
+<tr class="memdesc:ad2dce4ac1b1582a03ca73ca76275a820"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:ad2dce4ac1b1582a03ca73ca76275a820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4f358fb1a8969bcde8e13fef134f36"><td class="memItemLeft" align="right" valign="top"><a id="a8d4f358fb1a8969bcde8e13fef134f36"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a8d4f358fb1a8969bcde8e13fef134f36">operator+=</a> (ptrdiff_t offset) noexcept</td></tr>
+<tr class="memdesc:a8d4f358fb1a8969bcde8e13fef134f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a8d4f358fb1a8969bcde8e13fef134f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2054b1bfe9f1192d0d504d2b21fcb558"><td class="memItemLeft" align="right" valign="top"><a id="a2054b1bfe9f1192d0d504d2b21fcb558"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a2054b1bfe9f1192d0d504d2b21fcb558">operator-=</a> (ptrdiff_t offset) noexcept</td></tr>
+<tr class="memdesc:a2054b1bfe9f1192d0d504d2b21fcb558"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a2054b1bfe9f1192d0d504d2b21fcb558"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 友元</h2></td></tr>
-<tr class="memitem:aadc4d93f840390f3c48fad6f393b1814"><td class="memItemLeft" align="right" valign="top"><a id="aadc4d93f840390f3c48fad6f393b1814"></a>
-<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (ptrdiff_t offset, <a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; <a class="el" href="classllama_1_1p.html">p</a>)</td></tr>
-<tr class="separator:aadc4d93f840390f3c48fad6f393b1814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a564aead55e5a0fded84b9fba78f12ecc"><td class="memItemLeft" align="right" valign="top"><a id="a564aead55e5a0fded84b9fba78f12ecc"></a>
+<a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classllama_1_1np.html#a564aead55e5a0fded84b9fba78f12ecc">operator+</a> (ptrdiff_t offset, <a class="el" href="classllama_1_1np.html">np</a>&lt; T &gt; <a class="el" href="classllama_1_1p.html">p</a>) noexcept</td></tr>
+<tr class="memdesc:a564aead55e5a0fded84b9fba78f12ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">指针算术 <br /></td></tr>
+<tr class="separator:a564aead55e5a0fded84b9fba78f12ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
 class llama::np&lt; T &gt;</h3>
 
-<p>可空指针 <code>T*</code> 。 </p>
+<p>可空指针。 </p>
+<p>与 <a class="el" href="classllama_1_1p.html" title="非空指针。">llama::p</a> 相反，可以为空。 所有需要解引用的操作都会触发判空，试图对空指针解引用会抛出 <a class="el" href="classllama_1_1Exception.html" title="IException 的实现类。内部保存异常信息字符串。">llama::Exception</a> 。 如果不希望每次访问都判空，用 unwrap 将其转为 <a class="el" href="classllama_1_1p.html" title="非空指针。">llama::p</a> 即可。 </p>
 
-<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00167">167</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00190">190</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
-<a id="aadda6ba987844ad2ab60edffc0d6a3dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadda6ba987844ad2ab60edffc0d6a3dc">&#9670;&nbsp;</a></span>deref()</h2>
+<a id="a8dc171105f0fa88a9521bf84d1874c16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dc171105f0fa88a9521bf84d1874c16">&#9670;&nbsp;</a></span>as_ref()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,7 +226,7 @@ template&lt;typename U  = T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">U&amp; <a class="el" href="classllama_1_1np.html">llama::np</a>&lt; T &gt;::deref </td>
+          <td class="memname">U&amp; <a class="el" href="classllama_1_1np.html">llama::np</a>&lt; T &gt;::as_ref </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -202,14 +238,16 @@ template&lt;typename U  = T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>解引用。 如果 T=void ， 无效。 </p><dl class="exception"><dt>异常</dt><dd>
+
+<p>解引用。 如果 T=void ，无法调用。 </p>
+<dl class="exception"><dt>异常</dt><dd>
   <table class="exception">
     <tr><td class="paramname">要求</td><td><code>ptr</code> 非空。否则抛出异常。 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00234">234</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00262">262</a> 行定义.</p>
 
 </div>
 </div>
@@ -239,14 +277,16 @@ template&lt;typename U  = T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>解引用。 如果 T=void ， 无效。 </p><dl class="exception"><dt>异常</dt><dd>
+
+<p>解引用。 如果 T=void ，无法调用。 </p>
+<dl class="exception"><dt>异常</dt><dd>
   <table class="exception">
     <tr><td class="paramname">要求</td><td><code>ptr</code> 非空。否则抛出异常。 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00223">223</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00251">251</a> 行定义.</p>
 
 </div>
 </div>
@@ -274,14 +314,16 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><code>-&gt;</code> 运算符 </p><dl class="exception"><dt>异常</dt><dd>
+
+<p><code>-&gt;</code> 运算符 </p>
+<dl class="exception"><dt>异常</dt><dd>
   <table class="exception">
     <tr><td class="paramname">要求</td><td><code>ptr</code> 非空。否则抛出异常。 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00244">244</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00272">272</a> 行定义.</p>
 
 </div>
 </div>
@@ -312,14 +354,16 @@ template&lt;typename U  = T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>访问偏移量 如果 T=void ，无效。 </p><dl class="exception"><dt>异常</dt><dd>
+
+<p>当数组一般访问 </p>
+<dl class="exception"><dt>异常</dt><dd>
   <table class="exception">
     <tr><td class="paramname">要求</td><td><code>ptr</code> 非空。否则抛出异常。 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00268">268</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00305">305</a> 行定义.</p>
 
 </div>
 </div>
@@ -347,14 +391,54 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>转为 <code>p&lt;T&gt;</code> </p><dl class="exception"><dt>异常</dt><dd>
+
+<p>转为 <code>p&lt;T&gt;</code> 。 </p>
+<dl class="exception"><dt>异常</dt><dd>
   <table class="exception">
     <tr><td class="paramname">要求</td><td><code>ptr</code> 非空。否则抛出异常。 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00253">253</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00281">281</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3fa7a1b475372571920d02b45fbfa1a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa7a1b475372571920d02b45fbfa1a6">&#9670;&nbsp;</a></span>unwrap_or()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classllama_1_1p.html">p</a>&lt;T&gt; <a class="el" href="classllama_1_1np.html">llama::np</a>&lt; T &gt;::unwrap_or </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classllama_1_1p.html">p</a>&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>subs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>转为 <code>p&lt;T&gt;</code> ，如果当前指针为空，返回 subs 作为替代。 </p>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">要求</td><td><code>ptr</code> 非空。否则抛出异常。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="pointers_8h_source.html">pointers.h</a> 第 <a class="el" href="pointers_8h_source.html#l00290">290</a> 行定义.</p>
 
 </div>
 </div>

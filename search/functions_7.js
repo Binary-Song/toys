@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['np_126',['np',['../classllama_1_1np.html#a981faa88a90294ca5121de70a7980560',1,'llama::np::np(T *ptr)'],['../classllama_1_1np.html#a4485dc4d2b7dd1bff4cf01c7ae77e25f',1,'llama::np::np(np&lt; U &gt; ptr)'],['../classllama_1_1np.html#ac65cfcaffe4fc8a17eb4bf6fe57b686d',1,'llama::np::np(p&lt; U &gt; ptr)']]]
+  ['max_5fsize_165',['max_size',['../classllama_1_1lru__cache.html#af82a44e24eee4f00e6a964273216d243',1,'llama::lru_cache']]],
+  ['miss_166',['miss',['../classllama_1_1fso_1_1Cache.html#ac8b334da18b1d4add136542d99a9679e',1,'llama::fso::Cache::miss()'],['../classllama_1_1lru__cache.html#a96608e5da686d23028aa097481417652',1,'llama::lru_cache::miss()']]]
 ];
