@@ -16,6 +16,17 @@
 				"glfw3",
 				"qt5-base"
 			]
+		},
+		"code-checker": {
+			"description": "A clang plug-in that adds additional checks to the code.",
+			"dependencies": [
+				{
+					"name": "llvm",
+					"features": [
+						"clang-tools-extra"
+					]
+				}
+			]
 		}
 	}
 }

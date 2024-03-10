@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <memory>
 #include <type_traits>
+#include "misc.h"
 namespace llama
 {
 
@@ -403,14 +404,11 @@ template <typename T, typename U> bool operator>=(np<T> p1, np<U> p2) { return s
 template <typename T, typename U> bool operator<=(np<T> p1, np<U> p2) { return static_cast<T *>(p1) <= static_cast<U *>(p2); }
 template <typename T, typename U> bool operator >(np<T> p1, np<U> p2) { return static_cast<T *>(p1)  > static_cast<U *>(p2); }
 template <typename T, typename U> bool operator <(np<T> p1, np<U> p2) { return static_cast<T *>(p1)  < static_cast<U *>(p2); }
-// clang-format on 
+// clang-format on
 
-template<typename T>
-using sp = std::shared_ptr<T>;
+template <typename T> using sp = std::shared_ptr<T>;
 
-template<typename T>
-using up = std::unique_ptr<T>;
-
+template <typename T> using up = std::unique_ptr<T>;
 
 /// 多重指针。用来接受同时实现多个接口的对象。
 /// 可以用 std::get 访问这些接口。
@@ -425,7 +423,7 @@ using up = std::unique_ptr<T>;
 /// MyObject obj; // 假设 MyObject 类实现了 IMyInterface1 和 IMyInterface2
 /// foo(&obj);
 /// ```
-/// 
+///
 template <typename... Interfaces> class mp : public std::tuple<p<Interfaces>...>
 {
 public:
@@ -434,14 +432,20 @@ public:
                                 void>::type /* 防止隐藏拷贝和移动构造函数 */>
     mp(Arg &&arg) : std::tuple<p<Interfaces>...>{FillWithSame<Arg, p<Interfaces>...>(std::forward<Arg>(arg))}
     {
-    } 
- 
-    ~mp() = default; 
+    }
+
+    ~mp() = default;
     mp(const mp &) = default;
     mp &operator=(const mp &) = default;
     mp(mp &&) = default;
-    mp &operator=(mp &&) = default; 
+    mp &operator=(mp &&) = default;
+};
+} // namespace llama
+
+template <typename T> struct std::hash<llama::p<T>> : std::hash<T *>
+{
 };
 
-
-}//namespace llama
+template <typename T> struct std::hash<llama::np<T>> : std::hash<T *>
+{
+};

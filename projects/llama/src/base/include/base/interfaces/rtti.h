@@ -1,15 +1,16 @@
 #pragma once
 #include "../rtti.h"
+#include "has_canonical_address.h"
 namespace llama
 {
 
 /// @brief 表示该类型的对象具有"运行时类型信息"(rtti)。
-/// @details 
-/// 
+/// @details
+///
 /// @note 关于 LLAMA 风格 RTTI 的说明，参见 [RTTI](#rtti) 。
-/// 
+///
 /// 实现本接口的作用是让对象支持向下转型（基类转派生类）。
-/// 
+///
 /// 一般不需要自己实现这个接口。使用 LLAMA_RTTI 来自动实现。
 /// LLAMA_RTTI 的语法是：
 ///
@@ -27,11 +28,11 @@ namespace llama
 ///
 /// 调用 IRtti::Cast 时，当前对象会沿着 LLAMA_RTTI 指定的继承路径进行搜索，
 /// 直到找到目标基类。
-/// 
+///
 /// 由于存在开销，大部分类型不包含 RTTI ，可根据需要添加。
 /// 增加 LLAMA_RTTI 不会影响对象的大小和结构、不会增加 dll 的导出符号。
 ///
-class IRtti
+class IRtti : public virtual IHasCanonicalAddress
 {
 public:
     virtual ~IRtti() = default;
@@ -97,6 +98,12 @@ public:
         return RttiContext::GetDefaultInstance()
             .Cast(GetCanonicalAddress(), GetTypeId(), rtti_trait<Dst>::id)
             .template static_as<Dst>();
+    }
+
+private:
+    const void *GetCanonicalAddress_IHasCanonicalAddress() const override final
+    {
+        return GetCanonicalAddress();
     }
 };
 

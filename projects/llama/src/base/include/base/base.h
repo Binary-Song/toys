@@ -6,6 +6,7 @@
 #include "base/exceptions.h"
 #include "base/interfaces/debug_print.h"
 #include "base/interfaces/exception.h"
+#include "base/interfaces/has_canonical_address.h"
 #include "base/interfaces/rtti.h"
 #include "base/misc.h"
 #include "base/path.h"
