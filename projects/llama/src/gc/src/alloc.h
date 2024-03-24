@@ -2,16 +2,22 @@
 #include "base/misc.h"
 #include "base/pointers.h"
 #include "iter.h"
+#include <array>
 #include <cassert>
+#include <cmath>
 #include <cstddef>
 #include <cstdlib>
-#include <unordered_map>
 #include <mutex>
+#include <type_traits>
+
 namespace llama
 {
 static constexpr size_t ALIGNMENT = 16;
 
+class NeighbourIter;
+class FreeChunkIter;
 class Chunk;
+
 class Links
 {
 public:
@@ -19,14 +25,18 @@ public:
     Chunk *m_next_freed = {};
 };
 
-inline class NeighbourIter GetNeighbourIter(np<Chunk> chunk);
-inline class FreeChunkIter GetBinIter(np<Chunk> chunk);
+inline NeighbourIter ToNeighbourIter(np<Chunk> chunk);
+inline FreeChunkIter ToFreeChunkIter(np<Chunk> chunk);
+inline p<Chunk> MergeNext(p<Chunk> chunk);
+inline p<Chunk> MergePrev(p<Chunk> chunk);
+inline p<Chunk> MergeConsecutive(p<Chunk> first, p<Chunk> second);
+inline constexpr size_t AlignedSize(size_t);
 
 class Chunk
 {
 public:
     /// 默认创建未被使用的Chunk。
-    Chunk()
+    constexpr Chunk()
     {
         SetOccupied(false);
         SetSize(sizeof(Chunk));
@@ -42,6 +52,16 @@ public:
     void SetOccupied(bool value)
     {
         m_fields.m_occupied = value;
+    }
+
+    bool HasNextNeighbour() const
+    {
+        return m_fields.m_has_next_neighbour;
+    }
+
+    void SetHasNextNeighbour(bool value)
+    {
+        m_fields.m_has_next_neighbour = value;
     }
 
     size_t Size() const
@@ -106,7 +126,16 @@ public:
         m_links.m_next_freed = next;
     }
 
-private:
+    p<byte> GetData()
+    {
+        return m_data;
+    }
+
+    static p<Chunk> DataFieldToChunk(p<byte> data)
+    {
+        return p<Chunk>{(Chunk *)(data - offsetof(Chunk, m_data)), bypass_null_check{}};
+    }
+
     size_t m_prev_size = {};
     struct Fields
     {
@@ -119,6 +148,8 @@ private:
         byte m_data[1]; // active if not m_occupied
     };
 };
+
+static_assert(std::is_standard_layout<Chunk>::value, "Chunk must be standard layout.");
 
 static_assert(sizeof(Chunk) % ALIGNMENT == 0, "Chunk size must be padded to a multiple of ALIGNMENT");
 
@@ -156,6 +187,20 @@ public:
     {
     }
 
+    void Erase()
+    {
+        p<Chunk> chunk = m_chunk.unwrap();
+        assert(chunk->Occupied() == false);
+        if (const auto prev = chunk->PrevFreeChunk())
+        {
+            prev->SetNextFreeChunk(chunk->NextFreeChunk());
+        }
+        if (const auto next = chunk->NextFreeChunk())
+        {
+            next->SetPrevFreeChunk(chunk->PrevFreeChunk());
+        }
+    }
+
 private:
     virtual np<Chunk> Get_IIterator() const override
     {
@@ -178,30 +223,38 @@ private:
 class Arena
 {
 public:
-    explicit Arena(size_t size) : m_begin((byte *)malloc(size)), m_end((byte *)m_begin + size)
+    explicit Arena(size_t size) : m_begin((byte *)malloc(size)), m_end((byte *)m_begin + size), m_current(m_begin)
     {
+        assert(size_t(m_begin.as_raw()) % ALIGNMENT == 0);
         if (!m_begin)
         {
             throw Exception("malloc failed");
         }
     }
 
+    Arena(const Arena &) = delete;
+    Arena &operator=(const Arena &) = delete;
+
+    ~Arena()
+    {
+        free(m_begin.as_raw());
+    }
+
     p<Chunk> RequestChunk()
     {
-        auto chunk = Request(sizeof(Chunk)).unwrap();
+        auto chunk = Request(sizeof(Chunk)).unwrap().reinterpret_as<Chunk>();
         new (chunk) Chunk{};
+        chunk->SetHasNextNeighbour(false);
         return chunk;
     }
 
-    bool TryReturnChunk(p<Chunk> lastChunk)
+    void ReturnChunk(p<Chunk> lastChunk)
     {
-        byte* chunk_begin = (byte*)lastChunk.as_raw();
-        if (lastChunk->Size() + chunk_begin == m_current)
-        {
-            m_current = chunk_begin;
-            return true;
-        }
-        return false;
+        p<byte> lastOne = lastChunk.reinterpret_as<byte>();
+        assert(lastChunk->Size() + lastOne == m_current);
+        lastChunk->SetHasNextNeighbour(true);
+        assert(m_current.reinterpret_as<Chunk>()->HasNextNeighbour() == false);
+        m_current = lastOne;
     }
 
 private:
@@ -224,9 +277,9 @@ private:
     }
 
 private:
-    byte *m_begin;
-    byte *m_current;
-    byte *m_end;
+    p<byte> m_begin;
+    p<byte> m_end;
+    p<byte> m_current;
 };
 
 class FreeList
@@ -261,17 +314,23 @@ public:
         return FreeChunkIter{chunk};
     }
 
-    void Erase(p<Chunk> chunk)
+    np<Chunk> Pop()
     {
-        assert(chunk->Occupied() == false);
-        if (const auto prev = chunk->PrevFreeChunk())
+        if (Chunk *chunk = m_head->NextFreeChunk())
         {
-            prev->SetNextFreeChunk(chunk->NextFreeChunk());
+            return chunk;
         }
-        if (const auto next = chunk->NextFreeChunk())
-        {
-            next->SetPrevFreeChunk(chunk->PrevFreeChunk());
-        }
+        return nullptr;
+    }
+
+    FreeChunkIter begin()
+    {
+        return FreeChunkIter{m_head->NextFreeChunk()};
+    }
+
+    FreeChunkIter end()
+    {
+        return FreeChunkIter{nullptr};
     }
 
 private:
@@ -279,41 +338,155 @@ private:
     p<Chunk> m_head;
 };
 
-/// 多个线程共享的内存池
-class SharedAllocator
+class Allocator
 {
 public:
-    np<byte> Allocate(size_t size)
+    static constexpr size_t NUM_SMALL_BINS = 64;
+    static constexpr size_t NUM_LARGE_BINS = 64;
+    static constexpr size_t MIN_LARGE_BIN_SIZE = ALIGNMENT * (NUM_SMALL_BINS + 1);
+
+    np<byte> Malloc(size_t size)
     {
-        if(m_sorted)
+        size = AlignedSize(size);
+
+        // go through small bin
+        if (FreeList *bin = GetBin(size))
+        {
+            if (Chunk *chunk = bin->Pop())
+            {
+                return MarkAllocated(chunk);
+            }
+        }
+
+        // go through unsorted bin
+        for (Chunk &unsorted_item : m_unsorted)
+        {
+            if (unsorted_item.Size() == size)
+            {
+                ToFreeChunkIter(&unsorted_item).Erase();
+                return MarkAllocated(&unsorted_item);
+            }
+            else
+            {
+            }
+        }
     }
 
-    void Free()
+    void Free(np<byte> n_data)
     {
+        std::lock_guard<std::mutex> lock(m_mtx);
+        if (!n_data)
+            return;
+        p<byte> data = n_data.unwrap();
+        p<Chunk> chunk = Chunk::DataFieldToChunk(data);
+        chunk = MergePrev(chunk);
+        chunk = MergeNext(chunk);
+        if (!chunk->HasNextNeighbour()) // last one in arena
+        {
+            m_arena.ReturnChunk(chunk);
+            return;
+        }
+        m_unsorted.Insert(chunk);
+    }
 
+private:
+    static constexpr size_t GetLargeBinIndex(size_t size)
+    {
+        return (size_t)log2(
+            double(size - MIN_LARGE_BIN_SIZE) / 16 + 1);
+    }
+
+    np<FreeList> GetBin(size_t size)
+    {
+        // small bin
+        if (size < MIN_LARGE_BIN_SIZE)
+        {
+            size_t idx = AlignedSize(size) / ALIGNMENT - 1;
+            if (idx >= m_small.size())
+                return nullptr; 
+            return &m_small[idx];
+        }
+        // large bin
+        else
+        {
+            size_t idx = GetLargeBinIndex(size);
+            if (idx >= m_large.size())
+                return nullptr;
+            return &m_large[idx];
+        }
+    }
+
+    p<byte> MarkAllocated(p<Chunk> chunk)
+    {
+        chunk->SetOccupied(true);
+        return chunk->GetData();
     }
 
 private:
     std::mutex m_mtx;
     Arena m_arena;
     FreeList m_unsorted;
-    std::unordered_map<size_t, FreeList> m_sorted;
+    std::array<FreeList, NUM_SMALL_BINS> m_small;
+    std::array<FreeList, NUM_LARGE_BINS> m_large;
+    // static thread_local std::array<FreeList, NUM_TCACHE_BINS> m_tcache;
 };
 
-/// 仅被单线程访问的内存池
-class ExclusiveAllocator
-{
-public:
-};
-
-NeighbourIter GetNeighbourIter(np<Chunk> chunk)
+NeighbourIter ToNeighbourIter(np<Chunk> chunk)
 {
     return NeighbourIter{chunk};
 }
 
-FreeChunkIter GetFreeChunkIter(np<Chunk> chunk)
+FreeChunkIter ToFreeChunkIter(np<Chunk> chunk)
 {
     return FreeChunkIter{chunk};
+}
+
+p<Chunk> MergePrev(p<Chunk> chunk)
+{
+    if (Chunk *nb = chunk->PrevNeighbour())
+    {
+        return MergeConsecutive(nb, chunk);
+    }
+    return chunk;
+}
+
+p<Chunk> MergeNext(p<Chunk> chunk)
+{
+    if (Chunk *nb = chunk->NextNeighbour())
+    {
+        return MergeConsecutive(chunk, nb);
+    }
+    return chunk;
+}
+
+p<Chunk> MergeConsecutive(p<Chunk> first, p<Chunk> second)
+{
+    const bool first_free = !first->Occupied();
+    const bool second_free = !second->Occupied();
+
+    assert(first_free || second_free);
+
+    if (first_free)
+    {
+        if (second_free)
+        {
+            ToFreeChunkIter(first).Erase();
+            ToFreeChunkIter(second).Erase();
+            first->SetSize(first->Size() + second->Size());
+            first->SetHasNextNeighbour(second->HasNextNeighbour());
+        }
+        return first;
+    }
+    // first not free
+    return second;
+}
+
+constexpr size_t AlignedSize(size_t size)
+{
+    if (!size)
+        size = 1;
+    const size_t rem = (size - 1) % ALIGNMENT;
+    return (size - 1) - rem + ALIGNMENT;
 }
 
 } // namespace llama
